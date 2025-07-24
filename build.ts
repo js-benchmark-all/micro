@@ -16,12 +16,14 @@ const buildOutput = (
     input: fileNames.map((name) => SRC + name + '.case.ts'),
     output: {
       dir: BUNDLED_DIR,
+      banner: '// @bun',
       minify: {
         compress: false,
         removeWhitespace: true,
         mangle: true,
       },
-    }
+    },
+    logLevel: 'silent'
   })
 ).output
   .map((o) => {
