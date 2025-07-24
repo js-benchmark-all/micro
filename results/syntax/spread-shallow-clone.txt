@@ -1,0 +1,17 @@
+clk: ~3.09 GHz
+cpu: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz
+runtime: node 24.4.1 (x64-linux)
+
+benchmark                   avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------- -------------------------------
+clone array - spread          76.09 ns/iter  86.33 ns            ▄█   ▂█▅  
+                      (39.60 ns … 95.54 ns)  94.21 ns ▂▂▇▃▂▂▁▂▂▁▁██▅▄▅███▅▂
+                  gc(  3.37 ms …   5.72 ms) 127.91  b ( 38.86  b…144.47  b)
+
+clone array - slice           54.70 ns/iter  54.81 ns █                    
+                     (44.68 ns … 176.15 ns) 163.99 ns █▅▆▂▁▁▁▁▁▁▁▁▂▁▁▁▁▁▁▁▁
+                  gc(  3.26 ms …   5.52 ms) 129.86  b (124.19  b…189.22  b)
+
+summary
+  clone array - slice
+   1.39x faster than clone array - spread

@@ -7,7 +7,14 @@ export const args: Record<string, string[]> = {
 
 export const env: Record<string, Record<string, string>> = {};
 
-export const run = (runtime: string, path: string) => {
-  $.env(env[runtime] ?? {});
-  return $`${{ raw: runtime }} ${args[runtime] ?? []} ${path}`;
+export const run = (runtime: string, path: string, opts?: {
+  noColor?: boolean,
+  outputFile?: string
+}) => {
+  $.env(
+    Object.assign({}, env[runtime] ?? {}, opts?.noColor || opts?.outputFile ? { NO_COLOR: '1' } : {})
+  );
+  return opts?.outputFile
+    ? $`${runtime} ${args[runtime] ?? []} ${path} > ${opts.outputFile}`
+    : $`${runtime} ${args[runtime] ?? []} ${path}`;
 }
