@@ -1,0 +1,15 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@types/bun": "latest",
+    "jsvu": "^3.0.0",
+    "mitata": "^1.0.34",
+    "picocolors": "^1.1.1",
+    "rolldown": "^1.0.0-beta.29",
+    "typescript": "^5"
+  },
+  "scripts": {
+    "prep": "bun build.ts",
+    "start": "bun index.ts"
+  }
+}
