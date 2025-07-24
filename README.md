@@ -10,6 +10,8 @@ bun prep
 bun start node
 ```
 
+To add a benchmark create a file with extension `.case.ts` in [src](./src).
+
 Configs:
 - Filter out benchmarks: [./lib/filters.ts](./lib/filters.ts).
 - Change engine arguments & env input: [./lib/engines.ts](./lib/engines.ts).
