@@ -29,7 +29,8 @@ summary(() => {
   }).gc('inner');
 
   it('clone object - spread', (rec) => ({ ...rec }));
-  it('clone object - assign', (rec) => Object.assign({}, rec));
+  it('clone object - Object.assign()', (rec) => Object.assign({}, rec));
+  it('clone object - Object.create()', (rec) => Object.create(rec));
 });
 
 run();
