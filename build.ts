@@ -1,9 +1,10 @@
-import { build } from 'rolldown';
+import { build, rolldown } from 'rolldown';
 import * as filters from './lib/filters.ts';
 
 const SRC = import.meta.dir + '/src/';
 const OUTPUT_DIR = import.meta.dir + '/.out/';
 const BUNDLED_DIR = OUTPUT_DIR + 'bundled/';
+const TSCONFIG = import.meta.dir + '/tsconfig.json';
 
 const fileNames = Array.from(
   new Bun.Glob('**/*.case.ts').scanSync(SRC)
@@ -11,31 +12,40 @@ const fileNames = Array.from(
   .map((path) => path.slice(0, -'.case.ts'.length))
   .filter(filters.includeName);
 
-const buildOutput = (
-  await build({
-    input: fileNames.map((name) => SRC + name + '.case.ts'),
-    output: {
-      dir: BUNDLED_DIR,
-      banner: '// @bun',
-      minify: {
-        compress: false,
-        removeWhitespace: true,
-        mangle: true,
-      },
-    },
-    logLevel: 'silent'
+const buildOutput = await Promise.all(
+  fileNames.map(async (caseName, i) => {
+    try {
+      const input = await rolldown({
+        input: SRC + caseName + '.case.ts',
+        resolve: {
+          tsconfigFilename: TSCONFIG,
+        },
+        logLevel: 'silent',
+      });
+
+      const outputPath = BUNDLED_DIR + i + '.js';
+      await input.write({
+        inlineDynamicImports: true,
+        file: outputPath,
+        minify: {
+          compress: false,
+          removeWhitespace: true,
+          mangle: true,
+        },
+        banner: '// @bun',
+      });
+
+      return [
+        caseName, 
+        outputPath
+      ]
+    } catch (e) {
+      console.log(e);
+    }
   })
-).output
-  .map((o) => {
-    if (o.type !== 'chunk' || o.facadeModuleId == null) return;
-    return [
-      o.facadeModuleId.slice(SRC.length, -'.case.ts'.length),
-      BUNDLED_DIR + o.fileName
-    ];
-  })
-  .filter((o) => o != null);
+);
 
 await Bun.write(
   OUTPUT_DIR + '_.json',
-  JSON.stringify(Object.fromEntries(buildOutput), null, 2)
+  JSON.stringify(Object.fromEntries(buildOutput.filter((o) => o != null)), null, 2)
 );

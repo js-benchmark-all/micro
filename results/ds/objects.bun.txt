@@ -1,0 +1,33 @@
+clk: ~1.24 GHz
+cpu: Intel(R) Xeon(R) CPU @ 2.20GHz
+runtime: bun 1.2.19 (x64-linux)
+
+benchmark                   avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------- -------------------------------
+access object                  3.94 ns/iter   3.81 ns  █                   
+                       (2.57 ns … 24.46 ns)  19.61 ns ▆█▄▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+                  gc(  1.02 ms …   2.85 ms)   0.00  b (  0.00  b…  0.00  b)
+
+access array                   6.18 ns/iter   6.13 ns  ▃█                  
+                       (4.36 ns … 29.84 ns)  15.54 ns ▂██▆▃▃▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁
+                  gc(  1.04 ms …   3.82 ms)   0.00  b (  0.00  b…  0.00  b)
+
+summary
+  access object
+   1.57x faster than access array
+
+------------------------------------------- -------------------------------
+create & access object        14.23 ns/iter  12.40 ns █▃                    !
+                      (8.64 ns … 248.58 ns)  53.95 ns ██                   
+                    (  0.00  b …  96.00  b)   3.35  b ██▆▃▂▁▁▁▁▂▃▂▁▂▁▁▁▁▁▁▁
+
+create & access array         17.13 ns/iter  17.66 ns  ▄█                   !
+                     (12.03 ns … 159.24 ns)  39.52 ns  ██▅                 
+                    (  0.00  b …  64.00  b)   0.10  b ▅███▇▅▃▃▃▂▂▂▂▂▂▁▁▁▁▁▁
+
+summary
+  create & access object
+   1.2x faster than create & access array
+
+               benchmark was likely optimized out (dead code elimination) = !
+               https://github.com/evanwashere/mitata#writing-good-benchmarks

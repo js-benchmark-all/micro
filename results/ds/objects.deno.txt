@@ -1,0 +1,30 @@
+clk: ~1.55 GHz
+cpu: null
+runtime: deno 2.4.3 (x86_64-unknown-linux-gnu)
+
+benchmark                   avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------- -------------------------------
+access object                 29.49 ns/iter  55.93 ns ▅█            ▄      
+                       (6.55 ns … 87.54 ns)  77.32 ns ██▆▂▁▁▁▁▁▁▁▁▂▂█▂▂▄▂▁▂
+                  gc( 10.79 ms …  31.24 ms)   7.86  b (  0.16  b… 44.51  b)
+
+access array                  28.84 ns/iter  58.44 ns  █▄                  
+                       (6.66 ns … 75.73 ns)  68.61 ns ▅██▅▁▁▁▁▁▁▁▁▁▁▁▂▅█▃▄▃
+                  gc( 10.44 ms …  26.99 ms)   6.29  b (  0.16  b… 28.19  b)
+
+summary
+  access array
+   1.02x faster than access object
+
+------------------------------------------- -------------------------------
+create & access object        51.19 ns/iter  50.52 ns  █                   
+                     (40.42 ns … 214.38 ns) 125.21 ns ██▄                  
+                    ( 41.42  b … 301.80  b) 104.46  b ███▆▃▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁
+
+create & access array         50.38 ns/iter  50.65 ns  █                   
+                     (41.54 ns … 201.59 ns) 114.50 ns ███                  
+                    ( 40.66  b … 200.16  b) 112.41  b ████▄▃▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁
+
+summary
+  create & access array
+   1.02x faster than create & access object

@@ -17,7 +17,7 @@ for (const name in tests) {
     await run(RUNTIME, tests[name as keyof typeof tests]);
   else if (OUTPUT === 'file')
     await run(RUNTIME, tests[name as keyof typeof tests], {
-      outputFile: RESULTS_DIR + name + '.txt'
+      outputFile: RESULTS_DIR + name + '.' + RUNTIME + '.txt'
     });
   else
     throw new Error('Unrecognized output mode: ' + OUTPUT);
