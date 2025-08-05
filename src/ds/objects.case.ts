@@ -1,4 +1,5 @@
-import { run, bench, summary, do_not_optimize } from 'mitata';
+import { bench, summary, do_not_optimize } from 'mitata';
+import { start } from '@utils';
 
 summary(() => {
   bench('access object', function* () {
@@ -42,4 +43,4 @@ summary(() => {
   });
 });
 
-run();
+start();

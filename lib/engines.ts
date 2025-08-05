@@ -1,4 +1,6 @@
 import { $ } from 'bun';
+import { dirname, resolve } from 'node:path';
+import fs from 'node:fs';
 
 export const args: Record<string, string[]> = {
   deno: ['--v8-flags=--allow-natives-syntax,--expose-gc', '--allow-env'],
@@ -8,6 +10,16 @@ export const args: Record<string, string[]> = {
 
 export const env: Record<string, Record<string, string>> = {};
 
+const createFile =(path: string) => {
+  path = resolve(path);
+  try {
+    fs.mkdirSync(dirname(path), { recursive: true });
+  } catch {}
+  try {
+    fs.writeFileSync(resolve(path), '');
+  } catch {}
+}
+
 export const run = (runtime: string, path: string, opts?: {
   noColor?: boolean,
   outputFile?: string
@@ -15,7 +27,11 @@ export const run = (runtime: string, path: string, opts?: {
   $.env(
     Object.assign({}, env[runtime] ?? {}, opts?.noColor || opts?.outputFile ? { NO_COLOR: '1' } : {})
   );
-  return opts?.outputFile
-    ? $`${runtime} ${args[runtime] ?? []} ${path} > ${opts.outputFile}`
-    : $`${runtime} ${args[runtime] ?? []} ${path}`;
+  
+  if (opts?.outputFile) {
+    createFile(opts.outputFile);
+    return $`${runtime} ${args[runtime] ?? []} ${path} > ${Bun.file(opts.outputFile)}`;
+  }
+
+  return $`${runtime} ${args[runtime] ?? []} ${path}`;
 }

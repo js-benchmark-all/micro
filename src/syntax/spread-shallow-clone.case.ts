@@ -1,4 +1,5 @@
-import { run, bench, summary } from 'mitata';
+import { bench, summary } from 'mitata';
+import { start } from '@utils';
 
 summary(() => {
   const ARRAY_SIZE = 10;
@@ -33,4 +34,4 @@ summary(() => {
   it('clone object - Object.create()', (rec) => Object.create(rec));
 });
 
-run();
+start();
