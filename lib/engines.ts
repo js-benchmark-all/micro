@@ -1,6 +1,7 @@
 import { $ } from 'bun';
 
 export const args: Record<string, string[]> = {
+  deno: ['--v8-flags=--allow-natives-syntax,--expose-gc', '--allow-env'],
   node: ['--allow-natives-syntax', '--expose-gc'],
   v8: ['--allow-natives-syntax', '--expose-gc'],
 };
