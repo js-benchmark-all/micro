@@ -91,6 +91,15 @@ summary(() => {
     });
   }
 
+  register('for in & assign', (originalObj, keys) => {
+    const obj: Record<string, unknown> = {};
+
+    for (const key in originalObj)
+      keys.includes(key) && (obj[key] = originalObj[key]);
+
+    return obj;
+  });
+
   register('Object.keys() & assign', (originalObj, keys) => {
     const obj: Record<string, unknown> = {};
 
@@ -101,16 +110,6 @@ summary(() => {
 
     return obj;
   });
-
-  register('Object.keys() & Object.fromEntries()', (originalObj, keys) => 
-    Object.fromEntries(keys.map((k) => [k, originalObj[k]]))
-  );
-
-  register('filter() & reduce() no assign', (originalObj, keys) =>
-    Object.keys(originalObj)
-      .filter((k) => keys.includes(k))
-      .reduce((obj, key) => ({ ...obj, [key]: originalObj[key] }), {})
-  );
 
   register('filter() & reduce() with assign', (originalObj, keys) =>
     Object.keys(originalObj)
