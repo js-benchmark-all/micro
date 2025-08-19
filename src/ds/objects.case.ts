@@ -60,6 +60,7 @@ summary(() => {
   const CASES = 100;
   const KEYS = 7;
   const SELECTED_KEYS = 4;
+  const UNKNOWN_KEYS: string[] = [];
 
   const cases = new Array(CASES)
     .fill(0)
@@ -71,7 +72,7 @@ summary(() => {
         obj[keys[i]!] = Math.random();
 
       return {
-        keys: shuffleList(keys).slice(0, SELECTED_KEYS),
+        keys: shuffleList(keys).slice(0, SELECTED_KEYS).concat(UNKNOWN_KEYS),
         obj
       };
     })
@@ -92,7 +93,7 @@ summary(() => {
   }
 
   register('for in & assign', (originalObj, keys) => {
-    const obj: Record<string, unknown> = {};
+    const obj: Record<string, any> = {};
 
     for (const key in originalObj)
       keys.includes(key) && (obj[key] = originalObj[key]);
@@ -100,8 +101,30 @@ summary(() => {
     return obj;
   });
 
+  register('assign with in', (originalObj, keys) => {
+    const obj: Record<string, any> = {};
+
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[i]!;
+      key in originalObj && (obj[key] = originalObj[key]);
+    }
+
+    return obj;
+  });
+
+  register('assign with Object.hasOwn', (originalObj, keys) => {
+    const obj: Record<string, any> = {};
+
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[i]!;
+      Object.hasOwn(originalObj, key) && (obj[key] = originalObj[key]);
+    }
+
+    return obj;
+  });
+
   register('Object.keys() & assign', (originalObj, keys) => {
-    const obj: Record<string, unknown> = {};
+    const obj: Record<string, any> = {};
 
     for (let i = 0, l = Object.keys(originalObj); i < l.length; i++) {
       const key = l[i]!;
