@@ -35,3 +35,5 @@ export const start = () => {
     colors: ['node', 'bun', 'deno'].includes(runtime()!) && colors()
   });
 }
+
+export const shuffleList = <T>(arr: T[]): T[] => arr.toSorted(() => 0.5 - Math.random());
