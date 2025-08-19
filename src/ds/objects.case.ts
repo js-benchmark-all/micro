@@ -17,11 +17,11 @@ summary(() => {
     yield {
       [0]: () => i++ & 1 
         ? {
-				  a: Math.random(),
-				  b: Math.random(),
+				  c: Math.random(),
+				  d: Math.random(),
 			  } 
-        : { a: Math.random() },
-      bench: (o: any) => o.a
+        : { c: Math.random() },
+      bench: (o: any) => o.c
     }
   }).gc('inner');
 
@@ -101,6 +101,10 @@ summary(() => {
 
     return obj;
   });
+
+  register('Object.keys() & Object.fromEntries()', (originalObj, keys) => 
+    Object.fromEntries(keys.map((k) => [k, originalObj[k]]))
+  );
 
   register('filter() & reduce() no assign', (originalObj, keys) =>
     Object.keys(originalObj)
