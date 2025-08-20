@@ -1,4 +1,9 @@
-Micro benchmarks for all runtimes & engines.
+Micro benchmarks for all runtimes & engines:
+- [pick keys from objects](./src/basics/object-pick.case.ts)
+- [access objects vs arrays](./src/basics/access.case.ts)
+- [shallow clone objects & arrays](./src/basics/shallow-clone.case.ts)
+
+Setup:
 ```sh
 # Install all dependencies
 bun i
