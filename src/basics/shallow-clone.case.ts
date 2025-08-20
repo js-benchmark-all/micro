@@ -14,6 +14,10 @@ summary(() => {
 
   it('clone array - spread', (arr) => [...arr]);
   it('clone array - slice', (arr) => arr.slice());
+  it('clone array - concat', (arr) => arr.concat());
+
+  const empty: any[] = [];
+  it('clone array - concat empty array', (arr) => arr.concat(empty));
 });
 
 summary(() => {

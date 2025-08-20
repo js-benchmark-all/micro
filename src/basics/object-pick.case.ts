@@ -35,7 +35,7 @@ const it = (NAME: string, PROPS: {
           [1]: () => cases[i]!.keys,
           bench: f
         }
-      });
+      }).gc('inner');
     };
   
     register('for in & assign', (originalObj, keys) => {
@@ -116,7 +116,7 @@ it('object pick 6 unknowns', {
   cases: 10,
   keys: 15,
   selectedKeys: 5,
-  unknownKeys: ['a', 'b']
+  unknownKeys: ['a', 'b', 'c', 'd', 'e', 'f']
 });
 
 start();
