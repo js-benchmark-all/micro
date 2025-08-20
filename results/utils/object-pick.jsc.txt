@@ -1,0 +1,26 @@
+clk: ~2.43 GHz
+cpu: null
+runtime: null (null)
+
+benchmark                                         avg (min … max) p75 / p99    (min … top 1%)
+----------------------------------------------------------------- -------------------------------
+pick object keys - for in & assign                 179.69 ns/iter 174.32 ns   █                  
+                                          (134.52 ns … 397.71 ns) 350.83 ns ▁▄█▆▃▂▂▁▁▁▁▁▁▂▁▁▁▁▂▁▁
+pick object keys - assign with in                   58.31 ns/iter  55.42 ns ▃█                   
+                                           (45.90 ns … 275.88 ns) 169.43 ns ██▄▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+pick object keys - assign with Object.hasOwn       101.45 ns/iter  96.19 ns  █                   
+                                           (78.61 ns … 419.19 ns) 224.85 ns ▇██▃▂▂▁▁▁▁▁▂▂▂▂▁▁▁▁▁▁
+pick object keys - Object.keys() & assign          205.79 ns/iter 217.77 ns ██▆                  
+                                          (162.11 ns … 585.69 ns) 396.97 ns █████▆▅▄▃▂▂▂▂▁▁▂▂▂▂▁▁
+pick object keys - filter() & reduce() with assign 337.55 ns/iter 1000.00 ns █                    
+                                              (0.00 ps … 2.05 ms)   1.00 µs █▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▇
+pick object keys - Object.fromEntries() & filter() 707.24 ns/iter   1.00 µs ▂      █             
+                                            (0.00 ps … 559.00 µs)   3.00 µs █▁▁▁▁▁▁█▁▁▁▁▁▂▁▁▁▁▁▁▁
+
+summary
+  pick object keys - assign with in
+   1.74x faster than pick object keys - assign with Object.hasOwn
+   3.08x faster than pick object keys - for in & assign
+   3.53x faster than pick object keys - Object.keys() & assign
+   5.79x faster than pick object keys - filter() & reduce() with assign
+   12.13x faster than pick object keys - Object.fromEntries() & filter()

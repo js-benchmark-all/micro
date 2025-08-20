@@ -1,5 +1,5 @@
-import { shuffleList } from '@utils';
-import { bench, summary, do_not_optimize } from 'mitata';
+import { shuffleList, start } from '@utils';
+import { bench, summary } from 'mitata';
 
 summary(() => {
   const CASES = 10;
@@ -94,3 +94,5 @@ summary(() => {
     )
   );
 });
+
+start();

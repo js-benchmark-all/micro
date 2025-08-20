@@ -1,0 +1,37 @@
+clk: ~2.87 GHz
+cpu: null
+runtime: deno 2.4.3 (x86_64-unknown-linux-gnu)
+
+benchmark                                         avg (min … max) p75 / p99    (min … top 1%)
+----------------------------------------------------------------- -------------------------------
+pick object keys - for in & assign                 186.06 ns/iter 257.71 ns █▄                   
+                                          (128.66 ns … 412.59 ns) 378.68 ns ██                   
+                                          ( 14.31  b … 416.22  b) 186.86  b ██▅▄▂▁▂▁▂▂▃▄▆▄▃▁▂▂▂▂▁
+
+pick object keys - assign with in                  152.93 ns/iter 148.24 ns  █                   
+                                          (131.29 ns … 359.75 ns) 322.93 ns  █                   
+                                          ( 46.62  b … 402.09  b) 185.42  b ██▆▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+pick object keys - assign with Object.hasOwn       162.91 ns/iter 156.89 ns ▄█                   
+                                          (136.42 ns … 416.25 ns) 351.25 ns ██                   
+                                          ( 17.11  b … 386.19  b) 185.52  b ███▃▂▁▂▂▂▁▁▁▁▂▂▂▂▁▁▁▁
+
+pick object keys - Object.keys() & assign          199.23 ns/iter 185.41 ns  █                   
+                                          (162.74 ns … 534.94 ns) 427.86 ns  █                   
+                                          (  6.20  b … 560.22  b) 289.73  b ██▇▂▁▁▂▁▁▁▁▂▁▂▂▂▁▁▁▁▁
+
+pick object keys - filter() & reduce() with assign 245.93 ns/iter 239.01 ns  █                   
+                                          (195.58 ns … 727.25 ns) 643.59 ns ▃█                   
+                                          ( 19.95  b …   1.02 kb) 618.86  b ███▃▂▂▂▁▂▃▁▁▁▁▁▁▁▁▁▁▁
+
+pick object keys - Object.fromEntries() & filter() 510.46 ns/iter 487.53 ns █▃                   
+                                            (449.94 ns … 1.08 µs)   1.06 µs ██                   
+                                          (341.69  b …   1.39 kb)   1.02 kb ██▂▄▂▁▁▁▁▂▁▁▁▁▁▁▂▁▁▁▁
+
+summary
+  pick object keys - assign with in
+   1.07x faster than pick object keys - assign with Object.hasOwn
+   1.22x faster than pick object keys - for in & assign
+   1.3x faster than pick object keys - Object.keys() & assign
+   1.61x faster than pick object keys - filter() & reduce() with assign
+   3.34x faster than pick object keys - Object.fromEntries() & filter()
