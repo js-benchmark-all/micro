@@ -73,7 +73,7 @@ summary(() => {
 });
 
 summary(() => {
-  const CASES = 100;
+  const CASES = 10;
   const KEYS = 7;
   const SELECTED_KEYS = 4;
   const UNKNOWN_KEYS: string[] = [];
