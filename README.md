@@ -1,6 +1,7 @@
 Micro benchmarks for all runtimes & engines:
 - [pick keys from objects](./src/basics/object-pick.case.ts)
 - [access objects vs arrays](./src/basics/access.case.ts)
+- [object initialization](./src/basics/object-init.case.ts)
 - [shallow clone objects & arrays](./src/basics/shallow-clone.case.ts)
 
 Setup:
