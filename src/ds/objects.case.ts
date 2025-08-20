@@ -5,10 +5,14 @@ summary(() => {
   bench('access monomorphic object', function* () {
     yield {
       [0]: () => ({
-				a: Math.random(),
-				b: Math.random(),
-			}),
-      bench: (o: any) => o.a
+        a: Math.random(),
+        b: Math.random(),
+      }),
+      bench: (o: any) => {
+        for (let i = 0; i < 100; i++)
+          o.a += o.b + o.a;
+        return o.a;
+      }
     }
   }).gc('inner');
 
@@ -17,11 +21,19 @@ summary(() => {
     yield {
       [0]: () => i++ & 1 
         ? {
-				  c: Math.random(),
-				  d: Math.random(),
-			  } 
-        : { c: Math.random() },
-      bench: (o: any) => o.c
+          a: Math.random(),
+          b: Math.random(),
+        }
+        : {
+          b: Math.random(),
+          a: Math.random(),
+          c: Math.random()
+        },
+      bench: (o: any) => {
+        for (let i = 0; i < 100; i++)
+          o.a += o.b + o.a;
+        return o.a;
+      }
     }
   }).gc('inner');
 
@@ -31,7 +43,11 @@ summary(() => {
 				Math.random(),
 				Math.random()
 			],
-      bench: (o: any) => o[0]
+      bench: (o: any) => {
+        for (let i = 0; i < 100; i++)
+          o[0] += o[1] + o[0];
+        return o[0];
+      }
     }
   }).gc('inner');
 });

@@ -1,68 +1,68 @@
-clk: ~2.36 GHz
-cpu: Intel(R) Xeon(R) CPU @ 2.20GHz
+clk: ~2.57 GHz
+cpu: AMD EPYC 7B12
 runtime: node 20.18.1 (x64-linux)
 
 benchmark                                         avg (min … max) p75 / p99    (min … top 1%)
 ----------------------------------------------------------------- -------------------------------
-access monomorphic object                           33.06 ns/iter  55.58 ns █                    
-                                             (8.21 ns … 83.20 ns)  81.56 ns █▃▁▁▁▁▁▁▁▁▁▂▆▇▄▁▂▁▁▁▁
-                                        gc(  5.99 ms …  17.72 ms)  10.28  b (  0.16  b… 79.94  b)
+access monomorphic object                          537.73 ns/iter 528.94 ns  █                   
+                                            (486.34 ns … 1.00 µs) 944.53 ns ▃█▄▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+                                        gc(  3.07 ms …  15.08 ms)  50.87  b (  4.10  b…564.04  b)
 
-access polymorphic object                           52.84 ns/iter  58.69 ns            █▃        
-                                             (7.90 ns … 93.81 ns)  89.90 ns ▆▁▁▁▁▁▂▁▂▁███▃▅▁▂▁▂▃▃
-                                        gc(  5.91 ms …  20.18 ms)  15.64  b (  0.16  b… 74.48  b)
+access polymorphic object                          586.54 ns/iter 596.98 ns ▅█  ▃                
+                                          (534.63 ns … 969.91 ns) 774.33 ns ██▆▄██▆▄▂▂▁▁▂▂▃▁▂▁▂▁▂
+                                        gc(  3.06 ms …   8.76 ms)  14.45  b (  0.17  b…542.18  b)
 
-access array                                        27.88 ns/iter  53.51 ns █                    
-                                            (7.53 ns … 108.75 ns) 102.90 ns █▃▁▁▁▁▁▁▁▂▃▃▂▁▁▁▂▁▂▁▁
-                                        gc(  6.04 ms …  16.42 ms)   6.77  b (  0.16  b… 66.85  b)
+access array                                       486.86 ns/iter 502.95 ns █▅                   
+                                          (443.75 ns … 865.45 ns) 760.65 ns ██▆▄█▃▂▃▁▁▁▁▁▁▁▁▁▁▁▁▁
+                                        gc(  3.00 ms …  12.48 ms)  14.41  b (  0.17  b…445.77  b)
 
 summary
   access array
-   1.19x faster than access monomorphic object
-   1.9x faster than access polymorphic object
+   1.1x faster than access monomorphic object
+   1.2x faster than access polymorphic object
 
 ----------------------------------------------------------------- -------------------------------
-create & access monomorphic object                  53.09 ns/iter  50.70 ns █                    
-                                           (41.80 ns … 418.48 ns) 185.08 ns █▆                   
-                                          ( 43.73  b … 210.68  b) 104.36  b ██▄▂▂▁▁▁▁▁▁▁▂▁▁▁▁▁▁▁▁
+create & access monomorphic object                  40.09 ns/iter  46.57 ns █                    
+                                           (26.86 ns … 393.48 ns) 152.60 ns █                    
+                                          (  7.18  b … 224.22  b) 120.28  b █▇▃▇▅▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-create & access array                               52.61 ns/iter  50.97 ns ▇█                   
-                                           (42.37 ns … 234.78 ns) 136.34 ns ██▂                  
-                                          ( 26.06  b … 189.95  b) 112.32  b ███▄▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▂▁
+create & access array                               32.31 ns/iter  30.52 ns █                    
+                                           (27.11 ns … 167.68 ns)  96.94 ns █▆                   
+                                          (  9.37  b … 208.58  b) 112.21  b ██▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
 summary
   create & access array
-   1.01x faster than create & access monomorphic object
+   1.24x faster than create & access monomorphic object
 
 ----------------------------------------------------------------- -------------------------------
-pick object keys - for in & assign                 404.10 ns/iter 387.32 ns █▅                   
-                                          (341.40 ns … 961.75 ns) 887.26 ns ██                   
-                                          (184.10  b … 452.22  b) 187.63  b ██▆▂▄▃▁▁▁▁▂▂▁▁▁▁▁▁▁▂▂
+pick object keys - for in & assign                 187.00 ns/iter 184.43 ns ▃█                   
+                                          (150.53 ns … 961.48 ns) 449.72 ns ██▅                  
+                                          ( 42.99  b … 384.18  b) 185.23  b ███▅▂▃▂▃▂▂▁▁▁▁▁▁▁▁▁▁▁
 
-pick object keys - assign with in                  339.55 ns/iter 328.32 ns █▂                   
-                                          (298.80 ns … 804.79 ns) 742.72 ns ██                   
-                                          ( 91.75  b … 292.57  b) 184.76  b ██▅▂▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+pick object keys - assign with in                  194.29 ns/iter 192.37 ns ▄█                   
+                                          (159.03 ns … 487.05 ns) 431.93 ns ██▆                  
+                                          ( 35.73  b … 287.36  b) 184.27  b ███▇▃▂▂▃▂▂▂▂▁▂▂▁▁▁▁▂▁
 
-pick object keys - assign with Object.hasOwn       337.77 ns/iter 326.56 ns █                    
-                                          (305.64 ns … 736.33 ns) 716.24 ns ██                   
-                                          (  2.94  b … 368.17  b) 184.81  b ██▃▂▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+pick object keys - assign with Object.hasOwn       186.10 ns/iter 181.47 ns █▃                   
+                                          (154.42 ns … 538.66 ns) 473.27 ns ██                   
+                                          (  2.94  b … 350.41  b) 184.18  b ███▃▂▂▂▁▂▁▂▂▁▁▁▁▁▁▁▁▁
 
-pick object keys - Object.keys() & assign          527.58 ns/iter 532.19 ns █▇                   
-                                            (432.22 ns … 1.33 µs)   1.01 µs ██▂                  
-                                          (121.03  b … 494.22  b) 288.92  b ███▄▆▂▂▂▁▂▃▃▂▁▁▁▂▂▁▂▂
+pick object keys - Object.keys() & assign          229.52 ns/iter 218.71 ns █                    
+                                          (185.20 ns … 999.06 ns) 623.09 ns ██                   
+                                          ( 70.63  b … 434.16  b) 288.65  b ██▅▂▃▂▁▂▂▁▁▂▁▁▁▁▁▁▁▁▁
 
-pick object keys - filter() & reduce() with assign 646.53 ns/iter 609.68 ns █                    
-                                            (467.09 ns … 2.32 µs)   2.06 µs █▄                   
-                                          ( 31.04  b … 744.33  b) 577.09  b ██▄▂▁▂▃▄▂▂▁▁▁▁▁▁▁▁▁▁▁
+pick object keys - filter() & reduce() with assign 290.07 ns/iter 297.95 ns  █▂                  
+                                          (216.17 ns … 818.98 ns) 600.18 ns ▅██                  
+                                          (305.02  b … 747.14  b) 577.14  b ████▄▄▃▄▂▂▁▁▂▃▃▃▂▂▁▂▁
 
-pick object keys - Object.fromEntries() & filter()   1.51 µs/iter   1.48 µs █▂▅                  
-                                              (1.34 µs … 2.65 µs)   2.63 µs ███                  
-                                          (663.41  b …   1.12 kb) 968.13  b ███▇▄▂▁▁▂▁▂▁▁▁▁▂▁▁▁▂▂
+pick object keys - Object.fromEntries() & filter() 904.16 ns/iter 888.94 ns █                    
+                                            (761.40 ns … 3.42 µs)   1.89 µs █▇▆                  
+                                          (757.76  b …   1.15 kb) 968.23  b ███▆▃▂▄▁▁▁▁▁▁▁▂▁▂▁▁▁▁
 
 summary
   pick object keys - assign with Object.hasOwn
-   1.01x faster than pick object keys - assign with in
-   1.2x faster than pick object keys - for in & assign
-   1.56x faster than pick object keys - Object.keys() & assign
-   1.91x faster than pick object keys - filter() & reduce() with assign
-   4.47x faster than pick object keys - Object.fromEntries() & filter()
+   1x faster than pick object keys - for in & assign
+   1.04x faster than pick object keys - assign with in
+   1.23x faster than pick object keys - Object.keys() & assign
+   1.56x faster than pick object keys - filter() & reduce() with assign
+   4.86x faster than pick object keys - Object.fromEntries() & filter()
