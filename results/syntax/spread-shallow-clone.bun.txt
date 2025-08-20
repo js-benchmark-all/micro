@@ -1,35 +1,35 @@
-clk: ~1.42 GHz
+clk: ~2.81 GHz
 cpu: AMD EPYC 7B12
 runtime: bun 1.2.19 (x64-linux)
 
 benchmark                     avg (min … max) p75 / p99    (min … top 1%)
 --------------------------------------------- -------------------------------
-clone array - spread            50.40 ns/iter  54.34 ns  █▆▃                 
-                       (34.18 ns … 166.82 ns) 103.34 ns ▅████▆▅▂▂▂▃▃▃▂▂▁▂▂▂▂▂
-                    gc(  1.51 ms …   7.41 ms)   3.36  b (  0.00  b… 96.00  b)
+clone array - spread            51.62 ns/iter  55.22 ns  █▂                  
+                       (34.76 ns … 154.67 ns) 117.18 ns ▅██▇█▄▃▂▃▃▁▂▁▂▂▂▁▁▁▁▁
+                    gc(  1.49 ms …  10.47 ms)   4.10  b (  0.00  b… 96.00  b)
 
-clone array - slice             32.56 ns/iter  35.37 ns  ▃█▅▄                
-                        (21.14 ns … 75.31 ns)  65.82 ns ▂██████▆▅▃▃▃▂▂▁▂▁▂▂▁▂
-                    gc(  1.48 ms …   3.92 ms)   0.20  b (  0.00  b… 32.00  b)
+clone array - slice             34.96 ns/iter  38.82 ns  ▄▃▇█                
+                        (22.25 ns … 82.62 ns)  70.94 ns ▃█████▇▆▆▃▂▂▂▃▃▂▂▂▁▂▁
+                    gc(  1.51 ms …   5.17 ms)   0.32  b (  0.00  b… 32.00  b)
 
 summary
   clone array - slice
-   1.55x faster than clone array - spread
+   1.48x faster than clone array - spread
 
 --------------------------------------------- -------------------------------
-clone object - spread           35.03 ns/iter  38.59 ns  █                   
-                       (25.92 ns … 120.22 ns)  68.98 ns ██▇▃▅▅▃▃▃▂▃▂▂▂▁▁▁▁▁▁▁
-                    gc(868.53 µs …   4.85 ms)   0.15  b (  0.00  b… 64.00  b)
+clone object - spread           35.87 ns/iter  39.82 ns  █                   
+                       (25.10 ns … 113.57 ns)  80.43 ns ██▇▄▆▅▃▃▃▃▂▂▂▂▁▁▁▁▁▁▁
+                    gc(869.71 µs …   5.23 ms)   0.00  b (  0.00  b…  0.00  b)
 
-clone object - Object.assign()  39.24 ns/iter  41.65 ns  █                   
-                       (29.77 ns … 150.11 ns)  81.57 ns ███▅▄▄▃▂▁▂▂▂▂▂▂▁▁▁▁▁▁
-                    gc(914.71 µs …   6.15 ms)   0.00  b (  0.00  b…  0.00  b)
+clone object - Object.assign()  41.47 ns/iter  43.94 ns  █▃                  
+                       (29.99 ns … 147.31 ns)  86.67 ns ▆██▄▄▄▂▂▂▂▃▂▂▂▁▁▂▂▁▁▁
+                    gc(925.59 µs …   7.14 ms)   0.08  b (  0.00  b… 32.00  b)
 
-clone object - Object.create() 211.06 ns/iter 223.19 ns  █▄                  
-                      (153.15 ns … 508.99 ns) 456.73 ns ▃██▆▃▂▃▃▂▃▂▂▂▁▁▁▁▁▁▁▁
-                    gc(  1.12 ms …   7.03 ms)  21.20  b (  0.00  b…288.00  b)
+clone object - Object.create() 216.17 ns/iter 219.83 ns  ▃█▅                 
+                      (156.52 ns … 501.18 ns) 413.02 ns ▂████▄▃▁▃▃▂▂▁▂▂▂▂▂▁▂▁
+                    gc(  1.13 ms …  11.17 ms)  20.99  b (  0.00  b…288.00  b)
 
 summary
   clone object - spread
-   1.12x faster than clone object - Object.assign()
-   6.02x faster than clone object - Object.create()
+   1.16x faster than clone object - Object.assign()
+   6.03x faster than clone object - Object.create()
