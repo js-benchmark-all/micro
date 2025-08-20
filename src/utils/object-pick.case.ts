@@ -1,76 +1,5 @@
+import { shuffleList } from '@utils';
 import { bench, summary, do_not_optimize } from 'mitata';
-import { shuffleList, start } from '@utils';
-
-summary(() => {
-  bench('access monomorphic object', function* () {
-    yield {
-      [0]: () => ({
-        a: Math.random(),
-        b: Math.random(),
-      }),
-      bench: (o: any) => {
-        for (let i = 0; i < 100; i++)
-          o.a += o.b + o.a;
-        return o.a;
-      }
-    }
-  }).gc('inner');
-
-  bench('access polymorphic object', function* () {
-    let i = 0;
-    yield {
-      [0]: () => i++ & 1 
-        ? {
-          a: Math.random(),
-          b: Math.random(),
-        }
-        : {
-          b: Math.random(),
-          a: Math.random(),
-          c: Math.random()
-        },
-      bench: (o: any) => {
-        for (let i = 0; i < 100; i++)
-          o.a += o.b + o.a;
-        return o.a;
-      }
-    }
-  }).gc('inner');
-
-  bench('access array', function* () {
-    yield {
-      [0]: () => [
-				Math.random(),
-				Math.random()
-			],
-      bench: (o: any) => {
-        for (let i = 0; i < 100; i++)
-          o[0] += o[1] + o[0];
-        return o[0];
-      }
-    }
-  }).gc('inner');
-});
-
-summary(() => {
-  bench('create & access monomorphic object', () => {
-    const o = {
-      a: Math.random(),
-      c: Math.random(),
-    };
-    do_not_optimize(o);
-    do_not_optimize(o.a);
-  });
-
-  bench('create & access array', () => {
-    const o = [
-      Math.random(),
-      Math.random()
-    ];
-    do_not_optimize(o);
-    do_not_optimize(o[0]);
-  });
-});
 
 summary(() => {
   const CASES = 10;
@@ -159,11 +88,9 @@ summary(() => {
       }, {} as Record<string, any>)
   );
 
-  register('Object.fromEntries() & filter()', (originalObj, keys) => 
+  register('Object.fromEntries() & filter()', (originalObj, keys) =>
     Object.fromEntries(
       Object.entries(originalObj).filter((o) => keys.includes(o[0])),
     )
   );
 });
-
-start();
