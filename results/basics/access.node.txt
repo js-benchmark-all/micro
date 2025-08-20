@@ -1,0 +1,35 @@
+clk: ~2.42 GHz
+cpu: AMD EPYC 7B12
+runtime: node 20.18.1 (x64-linux)
+
+benchmark                         avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------------- -------------------------------
+access monomorphic object            3.86 µs/iter   4.64 µs █               ▅    
+                              (3.01 µs … 5.12 µs)   5.00 µs ██▂▁▃▂▁▁▁▁▁▁▂▁▁▁██▂▂▂
+                        gc(  3.86 ms …   8.97 ms)  40.95  b ( 16.18  b…188.20  b)
+
+access polymorphic object            5.56 µs/iter   6.42 µs ██▄▄      █▄█        
+                              (3.91 µs … 7.80 µs)   7.78 µs ████▅▅▁▅▁▁████▅▅██▅▁▅
+                        gc(  3.92 ms …  10.80 ms)   3.88 kb (  3.71 kb…  4.05 kb)
+
+access array                         4.89 µs/iter   5.61 µs ▅█              ▆    
+                              (3.95 µs … 6.03 µs)   5.95 µs ███▁▄▁▁▁▁▃▃▁▁▁▁▁██▄█▄
+                        gc(  3.70 ms …   7.76 ms)   3.89 kb (  3.88 kb…  3.95 kb)
+
+summary
+  access monomorphic object
+   1.27x faster than access array
+   1.44x faster than access polymorphic object
+
+------------------------------------------------- -------------------------------
+create & access monomorphic object  26.47 ns/iter  24.96 ns █                    
+                           (22.06 ns … 157.44 ns)  75.95 ns █▂                   
+                          ( 46.83  b … 200.21  b) 104.25  b ██▃▂▁▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+create & access array               31.96 ns/iter  30.30 ns █                    
+                           (27.56 ns … 174.40 ns)  79.73 ns █▂                   
+                          ( 67.97  b … 168.37  b) 112.27  b ██▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+summary
+  create & access monomorphic object
+   1.21x faster than create & access array

@@ -43,7 +43,7 @@ summary(() => {
       ],
       bench: (o: any) => {
         for (let i = 0; i < 500; i++)
-          do_not_optimize(o[0])
+          do_not_optimize(o[0]);
       }
     }
   }).gc('inner');

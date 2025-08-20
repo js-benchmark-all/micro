@@ -1,0 +1,35 @@
+clk: ~2.95 GHz
+cpu: null
+runtime: v8 14.1.11 (null)
+
+benchmark                     avg (min … max) p75 / p99    (min … top 1%)
+--------------------------------------------- -------------------------------
+clone array - spread            43.77 ns/iter  44.92 ns        █             
+                        (32.23 ns … 66.89 ns)  62.01 ns        █             
+                    gc(  1.47 ms …   7.13 ms)   1.79 ms ▁▁▁▁▁▁▆█▆▇▄▂▁▁▁▁▁▁▁▁▁
+
+clone array - slice             22.79 ns/iter  21.97 ns  █                   
+                       (18.80 ns … 138.18 ns)  49.80 ns  █                   
+                    gc(  1.51 ms …   4.75 ms)   1.99 ms ▂█▅▄▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+summary
+  clone array - slice
+   1.92x faster than clone array - spread
+
+--------------------------------------------- -------------------------------
+clone object - spread           33.32 ns/iter  33.94 ns      ██              
+                        (24.66 ns … 57.62 ns)  50.05 ns      ██              
+                    gc(991.00 µs …  11.12 ms)   1.22 ms ▁▁▁▁▄████▇▃▁▁▁▁▂▁▁▁▁▁
+
+clone object - Object.assign()  43.00 ns/iter  44.19 ns   █                  
+                        (36.13 ns … 88.62 ns)  69.82 ns   ██                 
+                    gc(  1.01 ms …   4.82 ms)   1.26 ms ▁▄███▅▄▆▃▃▁▁▁▁▁▁▁▁▁▁▁
+
+clone object - Object.create() 479.65 ns/iter 462.40 ns  █                   
+                      (430.18 ns … 813.23 ns) 808.84 ns ▄█                   
+                    gc(  2.46 ms …   7.13 ms)   3.04 ms ██▄▃▂▂▂▂▁▁▁▁▁▁▁▁▂▁▁▁▂
+
+summary
+  clone object - spread
+   1.29x faster than clone object - Object.assign()
+   14.39x faster than clone object - Object.create()
