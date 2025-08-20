@@ -1,0 +1,40 @@
+clk: ~2.58 GHz
+cpu: AMD EPYC 7B12
+runtime: bun 1.2.19 (x64-linux)
+
+benchmark                           avg (min … max) p75 / p99    (min … top 1%)
+--------------------------------------------------- -------------------------------
+object literal                       229.39 ps/iter 170.90 ps █                     !
+                             (163.33 ps … 46.52 ns) 451.66 ps █                    
+                            (  0.00  b …  32.00  b)   0.01  b █▄▁▁▁▁▁▁▁▁▁▁▂▂▂▂▁▁▁▁▁
+
+class - with constructor             354.11 ps/iter 295.41 ps █                     !
+                             (244.14 ps … 35.90 ns)   1.53 ns █▅                   
+                            (  0.00  b …  32.00  b)   0.00  b ██▃▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+class -  without constructor           1.00 ns/iter 705.57 ps █                     !
+                            (551.76 ps … 166.91 ns)  11.64 ns █                    
+                            (  0.00  b …  64.00  b)   0.00  b █▇▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+proto - Object.create()                1.76 ns/iter 798.58 ps █                     !
+                            (549.07 ps … 242.69 ns)  19.83 ns █                    
+                            (  0.00  b … 128.00  b)   0.43  b █▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+proto - function with constructor      2.69 ns/iter   5.65 ns █                     !
+                            (473.63 ps … 197.37 ns)  11.72 ns █                    
+                            (  0.00  b …  64.00  b)   0.03  b █▇▁▁▁▁▁▁▂▄▄▃▂▂▁▁▁▁▁▁▁
+
+proto - function without constructor  16.00 ns/iter  15.29 ns  █                    !
+                             (10.84 ns … 455.79 ns)  40.54 ns  █▄                  
+                            (  0.00  b …  96.00  b)   1.15  b ▂██▄▂▂▂▂▃▃▂▁▁▁▁▁▁▁▁▁▁
+
+summary
+  object literal
+   1.54x faster than class - with constructor
+   4.36x faster than class -  without constructor
+   7.68x faster than proto - Object.create()
+   11.72x faster than proto - function with constructor
+   69.76x faster than proto - function without constructor
+
+                       benchmark was likely optimized out (dead code elimination) = !
+                       https://github.com/evanwashere/mitata#writing-good-benchmarks
