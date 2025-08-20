@@ -1,30 +1,30 @@
 import { shuffleList, start } from '@utils';
 import { bench, summary } from 'mitata';
 
-const it = (label: string, props: {
+const it = (NAME: string, PROPS: {
   cases: number,
   keys: number, 
   selectedKeys: number,
   unknownKeys: string[]
 }) => {
   summary(() => {
-    const cases = new Array(props.cases)
+    const cases = new Array(PROPS.cases)
       .fill(0)
       .map(() => {
-        const keys = new Array(props.keys).fill('').map(() => Math.random() + '');
+        const keys = new Array(PROPS.keys).fill('').map(() => Math.random() + '');
     
         const obj: Record<string, any> = {};
         for (let i = 0; i < keys.length; i++)
           obj[keys[i]!] = Math.random();
     
         return {
-          keys: shuffleList(keys).slice(0, props.selectedKeys).concat(props.unknownKeys),
+          keys: shuffleList(keys).slice(0, PROPS.selectedKeys).concat(PROPS.unknownKeys),
           obj
         };
       });
 
     const register = (label: string, f: (originalObj: Record<string, any>, keys: string[]) => any) => {
-      bench('pick object keys - ' + label, function* () {
+      bench(NAME + ' - ' + label, function* () {
         let i = -1;
   
         yield {
