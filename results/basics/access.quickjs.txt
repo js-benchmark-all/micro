@@ -1,0 +1,32 @@
+clk: ~0.01 GHz
+cpu: null
+runtime: quickjs-ng 0.10.1 (null)
+
+benchmark                         avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------------- -------------------------------
+access monomorphic object          141.17 µs/iter 135.72 µs       █              
+                             (55.68 µs … 7.07 ms) 267.44 µs       █▅             
+                        gc( 52.40 µs …   7.56 ms) 106.15 µs ▂▁▁▁▂▂███▃▂▂▂▁▁▁▁▁▁▁▁
+
+access polymorphic object           89.85 µs/iter 119.81 µs █                    
+                             (55.61 µs … 1.02 ms) 247.53 µs █                    
+                        gc( 63.90 µs …   6.06 ms)  93.09 µs █▄▁▁▂▁▂█▃▃▂▁▁▁▁▁▁▁▁▁▁
+
+access array                        74.23 µs/iter  66.10 µs █                    
+                           (61.24 µs … 354.25 µs) 246.53 µs █                    
+                        gc( 71.33 µs …   1.20 ms)  87.56 µs █▅▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+summary
+  access array
+   1.21x faster than access polymorphic object
+   1.9x faster than access monomorphic object
+
+------------------------------------------------- -------------------------------
+create & access monomorphic object 735.31 ns/iter 714.35 ns █                    
+                            (676.40 ns … 1.86 µs)   1.45 µs ██▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+create & access array              947.42 ns/iter   1.27 µs █                    
+                            (660.88 ns … 2.25 µs)   1.98 µs █▅▂▁▁▁▁▁▂▃▂▄▂▁▁▁▁▁▁▁▁
+
+summary
+  create & access monomorphic object
+   1.29x faster than create & access array

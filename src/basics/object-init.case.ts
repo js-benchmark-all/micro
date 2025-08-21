@@ -1,5 +1,5 @@
 import { start } from '@utils';
-import { bench, summary } from 'mitata';
+import { bench, do_not_optimize, summary } from 'mitata';
 
 summary(() => {
   const register = (label: string, fn: (l: any) => any) => {
@@ -24,7 +24,9 @@ summary(() => {
       }
     }
     
-    register('class - with constructor', (l) => new Context(l));
+    register('class - with constructor', (l) => {
+      do_not_optimize(new Context(l));
+    });
   }
 
   {
@@ -37,7 +39,7 @@ summary(() => {
       const c = new Context();
       c.status = 200;
       c.headers = l;
-      return c;
+      do_not_optimize(c);
     });
   }
 
@@ -49,7 +51,7 @@ summary(() => {
     register('proto - Object.create()', (l) => {
       const o = Object.create(proto);
       o.headers = l;
-      return o;
+      do_not_optimize(o);
     });
 
     {
@@ -58,8 +60,10 @@ summary(() => {
       };
       Context.prototype = proto;
 
-      // @ts-ignore
-      register('proto - function with constructor', (l) => new Context(l));
+      register('proto - function with constructor', (l) => {
+        // @ts-ignore
+        do_not_optimize(new Context(l));
+      });
     }
 
     {
@@ -71,7 +75,7 @@ summary(() => {
         // @ts-ignore
         const o = new Context();
         o.headers = l;
-        return o;
+        do_not_optimize(o);
       });
     }
   }
