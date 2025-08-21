@@ -11,7 +11,9 @@ summary(() => {
     });
   };
 
-  register('object literal', (l) => ({ status: 200, headers: l }));
+  register('object literal', (l) => {
+    do_not_optimize({ status: 200, headers: l });
+  });
 
   {
     class Context {

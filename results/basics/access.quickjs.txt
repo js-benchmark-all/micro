@@ -4,29 +4,29 @@ runtime: quickjs-ng 0.10.1 (null)
 
 benchmark                         avg (min … max) p75 / p99    (min … top 1%)
 ------------------------------------------------- -------------------------------
-access monomorphic object          141.17 µs/iter 135.72 µs       █              
-                             (55.68 µs … 7.07 ms) 267.44 µs       █▅             
-                        gc( 52.40 µs …   7.56 ms) 106.15 µs ▂▁▁▁▂▂███▃▂▂▂▁▁▁▁▁▁▁▁
+access monomorphic object          129.58 µs/iter 129.62 µs        █             
+                             (56.30 µs … 3.17 ms) 244.84 µs        █             
+                        gc( 55.21 µs …   8.00 ms) 114.28 µs ▁▁▁▁▂▃▃██▅▂▁▁▁▁▁▁▁▁▁▁
 
-access polymorphic object           89.85 µs/iter 119.81 µs █                    
-                             (55.61 µs … 1.02 ms) 247.53 µs █                    
-                        gc( 63.90 µs …   6.06 ms)  93.09 µs █▄▁▁▂▁▂█▃▃▂▁▁▁▁▁▁▁▁▁▁
+access polymorphic object           82.09 µs/iter 104.22 µs █                    
+                             (55.90 µs … 2.21 ms) 237.96 µs █                    
+                        gc( 63.05 µs …   5.10 ms)  88.00 µs █▄▂▁▁▂▂▄▃▂▁▁▁▁▁▁▁▁▁▁▁
 
-access array                        74.23 µs/iter  66.10 µs █                    
-                           (61.24 µs … 354.25 µs) 246.53 µs █                    
-                        gc( 71.33 µs …   1.20 ms)  87.56 µs █▅▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+access array                        71.72 µs/iter  65.63 µs █                    
+                           (61.35 µs … 356.37 µs) 235.89 µs █                    
+                        gc( 71.67 µs …   1.03 ms)  87.28 µs █▅▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
 summary
   access array
-   1.21x faster than access polymorphic object
-   1.9x faster than access monomorphic object
+   1.14x faster than access polymorphic object
+   1.81x faster than access monomorphic object
 
 ------------------------------------------------- -------------------------------
-create & access monomorphic object 735.31 ns/iter 714.35 ns █                    
-                            (676.40 ns … 1.86 µs)   1.45 µs ██▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
-create & access array              947.42 ns/iter   1.27 µs █                    
-                            (660.88 ns … 2.25 µs)   1.98 µs █▅▂▁▁▁▁▁▂▃▂▄▂▁▁▁▁▁▁▁▁
+create & access monomorphic object 748.69 ns/iter 740.85 ns █                    
+                            (677.08 ns … 1.81 µs)   1.60 µs █▆▄▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+create & access array              815.65 ns/iter 763.22 ns █▄                   
+                            (644.75 ns … 1.56 µs)   1.53 µs ██▅▃▂▁▁▁▁▁▁▁▁▂▂▂▂▂▂▂▁
 
 summary
   create & access monomorphic object
-   1.29x faster than create & access array
+   1.09x faster than create & access array

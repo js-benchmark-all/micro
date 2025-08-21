@@ -1,40 +1,40 @@
-clk: ~0.76 GHz
+clk: ~2.34 GHz
 cpu: Intel(R) Xeon(R) CPU @ 2.20GHz
 runtime: bun 1.2.19 (x64-linux)
 
 benchmark                           avg (min … max) p75 / p99    (min … top 1%)
 --------------------------------------------------- -------------------------------
-object literal                       542.88 ns/iter 165.00 ns █                    
-                               (43.00 ns … 1.54 ms)   7.43 µs █                    
-                            (  0.00  b … 128.00 kb)  51.43  b █▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+object literal                         9.94 ns/iter   9.93 ns  █                    !
+                              (7.34 ns … 235.07 ns)  23.40 ns  ██                  
+                            (  0.00  b …  32.00  b)   0.02  b ▃███▄▄▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁
 
-class - with constructor              14.17 ns/iter  12.60 ns █                     !
-                              (7.14 ns … 427.22 ns) 134.75 ns █▇                   
-                            (  0.00  b …  64.00  b)   1.05  b ██▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+class - with constructor              10.09 ns/iter  10.14 ns  ▆█                   !
+                              (7.37 ns … 220.84 ns)  21.72 ns  ██▆                 
+                            (  0.00  b …  32.00  b)   0.02  b ▃███▆▅▅▄▃▂▂▂▂▁▁▁▁▁▁▁▁
 
-class -  without constructor         216.88 ns/iter  96.00 ns █                    
-                             (45.00 ns … 161.79 µs)   3.67 µs █                    
-                            (  0.00  b … 128.00 kb) 126.61  b █▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+class -  without constructor          17.95 ns/iter  18.87 ns  █                    !
+                             (11.65 ns … 430.34 ns)  53.15 ns  █▄                  
+                            (  0.00  b …  64.00  b)   0.14  b ▃███▆▄▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁
 
-proto - Object.create()               17.20 ns/iter  15.28 ns █▃                    !
-                             (11.14 ns … 293.93 ns) 101.21 ns ██                   
-                            (  0.00  b … 128.00  b)   1.69  b ██▄▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+proto - Object.create()               18.52 ns/iter  19.64 ns  █                    !
+                             (12.11 ns … 339.65 ns)  51.52 ns  █                   
+                            (  0.00  b …  64.00  b)   0.12  b ▅███▅▄▅▃▂▁▁▁▁▁▁▁▁▁▁▁▁
 
-proto - function with constructor     12.81 ns/iter  12.58 ns   █                   !
-                              (9.36 ns … 303.73 ns)  26.00 ns  ▇█▇                 
-                            (  0.00  b …  64.00  b)   0.07  b ▂███▇▄▄▃▃▂▂▂▂▁▁▁▁▁▁▁▁
+proto - function with constructor     18.82 ns/iter  22.98 ns  █                    !
+                              (9.69 ns … 253.49 ns)  58.01 ns  █   ▅               
+                            (  0.00  b …  64.00  b)   0.08  b ▆█▆▄▂██▄▂▂▂▂▁▁▁▁▁▁▁▁▁
 
-proto - function without constructor  11.02 ns/iter  11.39 ns  █                    !
-                              (7.02 ns … 208.32 ns)  42.12 ns ▂█                   
-                            (  0.00  b …  64.00  b)   0.44  b ███▆▄▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁
+proto - function without constructor  11.72 ns/iter  12.73 ns  ▇█                   !
+                              (7.53 ns … 523.65 ns)  26.30 ns  ██▄                 
+                            (  0.00  b …  32.00  b)   0.03  b ▄███▅▅▄▄▅▅▃▂▂▂▂▂▁▁▁▁▁
 
 summary
-  proto - function without constructor
-   1.16x faster than proto - function with constructor
-   1.29x faster than class - with constructor
-   1.56x faster than proto - Object.create()
-   19.67x faster than class -  without constructor
-   49.24x faster than object literal
+  object literal
+   1.02x faster than class - with constructor
+   1.18x faster than proto - function without constructor
+   1.81x faster than class -  without constructor
+   1.86x faster than proto - Object.create()
+   1.89x faster than proto - function with constructor
 
                        benchmark was likely optimized out (dead code elimination) = !
                        https://github.com/evanwashere/mitata#writing-good-benchmarks
