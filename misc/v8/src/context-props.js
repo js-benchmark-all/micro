@@ -10,6 +10,11 @@ const f2 = (c) => {
 }
 
 const loop = () => {
+  
+}
+
+// Optimization viewer exports
+export const main = () => {
   const c = {
     status: 200,
     headers: []
@@ -18,12 +23,6 @@ const loop = () => {
   c.id = f1(c);
   f2(c);
   do_not_optimize(c);
-}
-
-// Optimization viewer exports
-export const main = () => {
-  for (let i = 0; i < 1e6; i++)
-    loop();
 }
 
 export const viewOptimizations = {

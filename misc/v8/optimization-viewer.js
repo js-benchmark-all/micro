@@ -1,28 +1,51 @@
+const VERSION = process.versions.v8.split('-', 1)[0];
+
 // http://git.nfp.is/TheThing/flaska/src/branch/master/benchmark/compiler/utils.mjs
-export const printOptimizationStatus = (name, fn) => {
+// To find status codes, navigate to https://github.com/v8/v8/blob/<VERSION-COMMIT>/test/mjsunit/mjsunit.js
+const STATUS = {
+  '13.6.233.10': [
+    'is function',
+    'never optimized',
+    'always optimized',
+    'maybe deopted',
+    'optimized',
+    'maglevved',
+    'turbofanned',
+    'interpreted',
+    'marked for optimization',
+    'marked for concurrent optimization',
+    'optimizing concurrently',
+    'executing',
+    'topmost frame is turbofanned',
+    'lite mode',
+    'marked for deoptimization',
+    'baseline',
+    'topmost frame is interpreted',
+    'topmost frame is baseline',
+    'lazy',
+    'topmost frame is maglev',
+    'optimize on next call optimizes to maglev',
+    'optimize maglev optimizes to turbofan',
+    'marked for maglev optimization',
+    'marked for concurrent maglev optimization'
+  ]
+}[VERSION];
+
+if (STATUS == null) 
+  throw new Error('Unsupported V8 version: ' + VERSION);
+
+const printOptimizationStatus = (name, fn) => {
   console.log('----------------------------------------------');
   console.log(name + ':');
+  for (let pos = 0, opt = %GetOptimizationStatus(fn); opt > 0; pos++) {
+    if (pos >= STATUS.length)
+      throw new Error('Status codes need to be updated!');
 
-  let opt = %GetOptimizationStatus(fn);
-  console.log(`${opt.toString(2).padStart(17, '0').split('').join(' ')} (${opt})`);
-  console.log(`┬ ┬ ┬ ┬ ┬ ┬ ┬ ┬ ┬ ┬ ┬ ┬ ┬ ┬ ┬ ┬ ┬
-│ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ └─╸ is function
-│ │ │ │ │ │ │ │ │ │ │ │ │ │ │ └───╸ is never optimized
-│ │ │ │ │ │ │ │ │ │ │ │ │ │ └─────╸ is always optimized
-│ │ │ │ │ │ │ │ │ │ │ │ │ └───────╸ is maybe deoptimized
-│ │ │ │ │ │ │ │ │ │ │ │ └─────────╸ is optimized
-│ │ │ │ │ │ │ │ │ │ │ └───────────╸ is optimized by TurboFan
-│ │ │ │ │ │ │ │ │ │ └─────────────╸ is interpreted
-│ │ │ │ │ │ │ │ │ └───────────────╸ is marked for optimization
-│ │ │ │ │ │ │ │ └─────────────────╸ is marked for concurrent optimization
-│ │ │ │ │ │ │ └───────────────────╸ is optimizing concurrently
-│ │ │ │ │ │ └─────────────────────╸ is executing
-│ │ │ │ │ └───────────────────────╸ topmost frame is turbo fanned
-│ │ │ │ └─────────────────────────╸ lite mode
-│ │ │ └───────────────────────────╸ marked for deoptimization
-│ │ └─────────────────────────────╸ baseline
-│ └───────────────────────────────╸ topmost frame is interpreted
-└─────────────────────────────────╸ topmost frame is baseline`);
+    if (opt & 1)
+      console.log('- ' + STATUS[pos]);
+    opt >>= 1;
+    pos++;
+  }
 }
 
 const file = process.argv[2];
@@ -32,6 +55,8 @@ if (file == null) {
 }
 
 (async () => {
+  console.log('v8:', VERSION);
+
   const { main, viewOptimizations } = await import('./src/' + file + '.js');
   if (main == null) {
     console.error('Entry', file, 'must exports a main function!');
@@ -42,7 +67,19 @@ if (file == null) {
     process.exit(1);
   }
 
+  // Feed type info
   main();
+  main();
+
+  // Optimize all
+  for (const name in viewOptimizations)
+    %OptimizeFunctionOnNextCall(viewOptimizations[name]);
+  %OptimizeFunctionOnNextCall(main);
+
+  // Run again to view optimizations status
+  main();
+  main();
+
   for (const name in viewOptimizations)
     printOptimizationStatus(name, viewOptimizations[name]);
 })();
