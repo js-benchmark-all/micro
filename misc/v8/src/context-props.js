@@ -9,10 +9,6 @@ const f2 = (c) => {
   c.status = c.id < 5e3 ? 200 : 201;
 }
 
-const loop = () => {
-  
-}
-
 // Optimization viewer exports
 export const main = () => {
   const c = {
