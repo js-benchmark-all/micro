@@ -2,7 +2,7 @@ const VERSION = process.versions.v8.split('-', 1)[0];
 
 // http://git.nfp.is/TheThing/flaska/src/branch/master/benchmark/compiler/utils.mjs
 // To find status codes, navigate to https://github.com/v8/v8/blob/<VERSION-COMMIT>/test/mjsunit/mjsunit.js
-const STATUS = {
+const STATUS_MAP = {
   '13.6.233.10': [
     'is function',
     'never optimized',
@@ -29,18 +29,18 @@ const STATUS = {
     'marked for maglev optimization',
     'marked for concurrent maglev optimization'
   ]
-}[VERSION];
+};
+const STATUS = STATUS_MAP[VERSION];
 
-if (STATUS == null) 
-  throw new Error('Unsupported V8 version: ' + VERSION);
+if (STATUS == null) {
+  console.error('Unsupported V8 version:', VERSION);
+  console.error('Supported versions are:', Object.keys(STATUS_MAP));
+  process.exit(1);
+}
 
 const printOptimizationStatus = (name, fn) => {
-  console.log('----------------------------------------------');
   console.log(name + ':');
   for (let pos = 0, opt = %GetOptimizationStatus(fn); opt > 0; pos++) {
-    if (pos >= STATUS.length)
-      throw new Error('Status codes need to be updated!');
-
     if (opt & 1)
       console.log('- ' + STATUS[pos]);
     opt >>= 1;
@@ -68,8 +68,7 @@ if (file == null) {
   }
 
   // Feed type info
-  main();
-  main();
+  for (let i = 0; i < 1e3; i++) main();
 
   // Optimize all
   for (const name in viewOptimizations)
@@ -77,7 +76,6 @@ if (file == null) {
   %OptimizeFunctionOnNextCall(main);
 
   // Run again to view optimizations status
-  main();
   main();
 
   for (const name in viewOptimizations)

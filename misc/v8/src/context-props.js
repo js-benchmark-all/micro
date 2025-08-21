@@ -26,6 +26,7 @@ export const main = () => {
 }
 
 export const viewOptimizations = {
+  'main handler': main,
   'first middleware': f1,
   'second middleware': f2
 };
