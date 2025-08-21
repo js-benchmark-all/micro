@@ -1,3 +1,5 @@
+import pc from "picocolors";
+
 const VERSION = process.versions.v8.split("-", 1)[0];
 
 // http://git.nfp.is/TheThing/flaska/src/branch/master/benchmark/compiler/utils.mjs
@@ -5,8 +7,8 @@ const VERSION = process.versions.v8.split("-", 1)[0];
 const STATUS_MAP = {
   "13.6.233.10": [
     "is function",
-    "never optimized",
-    "always optimized",
+    "never optimized (--no-turbofan)",
+    "always optimized (--always-turbofan)",
     "maybe deopted",
     "optimized",
     "maglevved",
@@ -17,12 +19,12 @@ const STATUS_MAP = {
     "optimizing concurrently",
     "is executing",
     "topmost frame is turbofanned",
-    "lite mode",
+    "cannot optimize (--lite-mode)",
     "marked for deoptimization",
-    "baseline",
+    "in baseline",
     "topmost frame is interpreted",
     "topmost frame is baseline",
-    "is lazy",
+    "is lazily compiled",
     "topmost frame is maglevved",
     "optimize on next call optimizes to maglev",
     "optimize maglev optimizes to turbofan",
@@ -36,13 +38,13 @@ let STATUS = STATUS_MAP[VERSION];
 typeof STATUS === "function" && (STATUS = STATUS());
 
 if (STATUS == null) {
-  console.error("Unsupported V8 version:", VERSION);
-  console.error("Supported versions are:", Object.keys(STATUS_MAP));
+  console.error("unsupported V8 version:", VERSION);
+  console.error("supported versions are:", Object.keys(STATUS_MAP));
   process.exit(1);
 }
 
 const printOptimizationStatus = (name, fn) => {
-  console.log(name + ":");
+  console.log(pc.bold(name + ":"));
   for (let pos = 0, opt = %GetOptimizationStatus(fn); opt > 0; pos++) {
     if (opt & 1) console.log("- " + STATUS[pos]);
     opt >>= 1;
@@ -52,7 +54,7 @@ const printOptimizationStatus = (name, fn) => {
 
 const file = process.argv[2];
 if (file == null) {
-  console.log(`Usage: bun view:opt [file]`);
+  console.log(`Usage: bun view:opt:[runtime] [file]`);
   process.exit(1);
 }
 

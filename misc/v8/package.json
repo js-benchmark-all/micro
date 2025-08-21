@@ -2,7 +2,8 @@
   "type": "module",
   "dependencies": {
     "dexnode": "^1.2.2",
-    "mitata": "^1.0.34"
+    "mitata": "^1.0.34",
+    "picocolors": "^1.1.1"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",
