@@ -44,7 +44,20 @@ if (STATUS == null) {
 }
 
 const printOptimizationStatus = (name, fn) => {
-  console.log(pc.bold(name + ":"));
+  console.log(
+    pc.bold(name),
+    "(" +
+      (%ActiveTierIsIgnition(fn)
+        ? "ignition"
+        : %ActiveTierIsSparkplug(fn)
+          ? "sparkplug"
+          : %ActiveTierIsMaglev(fn)
+            ? "maglev"
+            : %ActiveTierIsTurbofan(fn)
+              ? "turbofan"
+              : "unknown") +
+      ")",
+  );
   for (let pos = 0, opt = %GetOptimizationStatus(fn); opt > 0; pos++) {
     if (opt & 1) console.log("- " + STATUS[pos]);
     opt >>= 1;
@@ -77,10 +90,9 @@ if (file == null) {
   // Optimize all
   for (const name in viewOptimizations)
     %OptimizeFunctionOnNextCall(viewOptimizations[name]);
-  %OptimizeFunctionOnNextCall(main);
 
   // Run again to view optimizations status
-  main();
+  for (let i = 0; i < 1e3; i++) main();
 
   for (const name in viewOptimizations)
     printOptimizationStatus(name, viewOptimizations[name]);

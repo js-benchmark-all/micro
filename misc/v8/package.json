@@ -12,6 +12,6 @@
   "scripts": {
     "view:deopt": "bun deopt-viewer.js",
     "view:opt:node": "node --allow-natives-syntax opt-viewer.js",
-    "view:opt:deno": "deno --v8-flags=--allow-natives-syntax opt-viewer.js"
+    "view:opt:deno": "deno --allow-env --v8-flags=--allow-natives-syntax opt-viewer.js"
   }
 }
