@@ -10,7 +10,7 @@
     },
     "scripts": {
       "view:deopt": "bun deopt-viewer.js",
-      "view:opt": "node --allow-natives-syntax optimization-viewer.js"
+      "view:opt": "node --allow-natives-syntax opt-viewer.js"
     }
   }
   
