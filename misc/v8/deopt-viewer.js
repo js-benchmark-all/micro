@@ -24,4 +24,4 @@ if (process.argv.includes('--clean')) {
 }
 
 Bun.$.cwd(import.meta.dir);
-await Bun.$`bun dexnode --out ${LOGS_DIR + '/' + target + '.log'} --quiet ${join('./src/', target + '.js')}`;
+await Bun.$`bun dexnode --out ${LOGS_DIR + '/' + target + '.log'} --quiet --no-maps --no-profile ${join('./src/', target + '.js')}`;
