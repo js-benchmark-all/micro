@@ -4,17 +4,14 @@ runtime: v8 14.1.101 (null)
 
 benchmark                     avg (min … max) p75 / p99    (min … top 1%)
 --------------------------------------------- -------------------------------
-string[const_index]             47.85 ns/iter  46.14 ns  █                    !
-                       (41.26 ns … 148.44 ns)  96.92 ns ▂█▄▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
-string.charCodeAt(const_index)  46.74 ns/iter  44.68 ns  █                    !
-                       (40.53 ns … 189.21 ns) 109.13 ns ▅█▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
-string.charAt(const_index)      48.60 ns/iter  47.12 ns █▄                    !
-                       (43.70 ns … 155.76 ns)  95.70 ns ██▄▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+string[const_index]             44.66 ns/iter  43.21 ns  █                   
+                       (37.35 ns … 158.45 ns)  93.99 ns ▃█▆▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+string.charCodeAt(const_index)  42.73 ns/iter  41.02 ns  █                   
+                       (36.62 ns … 152.59 ns)  88.13 ns ▄█▅▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+string.charAt(const_index)      45.32 ns/iter  43.95 ns ▅█                   
+                       (39.79 ns … 170.41 ns)  97.17 ns ██▄▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
 summary
   string.charCodeAt(const_index)
-   1.02x faster than string[const_index]
-   1.04x faster than string.charAt(const_index)
-
-                 benchmark was likely optimized out (dead code elimination) = !
-                 https://github.com/evanwashere/mitata#writing-good-benchmarks
+   1.05x faster than string[const_index]
+   1.06x faster than string.charAt(const_index)

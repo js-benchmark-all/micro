@@ -5,7 +5,7 @@ summary(() => {
   const register = (label: string, fn: (l: any) => any) => {
     bench(label, function* () {
       yield {
-        [0]: () => '0' + Math.random() + '0',
+        [0]: () => Math.random() + '0',
         bench: fn,
       };
     });

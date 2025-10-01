@@ -1,45 +1,45 @@
-clk: ~2.70 GHz
+clk: ~1.50 GHz
 cpu: AMD EPYC 7B12
 runtime: bun 1.2.21 (x64-linux)
 
 benchmark                       avg (min … max) p75 / p99    (min … top 1%)
 ----------------------------------------------- -------------------------------
-clone array - spread              43.67 ns/iter  44.31 ns  █                   
-                         (33.62 ns … 113.80 ns) 100.62 ns ▇█▇▃▄▃▂▁▁▁▂▁▁▁▁▁▁▁▁▁▁
-                      gc(  1.25 ms …  15.49 ms)   4.22  b (  0.00  b… 96.00  b)
+clone array - spread              41.60 ns/iter  43.37 ns ██                   
+                         (33.21 ns … 102.88 ns)  90.99 ns ██▆▄▆▃▂▁▂▁▁▁▂▁▁▁▁▁▁▂▁
+                      gc(  1.27 ms …   3.70 ms)   3.16  b (  0.00  b… 96.00  b)
 
-clone array - slice               28.32 ns/iter  29.36 ns  ▅██▇▅               
-                          (21.74 ns … 49.66 ns)  46.41 ns ▄██████▃▄▄▄▄▂▃▂▃▃▁▁▂▁
-                      gc(  1.47 ms …   3.89 ms)   0.10  b (  0.00  b… 32.00  b)
+clone array - slice               28.33 ns/iter  30.43 ns  ▆▆█▃▂               
+                          (19.87 ns … 71.13 ns)  59.08 ns ▆█████▅▅▃▃▄▃▂▂▁▂▁▁▁▁▁
+                      gc(  1.26 ms …   3.85 ms)   0.09  b (  0.00  b… 32.00  b)
 
-clone array - concat              46.62 ns/iter  48.56 ns    ▅█▂               
-                          (33.37 ns … 95.06 ns)  84.52 ns ▃▅▄███▅▄▅▃▂▂▁▁▁▁▂▁▂▁▁
-                      gc(  1.22 ms …   3.88 ms)   0.09  b (  0.00  b… 32.00  b)
+clone array - concat              46.22 ns/iter  48.16 ns    ▃█▆               
+                          (32.80 ns … 93.17 ns)  84.87 ns ▄▆▄████▃▄▂▃▂▁▁▁▁▂▂▁▁▁
+                      gc(  1.22 ms …   5.45 ms)   0.28  b (  0.00  b… 32.00  b)
 
-clone array - concat empty array  48.14 ns/iter  50.64 ns  █▄                  
-                         (37.33 ns … 128.18 ns) 109.58 ns ▅██▅▆▄▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁
-                      gc(  1.22 ms …   3.68 ms)   0.20  b (  0.00  b… 32.00  b)
+clone array - concat empty array  45.51 ns/iter  46.53 ns  █                   
+                         (36.76 ns … 135.66 ns)  97.74 ns ▅██▆▄▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁
+                      gc(  1.24 ms …   3.20 ms)   0.09  b (  0.00  b… 32.00  b)
 
 summary
   clone array - slice
-   1.54x faster than clone array - spread
-   1.65x faster than clone array - concat
-   1.7x faster than clone array - concat empty array
+   1.47x faster than clone array - spread
+   1.61x faster than clone array - concat empty array
+   1.63x faster than clone array - concat
 
 ----------------------------------------------- -------------------------------
-clone object - spread             31.04 ns/iter  33.37 ns  █                   
-                          (25.69 ns … 86.84 ns)  58.79 ns ▆█▃▁▁▂▂▂▂▁▁▂▁▁▁▁▁▁▁▁▁
-                      gc(929.67 µs …   5.52 ms)   0.14  b (  0.00  b… 32.00  b)
+clone object - spread             30.46 ns/iter  33.16 ns  █                   
+                          (24.67 ns … 85.63 ns)  61.48 ns ██▅▂▂▃▂▂▂▁▂▂▂▁▁▁▁▁▁▁▁
+                      gc(859.56 µs …   8.54 ms)   0.00  b (  0.00  b…  0.00  b)
 
-clone object - Object.assign()    36.67 ns/iter  40.36 ns ▂█                   
-                          (29.13 ns … 96.21 ns)  73.52 ns ██▅▂▂▄▃▂▂▂▁▁▂▂▂▁▁▁▁▁▁
-                      gc(888.13 µs …   5.69 ms)   0.00  b (  0.00  b…  0.00  b)
+clone object - Object.assign()    35.87 ns/iter  37.12 ns █▅                   
+                         (28.82 ns … 106.46 ns)  73.97 ns ██▃▃▂▃▂▂▁▂▂▂▂▂▂▁▁▁▁▁▁
+                      gc(870.04 µs …   3.27 ms)   0.13  b (  0.00  b… 32.00  b)
 
-clone object - Object.create()   205.01 ns/iter 200.18 ns  ▅█▂                 
-                        (160.93 ns … 541.58 ns) 385.47 ns ▂███▄▂▁▁▂▂▂▂▂▂▁▂▂▁▁▁▁
-                      gc(  1.04 ms …   5.90 ms)  14.60  b (  0.00  b…320.00  b)
+clone object - Object.create()   209.80 ns/iter 205.10 ns   ▃█▂                
+                        (164.14 ns … 387.95 ns) 361.58 ns ▂▆███▃▁▂▁▁▂▂▂▂▁▂▁▂▂▁▁
+                      gc(  1.05 ms …  20.90 ms)  18.30  b (  0.00  b…288.00  b)
 
 summary
   clone object - spread
    1.18x faster than clone object - Object.assign()
-   6.6x faster than clone object - Object.create()
+   6.89x faster than clone object - Object.create()

@@ -1,20 +1,20 @@
-clk: ~2.97 GHz
+clk: ~2.87 GHz
 cpu: AMD EPYC 7B12
 runtime: node 24.6.0 (x64-linux)
 
 benchmark                     avg (min … max) p75 / p99    (min … top 1%)
 --------------------------------------------- -------------------------------
-string[const_index]             68.43 ns/iter  69.38 ns  ▄ █                 
-                       (53.32 ns … 441.68 ns) 123.58 ns  █▆█▂                
-                      (  4.06  b … 183.90  b)  40.39  b ▇█████▅▃▂▂▂▂▂▂▃▂▂▁▁▁▁
+string[const_index]             63.27 ns/iter  65.23 ns   █                  
+                       (47.40 ns … 449.81 ns) 113.29 ns  ▆█▇▂                
+                      (  2.56  b … 117.88  b)  40.26  b ▃█████▅▄▃▂▂▂▂▃▃▂▂▂▁▁▁
 
-string.charCodeAt(const_index)  64.66 ns/iter  64.79 ns   █ ▆                
-                       (48.89 ns … 415.05 ns) 115.29 ns   █▃█                
-                      ( 36.07  b … 151.78  b)  40.42  b ▁█████▅▃▂▂▁▂▂▂▃▂▂▂▁▁▁
+string.charCodeAt(const_index)  59.76 ns/iter  59.09 ns   █                  
+                       (45.71 ns … 584.21 ns) 107.95 ns  ▅█▅█                
+                      ( 40.07  b … 163.65  b)  40.29  b ▂████▆▄▃▂▁▁▂▁▂▃▃▂▂▁▁▁
 
-string.charAt(const_index)      65.85 ns/iter  64.65 ns   █                  
-                       (51.73 ns … 599.52 ns) 127.09 ns  ▄█▆                 
-                      ( 30.83  b … 202.16  b)  40.56  b ▆███▆▄▂▂▁▁▁▂▂▃▂▂▁▁▁▁▁
+string.charAt(const_index)      60.81 ns/iter  59.88 ns   █                  
+                       (48.04 ns … 393.40 ns) 121.01 ns  ▅█▄                 
+                      ( 28.55  b … 110.79  b)  40.27  b ▃███▅▃▂▂▁▁▁▂▂▂▁▁▁▁▁▁▁
 
 summary
   string.charCodeAt(const_index)
