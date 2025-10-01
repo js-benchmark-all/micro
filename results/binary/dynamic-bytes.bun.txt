@@ -1,0 +1,13 @@
+clk: ~1.24 GHz
+cpu: Intel(R) Xeon(R) CPU @ 2.20GHz
+runtime: bun 1.2.21 (x64-linux)
+
+benchmark                     avg (min … max) p75 / p99    (min … top 1%)
+--------------------------------------------- -------------------------------
+2 pass - length & construct    309.37 ns/iter 152.00 ns █                    
+                        (80.00 ns … 62.86 µs)   5.51 µs █                    
+                      (  0.00  b … 128.00 kb) 146.67  b █▄▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+1 pass - naive buffer resizing error: ArrayBuffer is not resizable
+
+1 pass - buffer resizing       error: ArrayBuffer is not resizable

@@ -1,0 +1,10 @@
+clk: ~1.92 GHz
+cpu: null
+runtime: v8 14.1.101 (null)
+
+benchmark                     avg (min … max) p75 / p99    (min … top 1%)
+--------------------------------------------- -------------------------------
+2 pass - length & construct    169.40 ns/iter   0.00 ps █                    
+                          (0.00 ps … 1.59 ms)   1.00 µs █▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▄
+1 pass - naive buffer resizing error: Method ArrayBuffer.prototype.resize called on incompatible receiver #<ArrayBuffer>
+1 pass - buffer resizing       error: Method ArrayBuffer.prototype.resize called on incompatible receiver #<ArrayBuffer>
