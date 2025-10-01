@@ -1,0 +1,22 @@
+clk: ~1.48 GHz
+cpu: Intel(R) Xeon(R) CPU @ 2.20GHz
+runtime: node 24.6.0 (x64-linux)
+
+benchmark                                avg (min … max) p75 / p99    (min … top 1%)
+-------------------------------------------------------- -------------------------------
+string[const_index] comparison            101.67 ns/iter  94.23 ns ▃█                   
+                                    (72.90 ns … 1.15 µs) 286.81 ns ██                   
+                                 ( 16.39  b … 191.73  b)  40.76  b ██▆▃▂▂▂▂▂▂▂▂▁▁▁▂▁▁▁▁▁
+
+string.charCodeAt(const_index) comparison  96.11 ns/iter  88.43 ns ▂█                   
+                                  (71.54 ns … 740.93 ns) 266.12 ns ██                   
+                                 ( 12.07  b … 146.14  b)  40.31  b ██▅▃▂▂▂▁▂▂▂▂▁▁▁▁▁▁▁▁▁
+
+string.charAt(const_index) comparison     102.90 ns/iter  94.94 ns ▂█                   
+                                  (73.56 ns … 892.31 ns) 285.48 ns ██                   
+                                 ( 22.60  b … 263.51  b)  40.73  b ██▅▃▂▂▂▁▂▂▂▂▁▁▁▁▁▁▁▁▁
+
+summary
+  string.charCodeAt(const_index) comparison
+   1.06x faster than string[const_index] comparison
+   1.07x faster than string.charAt(const_index) comparison

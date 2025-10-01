@@ -1,0 +1,22 @@
+clk: ~1.44 GHz
+cpu: null
+runtime: deno 2.4.3 (x86_64-unknown-linux-gnu)
+
+benchmark                                avg (min … max) p75 / p99    (min … top 1%)
+-------------------------------------------------------- -------------------------------
+string[const_index] comparison             95.27 ns/iter  91.43 ns  █                   
+                                  (68.46 ns … 822.62 ns) 242.14 ns ██                   
+                                 ( 26.31  b … 178.21  b)  40.53  b ██▆▃▂▃▂▂▂▂▂▂▂▁▂▂▁▁▁▁▁
+
+string.charCodeAt(const_index) comparison  93.05 ns/iter  86.67 ns  █                   
+                                  (68.23 ns … 918.65 ns) 229.13 ns ▆█                   
+                                 (  5.34  b … 152.14  b)  40.47  b ██▅▃▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁
+
+string.charAt(const_index) comparison      94.42 ns/iter  87.53 ns  █                   
+                                  (68.84 ns … 883.02 ns) 255.56 ns ██                   
+                                 ( 10.88  b … 168.53  b)  40.49  b ██▅▃▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁
+
+summary
+  string.charCodeAt(const_index) comparison
+   1.01x faster than string.charAt(const_index) comparison
+   1.02x faster than string[const_index] comparison

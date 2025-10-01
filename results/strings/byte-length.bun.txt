@@ -1,0 +1,22 @@
+clk: ~1.19 GHz
+cpu: Intel(R) Xeon(R) CPU @ 2.20GHz
+runtime: bun 1.2.21 (x64-linux)
+
+benchmark                   avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------- -------------------------------
+blob size                    527.65 ns/iter 580.82 ns  █                   
+                      (372.02 ns … 1.64 µs)   1.14 µs ▂█▂                  
+                    (  0.00  b … 512.00  b)  88.87  b ███▅▄▆▆▃▂▁▂▂▂▂▂▂▂▂▁▁▂
+
+text encoder encode          101.39 ns/iter 117.71 ns  █                   
+                     (65.68 ns … 320.16 ns) 240.37 ns ▂█▃                  
+                    (  0.00  b … 128.00  b)  16.08  b ███▅▃▄▆▄▃▂▂▂▂▂▂▂▂▁▁▁▁
+
+node buffer                    1.33 µs/iter 757.00 ns █                    
+                    (298.00 ns … 308.17 µs)  15.37 µs █                    
+                    (  0.00  b … 256.00 kb) 264.04  b █▇▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+summary
+  text encoder encode
+   5.2x faster than blob size
+   13.1x faster than node buffer

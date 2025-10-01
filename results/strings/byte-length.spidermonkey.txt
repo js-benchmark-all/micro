@@ -1,0 +1,6 @@
+clk: ~0.73 GHz
+cpu: null
+runtime: spidermonkey (x64)
+
+benchmark                   avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------- -------------------------------

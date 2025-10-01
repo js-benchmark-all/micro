@@ -1,0 +1,6 @@
+clk: ~0.01 GHz
+cpu: null
+runtime: quickjs-ng 0.10.1 (null)
+
+benchmark                   avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------- -------------------------------

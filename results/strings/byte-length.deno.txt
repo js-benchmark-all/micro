@@ -1,0 +1,22 @@
+clk: ~1.48 GHz
+cpu: null
+runtime: deno 2.4.3 (x86_64-unknown-linux-gnu)
+
+benchmark                   avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------- -------------------------------
+blob size                      7.86 µs/iter   7.15 µs  █                   
+                        (5.22 µs … 6.69 ms)  23.53 µs ▃█                   
+                    (456.00  b … 426.11 kb)   2.70 kb ██▆▃▄▃▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁
+
+text encoder encode            1.00 µs/iter   1.13 µs   ▆█                 
+                      (622.54 ns … 2.25 µs)   1.98 µs  ▃██▆▃               
+                    (  3.86  b … 692.26  b) 399.56  b ███████▃▆▆▄▃▃▃▃▃▃▃▂▂▃
+
+node buffer                  428.72 ns/iter 416.88 ns █▇                   
+                      (345.02 ns … 1.90 µs)   1.15 µs ██▂                  
+                    ( 74.31  b … 687.45  b) 402.77  b ███▄▃▃▂▂▂▂▁▂▁▁▁▁▁▁▁▁▁
+
+summary
+  node buffer
+   2.33x faster than text encoder encode
+   18.32x faster than blob size
