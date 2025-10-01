@@ -11,16 +11,16 @@ summary(() => {
     });
   };
 
-  register('string[const_index]', (str) => {
-    do_not_optimize(str[0]);
+  register('string[const_index] comparison', (str) => {
+    do_not_optimize(str[0] === '0');
   });
 
-  register('string.charCodeAt(const_index)', (str) => {
-    do_not_optimize(str.charCodeAt(0));
+  register('string.charCodeAt(const_index) comparison', (str) => {
+    do_not_optimize(str.charCodeAt(0) === 48);
   });
 
-  register('string.charAt(const_index)', (str) => {
-    do_not_optimize(str.charAt(0));
+  register('string.charAt(const_index) comparison', (str) => {
+    do_not_optimize(str.charAt(0) === '0');
   });
 });
 

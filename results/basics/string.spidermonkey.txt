@@ -1,17 +1,17 @@
-clk: ~1.39 GHz
+clk: ~2.23 GHz
 cpu: null
 runtime: spidermonkey (x64)
 
-benchmark                     avg (min … max) p75 / p99    (min … top 1%)
---------------------------------------------- -------------------------------
-string[const_index]              3.97 ns/iter   3.94 ns  █▅                  
-                         (3.19 ns … 56.69 ns)   8.25 ns ▁██▆▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
-string.charCodeAt(const_index)   3.31 ns/iter   3.38 ns   █                  
-                        (2.38 ns … 107.13 ns)   7.06 ns ▁███▃▃▂▂▁▁▁▂▂▂▁▁▁▁▁▁▁
-string.charAt(const_index)       4.02 ns/iter   4.06 ns ▅█                   
-                         (3.38 ns … 34.94 ns)   7.81 ns ██▅▆▃▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁
+benchmark                                avg (min … max) p75 / p99    (min … top 1%)
+-------------------------------------------------------- -------------------------------
+string[const_index] comparison              3.30 ns/iter   3.38 ns  ▅█                  
+                                   (2.38 ns … 211.44 ns)   7.06 ns ▁███▃▄▃▂▁▂▁▁▂▂▁▁▁▁▁▁▁
+string.charCodeAt(const_index) comparison   3.26 ns/iter   3.19 ns  █                   
+                                    (2.63 ns … 73.69 ns)   6.88 ns ██▅▅▃▂▂▂▁▁▁▁▂▁▁▁▁▁▁▁▁
+string.charAt(const_index) comparison       3.42 ns/iter   3.44 ns  █ ▃                 
+                                    (2.63 ns … 39.25 ns)   6.88 ns ▃███▆▄▂▂▁▂▁▂▂▂▁▁▁▁▁▁▁
 
 summary
-  string.charCodeAt(const_index)
-   1.2x faster than string[const_index]
-   1.22x faster than string.charAt(const_index)
+  string.charCodeAt(const_index) comparison
+   1.01x faster than string[const_index] comparison
+   1.05x faster than string.charAt(const_index) comparison
