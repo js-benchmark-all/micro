@@ -1,40 +1,37 @@
-clk: ~2.34 GHz
-cpu: Intel(R) Xeon(R) CPU @ 2.20GHz
-runtime: bun 1.2.19 (x64-linux)
+clk: ~2.83 GHz
+cpu: AMD EPYC 7B12
+runtime: bun 1.2.21 (x64-linux)
 
 benchmark                           avg (min … max) p75 / p99    (min … top 1%)
 --------------------------------------------------- -------------------------------
-object literal                         9.94 ns/iter   9.93 ns  █                    !
-                              (7.34 ns … 235.07 ns)  23.40 ns  ██                  
-                            (  0.00  b …  32.00  b)   0.02  b ▃███▄▄▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁
+object literal                         4.95 ns/iter   4.46 ns  █▇                  
+                              (3.16 ns … 145.93 ns)  15.18 ns  ██                  
+                            (  0.00  b …  32.00  b)   0.02  b ▂██▅▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-class - with constructor              10.09 ns/iter  10.14 ns  ▆█                   !
-                              (7.37 ns … 220.84 ns)  21.72 ns  ██▆                 
-                            (  0.00  b …  32.00  b)   0.02  b ▃███▆▅▅▄▃▂▂▂▂▁▁▁▁▁▁▁▁
+class - with constructor               5.33 ns/iter   4.79 ns  █                   
+                              (3.53 ns … 272.25 ns)  16.88 ns  █                   
+                            (  0.00  b …  32.00  b)   0.01  b ▂██▄▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-class -  without constructor          17.95 ns/iter  18.87 ns  █                    !
-                             (11.65 ns … 430.34 ns)  53.15 ns  █▄                  
-                            (  0.00  b …  64.00  b)   0.14  b ▃███▆▄▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁
+class -  without constructor           8.04 ns/iter   6.83 ns █                    
+                              (5.25 ns … 266.35 ns)  56.58 ns █▄                   
+                            (  0.00  b …  96.00  b)   0.02  b ██▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-proto - Object.create()               18.52 ns/iter  19.64 ns  █                    !
-                             (12.11 ns … 339.65 ns)  51.52 ns  █                   
-                            (  0.00  b …  64.00  b)   0.12  b ▅███▅▄▅▃▂▁▁▁▁▁▁▁▁▁▁▁▁
+proto - Object.create()                9.90 ns/iter   9.07 ns ▄█                   
+                              (6.13 ns … 257.53 ns)  61.75 ns ██                   
+                            (  0.00  b …  96.00  b)   0.21  b ██▄▄▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-proto - function with constructor     18.82 ns/iter  22.98 ns  █                    !
-                              (9.69 ns … 253.49 ns)  58.01 ns  █   ▅               
-                            (  0.00  b …  64.00  b)   0.08  b ▆█▆▄▂██▄▂▂▂▂▁▁▁▁▁▁▁▁▁
+proto - function with constructor      6.15 ns/iter   5.27 ns █▆                   
+                              (3.96 ns … 236.04 ns)  38.57 ns ██                   
+                            (  0.00  b …  64.00  b)   0.18  b ██▄▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-proto - function without constructor  11.72 ns/iter  12.73 ns  ▇█                   !
-                              (7.53 ns … 523.65 ns)  26.30 ns  ██▄                 
-                            (  0.00  b …  32.00  b)   0.03  b ▄███▅▅▄▄▅▅▃▂▂▂▂▂▁▁▁▁▁
+proto - function without constructor  14.54 ns/iter  13.54 ns   █                  
+                             (10.84 ns … 162.46 ns)  30.80 ns  ▄█                  
+                            (  0.00  b …  64.00  b)   0.04  b ▁██▇▃▂▂▁▁▁▁▂▂▂▁▁▁▁▁▁▁
 
 summary
   object literal
-   1.02x faster than class - with constructor
-   1.18x faster than proto - function without constructor
-   1.81x faster than class -  without constructor
-   1.86x faster than proto - Object.create()
-   1.89x faster than proto - function with constructor
-
-                       benchmark was likely optimized out (dead code elimination) = !
-                       https://github.com/evanwashere/mitata#writing-good-benchmarks
+   1.08x faster than class - with constructor
+   1.24x faster than proto - function with constructor
+   1.63x faster than class -  without constructor
+   2x faster than proto - Object.create()
+   2.94x faster than proto - function without constructor

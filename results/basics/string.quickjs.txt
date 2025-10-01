@@ -1,0 +1,17 @@
+clk: ~0.02 GHz
+cpu: null
+runtime: quickjs-ng 0.10.1 (null)
+
+benchmark                     avg (min … max) p75 / p99    (min … top 1%)
+--------------------------------------------- -------------------------------
+string[const_index]            244.95 ns/iter 248.92 ns  ▅█▇▂                
+                      (202.15 ns … 456.52 ns) 415.16 ns ▆████▆▄▃▂▁▁▁▁▁▂▂▂▂▁▂▁
+string.charCodeAt(const_index) 210.31 ns/iter 219.54 ns   ▂▂▅█▃              
+                      (168.87 ns … 426.46 ns) 321.94 ns ▂▆██████▆▅▃▂▁▂▁▁▁▁▂▁▁
+string.charAt(const_index)     288.04 ns/iter 293.99 ns   ▃▇█▄               
+                      (238.75 ns … 505.30 ns) 444.23 ns ▂▆█████▄▃▂▂▁▁▁▁▁▂▁▁▁▂
+
+summary
+  string.charCodeAt(const_index)
+   1.16x faster than string[const_index]
+   1.37x faster than string.charAt(const_index)

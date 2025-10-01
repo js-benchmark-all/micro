@@ -1,0 +1,22 @@
+clk: ~1.52 GHz
+cpu: AMD EPYC 7B12
+runtime: bun 1.2.21 (x64-linux)
+
+benchmark                     avg (min … max) p75 / p99    (min … top 1%)
+--------------------------------------------- -------------------------------
+string[const_index]             31.15 ns/iter  30.12 ns  █                   
+                       (23.92 ns … 242.37 ns)  80.83 ns  █                   
+                      (  0.00  b …  96.00  b)   1.76  b ██▅▃▂▂▂▁▂▃▂▂▁▁▁▁▁▁▁▁▁
+
+string.charCodeAt(const_index)  31.78 ns/iter  31.80 ns   █                  
+                       (23.44 ns … 200.78 ns)  62.89 ns  ▂█▂                 
+                      (  0.00  b …  64.00  b)   0.88  b ▁███▄▃▃▂▂▂▂▂▂▂▂▂▂▁▁▁▁
+
+string.charAt(const_index)      31.37 ns/iter  31.34 ns  █                   
+                       (24.44 ns … 222.39 ns)  60.89 ns  █▅                  
+                      (  0.00  b …  64.00  b)   0.84  b ▃██▄▂▃▃▂▂▂▂▁▂▂▂▂▁▁▁▁▁
+
+summary
+  string[const_index]
+   1.01x faster than string.charAt(const_index)
+   1.02x faster than string.charCodeAt(const_index)

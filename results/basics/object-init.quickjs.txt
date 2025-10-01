@@ -1,26 +1,26 @@
-clk: ~0.01 GHz
+clk: ~0.02 GHz
 cpu: null
 runtime: quickjs-ng 0.10.1 (null)
 
 benchmark                           avg (min … max) p75 / p99    (min … top 1%)
 --------------------------------------------------- -------------------------------
-object literal                       625.91 ns/iter 584.98 ns █                    
-                              (532.50 ns … 1.47 µs)   1.35 µs ██▃▁▁▁▁▁▁▁▁▁▁▂▁▁▁▁▁▁▁
-class - with constructor             785.04 ns/iter 797.48 ns  █▃                  
-                              (718.02 ns … 1.84 µs)   1.12 µs ███▄▄▃▄▃▂▂▁▁▂▂▁▁▁▁▁▁▁
-class -  without constructor         795.42 ns/iter 795.37 ns ██▃                  
-                              (740.54 ns … 1.89 µs)   1.10 µs ████▅▄▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁
-proto - Object.create()              730.46 ns/iter 698.77 ns █▃                   
-                              (593.76 ns … 1.51 µs)   1.43 µs ██▃▃▂▁▁▁▁▂▁▁▁▁▂▂▂▂▂▁▁
-proto - function with constructor    606.19 ns/iter 602.29 ns █▃                   
-                              (559.63 ns … 1.48 µs)   1.25 µs ██▄▂▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
-proto - function without constructor 579.69 ns/iter 585.87 ns ▆█▃                  
-                              (538.33 ns … 1.25 µs) 823.53 ns ███▆▄▃▄▂▂▂▂▁▂▁▁▁▁▁▁▁▁
+object literal                       370.61 ns/iter 368.63 ns  █                   
+                            (349.12 ns … 634.43 ns) 588.99 ns ▅█▆▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+class - with constructor             512.91 ns/iter 510.10 ns  █                   
+                            (485.19 ns … 860.00 ns) 834.18 ns ██▅▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+class -  without constructor         541.32 ns/iter 537.11 ns █▇                   
+                            (512.38 ns … 903.78 ns) 857.15 ns ██▅▂▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+proto - Object.create()              408.26 ns/iter 404.71 ns ▇█                   
+                            (385.73 ns … 707.37 ns) 658.34 ns ██▅▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+proto - function with constructor    415.52 ns/iter 406.74 ns ██                   
+                              (385.38 ns … 1.03 µs) 667.15 ns ██▅▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+proto - function without constructor 394.95 ns/iter 391.85 ns ▃█                   
+                            (374.20 ns … 651.76 ns) 625.76 ns ██▅▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
 summary
-  proto - function without constructor
-   1.05x faster than proto - function with constructor
-   1.08x faster than object literal
-   1.26x faster than proto - Object.create()
-   1.35x faster than class - with constructor
-   1.37x faster than class -  without constructor
+  object literal
+   1.07x faster than proto - function without constructor
+   1.1x faster than proto - Object.create()
+   1.12x faster than proto - function with constructor
+   1.38x faster than class - with constructor
+   1.46x faster than class -  without constructor
