@@ -1,17 +1,22 @@
-clk: ~2.91 GHz
+clk: ~2.89 GHz
 cpu: AMD EPYC 7B12
 runtime: node 24.6.0 (x64-linux)
 
 benchmark                   avg (min … max) p75 / p99    (min … top 1%)
 ------------------------------------------- -------------------------------
-2 pass                        79.07 ns/iter  76.62 ns █                    
-                     (67.90 ns … 261.85 ns) 207.54 ns █▅                   
-                    ( 94.47  b … 386.27  b) 272.39  b ██▅▂▁▁▁▁▂▁▁▁▁▁▁▁▁▁▁▁▁
+2 pass                        83.62 ns/iter  83.58 ns █▅                   
+                     (68.04 ns … 347.70 ns) 222.42 ns ██▂                  
+                    ( 69.86  b … 405.39  b) 272.12  b ███▅▃▂▂▂▃▂▁▁▁▁▁▁▁▁▁▁▁
 
-1 pass                       154.34 ns/iter 145.64 ns █                    
-                    (133.07 ns … 728.20 ns) 302.92 ns █▇                   
-                    ( 41.21  b … 575.72  b) 415.71  b ██▅▂▁▁▁▁▁▁▂▂▂▁▁▁▂▁▁▁▁
+1 pass Uint8Array.from       152.73 ns/iter 145.99 ns ▂█                   
+                    (130.22 ns … 481.28 ns) 323.73 ns ██                   
+                    ( 46.09  b … 608.25  b) 416.25  b ███▃▂▁▁▁▁▁▁▁▂▁▁▂▁▁▁▁▁
+
+1 pass new Uint8Array        279.67 ns/iter 385.90 ns  █                   
+                    (137.09 ns … 925.99 ns) 651.44 ns  █▄                  
+                    (178.75  b … 744.28  b) 544.39  b ▃██▃▂▂▄▅▅▄▆▆▅▃▃▂▁▁▁▁▁
 
 summary
   2 pass
-   1.95x faster than 1 pass
+   1.83x faster than 1 pass Uint8Array.from
+   3.34x faster than 1 pass new Uint8Array

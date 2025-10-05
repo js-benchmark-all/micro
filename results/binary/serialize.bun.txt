@@ -1,17 +1,25 @@
-clk: ~1.50 GHz
+clk: ~2.65 GHz
 cpu: AMD EPYC 7B12
 runtime: bun 1.2.21 (x64-linux)
 
 benchmark                   avg (min … max) p75 / p99    (min … top 1%)
 ------------------------------------------- -------------------------------
-2 pass                        43.04 ns/iter  39.54 ns █                    
-                     (31.00 ns … 571.08 ns) 166.52 ns █▆                   
-                    (  0.00  b … 128.00  b)   0.54  b ██▄▂▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+2 pass                        45.03 ns/iter  39.90 ns █▅                    !
+                     (31.55 ns … 598.95 ns) 163.60 ns ██                   
+                    (  0.00  b … 128.00  b)   1.29  b ██▆▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▂▂▁
 
-1 pass                        96.42 ns/iter  91.69 ns  █                   
-                     (73.49 ns … 599.65 ns) 255.02 ns ██                   
-                    (  0.00  b … 192.00  b)   1.09  b ██▇▂▂▂▁▂▄▂▁▁▂▁▁▁▁▁▁▁▁
+1 pass Uint8Array.from        95.31 ns/iter  93.69 ns  █                   
+                     (74.03 ns … 559.35 ns) 207.73 ns  █▄                  
+                    (  0.00  b … 160.00  b)   1.31  b ▅██▆▂▂▂▂▂▂▃▃▂▁▁▁▁▁▁▁▁
+
+1 pass new Uint8Array        553.54 ns/iter 271.00 ns █                    
+                    (140.00 ns … 138.70 µs)   8.71 µs █                    
+                    (  0.00  b … 128.00 kb) 284.01  b █▄▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
 summary
   2 pass
-   2.24x faster than 1 pass
+   2.12x faster than 1 pass Uint8Array.from
+   12.29x faster than 1 pass new Uint8Array
+
+               benchmark was likely optimized out (dead code elimination) = !
+               https://github.com/evanwashere/mitata#writing-good-benchmarks
