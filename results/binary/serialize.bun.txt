@@ -1,0 +1,17 @@
+clk: ~1.32 GHz
+cpu: AMD EPYC 7B12
+runtime: bun 1.2.21 (x64-linux)
+
+benchmark                   avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------- -------------------------------
+2 pass                       279.70 ns/iter 170.00 ns █                    
+                      (69.00 ns … 86.60 µs)   4.17 µs █                    
+                    (  0.00  b … 128.00 kb) 163.60  b █▇▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+1 pass                       100.00 ns/iter  98.90 ns  █                   
+                     (72.03 ns … 421.41 ns) 248.88 ns  █                   
+                    (  0.00  b … 256.00  b)   3.13  b ███▄▂▂▂▃▃▂▂▂▂▁▁▁▁▁▁▁▁
+
+summary
+  1 pass
+   2.8x faster than 2 pass

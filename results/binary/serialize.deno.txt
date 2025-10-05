@@ -1,0 +1,17 @@
+clk: ~2.75 GHz
+cpu: null
+runtime: deno 2.4.3 (x86_64-unknown-linux-gnu)
+
+benchmark                   avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------- -------------------------------
+2 pass                       706.56 ns/iter 709.00 ns █▇                   
+                      (360.00 ns … 2.05 ms)   2.58 µs ██▂                  
+                    (600.00  b … 494.38 kb) 616.29  b ████▇▅▃▂▂▂▁▁▁▁▁▁▁▁▁▁▁
+
+1 pass                       555.14 ns/iter 605.66 ns        █             
+                      (342.56 ns … 1.03 µs) 931.36 ns       ▇█             
+                    ( 52.25  b … 696.25  b) 386.98  b ▇▄▆▆▃▆██▇█▅▂▂▄▄▂▃▃▁▂▂
+
+summary
+  1 pass
+   1.27x faster than 2 pass

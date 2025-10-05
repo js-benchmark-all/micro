@@ -1,0 +1,14 @@
+clk: ~2.88 GHz
+cpu: null
+runtime: v8 14.1.101 (null)
+
+benchmark                   avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------- -------------------------------
+2 pass                       132.88 ns/iter   0.00 ps █                    
+                      (0.00 ps … 573.00 µs)   1.00 µs █▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▃
+1 pass                       181.90 ns/iter 176.51 ns █▂                   
+                    (147.46 ns … 468.02 ns) 351.07 ns ██▃▂▁▁▁▁▁▂▂▂▂▁▂▂▂▁▁▁▁
+
+summary
+  2 pass
+   1.37x faster than 1 pass
