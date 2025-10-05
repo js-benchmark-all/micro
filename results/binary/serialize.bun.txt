@@ -1,25 +1,27 @@
-clk: ~2.65 GHz
+clk: ~1.37 GHz
 cpu: AMD EPYC 7B12
 runtime: bun 1.2.21 (x64-linux)
 
 benchmark                   avg (min … max) p75 / p99    (min … top 1%)
 ------------------------------------------- -------------------------------
-2 pass                        45.03 ns/iter  39.90 ns █▅                    !
-                     (31.55 ns … 598.95 ns) 163.60 ns ██                   
-                    (  0.00  b … 128.00  b)   1.29  b ██▆▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▂▂▁
+2 pass                        42.61 ns/iter  41.36 ns █▃                   
+                     (30.63 ns … 369.19 ns) 166.58 ns ██                   
+                    (  0.00  b …  96.00  b)   0.54  b ██▇▃▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-1 pass Uint8Array.from        95.31 ns/iter  93.69 ns  █                   
-                     (74.03 ns … 559.35 ns) 207.73 ns  █▄                  
-                    (  0.00  b … 160.00  b)   1.31  b ▅██▆▂▂▂▂▂▂▃▃▂▁▁▁▁▁▁▁▁
+2 pass new Uint8Array         84.92 ns/iter  90.70 ns   █                  
+                     (44.06 ns … 663.73 ns) 250.36 ns   █▇                 
+                    (  0.00  b … 192.00  b)   0.62  b ▇▆██▇▆▆▃▂▁▁▁▁▁▂▂▁▁▁▁▁
 
-1 pass new Uint8Array        553.54 ns/iter 271.00 ns █                    
-                    (140.00 ns … 138.70 µs)   8.71 µs █                    
-                    (  0.00  b … 128.00 kb) 284.01  b █▄▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+1 pass Uint8Array.from       431.96 ns/iter 340.00 ns █                    
+                    (129.00 ns … 115.55 µs)   5.21 µs █▃                   
+                    (  0.00  b … 128.00 kb) 102.56  b ██▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+1 pass new Uint8Array        105.08 ns/iter 101.35 ns  █                   
+                     (77.31 ns … 520.48 ns) 287.04 ns ▂█                   
+                    (  0.00  b … 256.00  b)   2.60  b ██▇▄▂▂▂▃▂▁▁▁▂▁▁▂▁▁▁▁▁
 
 summary
   2 pass
-   2.12x faster than 1 pass Uint8Array.from
-   12.29x faster than 1 pass new Uint8Array
-
-               benchmark was likely optimized out (dead code elimination) = !
-               https://github.com/evanwashere/mitata#writing-good-benchmarks
+   1.99x faster than 2 pass new Uint8Array
+   2.47x faster than 1 pass new Uint8Array
+   10.14x faster than 1 pass Uint8Array.from

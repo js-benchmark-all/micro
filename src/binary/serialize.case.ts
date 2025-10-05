@@ -63,6 +63,18 @@ summary(() => {
     do_not_optimize(writer);
   });
 
+  register('2 pass new Uint8Array', (arr) => {
+    const list: number[] = [];
+    for (let i = 0; i < arr.length; i++)
+      packInList(arr[i], list);
+
+    const bytes = new Uint8Array(list.length);
+    for (let i = 0; i < list.length; i++)
+      bytes[i] = list[i];
+
+    do_not_optimize(bytes);
+  });
+
   register('1 pass Uint8Array.from', (arr) => {
     const list: number[] = [];
     for (let i = 0; i < arr.length; i++)
@@ -75,7 +87,7 @@ summary(() => {
     for (let i = 0; i < arr.length; i++)
       packInList(arr[i], list);
     do_not_optimize(new Uint8Array(list));
-  })
+  });
 });
 
 start();

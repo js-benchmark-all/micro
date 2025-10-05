@@ -1,17 +1,20 @@
-clk: ~2.19 GHz
+clk: ~2.10 GHz
 cpu: null
 runtime: spidermonkey (x64)
 
 benchmark                   avg (min … max) p75 / p99    (min … top 1%)
 ------------------------------------------- -------------------------------
-2 pass                       121.56 ns/iter 116.75 ns ▇█                   
-                    (102.31 ns … 374.81 ns) 249.25 ns ██▆▃▂▁▁▁▁▁▁▁▁▂▂▂▁▁▁▁▁
-1 pass Uint8Array.from       127.86 ns/iter 126.00 ns ▃█                   
-                    (110.56 ns … 500.00 ns) 235.88 ns ███▄▃▂▁▁▁▁▁▁▁▁▁▁▁▂▂▁▁
-1 pass new Uint8Array        133.39 ns/iter 128.25 ns █                    
-                    (119.31 ns … 345.75 ns) 309.50 ns █▆▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+2 pass                       129.16 ns/iter 122.56 ns █▃                   
+                    (103.69 ns … 594.00 ns) 318.63 ns ██▃▂▁▁▁▂▂▂▂▁▁▁▁▁▁▁▁▁▁
+2 pass new Uint8Array        110.02 ns/iter 109.38 ns  █                   
+                     (90.13 ns … 302.75 ns) 206.63 ns ▇█▇▅▃▂▂▂▁▁▁▁▁▁▂▃▁▁▁▁▁
+1 pass Uint8Array.from       128.49 ns/iter 124.75 ns █▆                   
+                    (111.56 ns … 386.94 ns) 283.38 ns ██▅▂▁▁▁▁▁▁▂▁▁▁▁▁▁▁▁▁▁
+1 pass new Uint8Array        135.86 ns/iter 133.06 ns ▄█                   
+                    (121.56 ns … 358.19 ns) 245.88 ns ██▅▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
 summary
-  2 pass
-   1.05x faster than 1 pass Uint8Array.from
-   1.1x faster than 1 pass new Uint8Array
+  2 pass new Uint8Array
+   1.17x faster than 1 pass Uint8Array.from
+   1.17x faster than 2 pass
+   1.23x faster than 1 pass new Uint8Array

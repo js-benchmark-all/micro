@@ -1,17 +1,20 @@
-clk: ~0.01 GHz
+clk: ~0.02 GHz
 cpu: null
 runtime: quickjs-ng 0.10.1 (null)
 
 benchmark                   avg (min … max) p75 / p99    (min … top 1%)
 ------------------------------------------- -------------------------------
-2 pass                         5.50 µs/iter   5.69 µs ▃███▃ ▃ ▃           █
-                        (5.28 µs … 5.94 µs)   5.87 µs █████▁█▁█▆▁▁▁▁▆▆▁▆▁▁█
-1 pass Uint8Array.from         5.68 µs/iter   5.69 µs  ▅█   ▂              
-                        (5.45 µs … 6.52 µs)   6.16 µs ▄██▇▇▁█▄▁▄▁▁▄▄▁▄▁▁▁▁▄
-1 pass new Uint8Array          5.66 µs/iter   5.81 µs      ▃█▃▃   ▃    ▃   
-                        (5.39 µs … 6.03 µs)   5.93 µs ▆▁▆▆▆████▁▁▆█▁▆▆▆█▁▆▆
+2 pass                         5.44 µs/iter   5.52 µs ▄▄▄   █              
+                        (5.27 µs … 5.78 µs)   5.78 µs ███▁█▅█▁▅▅▅▅▁▅▅▁▁▁▁▅▅
+2 pass new Uint8Array          4.90 µs/iter   5.01 µs  █▃███ ▃ ▃  █     ▃  
+                        (4.71 µs … 5.25 µs)   5.22 µs ▆█████▁█▁█▁▁█▁▆▆▁▁█▁▆
+1 pass Uint8Array.from         5.83 µs/iter   5.87 µs █ ▃ ▃██▃             
+                        (5.46 µs … 6.64 µs)   6.56 µs █▆█▆████▁▆▆▁▁▆▁▁▁▆▁▁▆
+1 pass new Uint8Array          5.65 µs/iter   5.59 µs  █▃ ▆                
+                        (5.33 µs … 7.14 µs)   6.57 µs ▆██▄█▁▁▄▄▁▄▁▄▁▁▁▁▁▁▁▄
 
 summary
-  2 pass
-   1.03x faster than 1 pass new Uint8Array
-   1.03x faster than 1 pass Uint8Array.from
+  2 pass new Uint8Array
+   1.11x faster than 2 pass
+   1.15x faster than 1 pass new Uint8Array
+   1.19x faster than 1 pass Uint8Array.from
