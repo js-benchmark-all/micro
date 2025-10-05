@@ -4,8 +4,10 @@ import { start } from '@utils';
 summary(() => {
   const register = (label: string, fn: (l: number[]) => any) => {
     bench(label, function* () {
+      const rand = () => Math.round(Math.random());
+
       yield {
-        [0]: () => [999, 78, 12, 45, 3809438, 8289],
+        [0]: () => [999 + rand(), 78 + rand(), 12 + rand(), 45 + rand(), 3809438 + rand(), 8289 + rand()],
         bench: fn,
       };
     });

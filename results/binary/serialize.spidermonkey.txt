@@ -1,14 +1,14 @@
-clk: ~1.34 GHz
+clk: ~1.46 GHz
 cpu: null
 runtime: spidermonkey (x64)
 
 benchmark                   avg (min … max) p75 / p99    (min … top 1%)
 ------------------------------------------- -------------------------------
-2 pass                       122.20 ns/iter 118.94 ns ▄█                   
-                    (103.00 ns … 343.56 ns) 236.31 ns ██▅▄▂▂▁▁▁▁▁▁▁▁▁▁▂▂▁▁▁
-1 pass                       212.11 ns/iter   0.00 ps █                    
-                        (0.00 ps … 1.70 ms)   1.28 µs █▁▁▁▁▁▁▁▁▁▁▁▂▁▁▁▄▁▁▁▁
+2 pass                       121.67 ns/iter 116.25 ns ██                   
+                    (101.81 ns … 709.75 ns) 252.94 ns ██▅▃▂▁▁▁▁▁▁▁▁▁▂▂▂▁▁▁▁
+1 pass                       126.66 ns/iter 124.25 ns ▂█                   
+                    (109.38 ns … 645.50 ns) 243.94 ns ███▄▂▂▁▁▁▁▁▁▁▁▁▁▂▁▁▁▁
 
 summary
   2 pass
-   1.74x faster than 1 pass
+   1.04x faster than 1 pass
