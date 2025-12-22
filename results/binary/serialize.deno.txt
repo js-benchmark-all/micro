@@ -1,27 +1,27 @@
-clk: ~2.90 GHz
+clk: ~5.29 GHz
 cpu: null
-runtime: deno 2.4.3 (x86_64-unknown-linux-gnu)
+runtime: deno 2.6.3 (x86_64-unknown-linux-gnu)
 
 benchmark                   avg (min … max) p75 / p99    (min … top 1%)
 ------------------------------------------- -------------------------------
-2 pass                       487.05 ns/iter 535.07 ns       █              
-                      (250.01 ns … 1.21 µs) 888.00 ns      ▇█▇             
-                    ( 11.09  b … 481.12  b) 240.02  b ▄▆▃▃▇█████▆▆▃▃▄▂▃▂▁▃▂
+2 pass                       288.18 ns/iter 275.32 ns      █               
+                      (109.04 ns … 1.62 µs) 760.87 ns      █               
+                    (141.92  b … 448.25  b) 241.68  b ▂▂▂▃▆█▂▂▂▂▂▁▂▁▁▁▁▁▁▁▁
 
-2 pass new Uint8Array        741.60 ns/iter 780.00 ns ▄█                   
-                     (360.00 ns … 13.27 ms)   2.40 µs ██▆▃                 
-                    (744.00  b … 112.28 kb) 756.18  b █████▇▅▄▃▂▂▂▂▂▁▁▁▁▁▁▁
+2 pass new Uint8Array        265.89 ns/iter 288.02 ns         █            
+                    (130.89 ns … 928.53 ns) 472.68 ns        ▃██           
+                    (120.25  b … 648.23  b) 385.38  b ▂▄▅▅▄▄▅████▅▂▂▂▂▂▁▂▁▁
 
-1 pass Uint8Array.from       617.13 ns/iter 675.17 ns     █                
-                      (337.43 ns … 1.50 µs)   1.33 µs     ██▂              
-                    (316.66  b … 664.24  b) 389.12  b ▆█▅▃███▇▄▄▅▄▃▁▂▂▁▁▂▁▁
+1 pass Uint8Array.from       342.31 ns/iter 334.33 ns   █                  
+                      (174.41 ns … 1.49 µs)   1.38 µs   █▂                 
+                    ( 80.02  b … 704.23  b) 385.01  b ▃▇██▃▂▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-1 pass new Uint8Array        662.43 ns/iter 704.04 ns      █               
-                      (363.75 ns … 1.58 µs)   1.20 µs     ██▅              
-                    ( 21.46  b … 842.57  b) 511.64  b ▂▃▂▁████▅▅▃▃▂▃▃▃▂▁▂▂▃
+1 pass new Uint8Array        297.85 ns/iter 314.42 ns      █               
+                      (166.93 ns … 1.03 µs) 634.08 ns      ██              
+                    ( 96.99  b … 680.25  b) 385.87  b ▂▆▅▄▇██▇▄▄▃▂▁▁▁▁▁▁▁▁▁
 
 summary
-  2 pass
-   1.27x faster than 1 pass Uint8Array.from
-   1.36x faster than 1 pass new Uint8Array
-   1.52x faster than 2 pass new Uint8Array
+  2 pass new Uint8Array
+   1.08x faster than 2 pass
+   1.12x faster than 1 pass new Uint8Array
+   1.29x faster than 1 pass Uint8Array.from

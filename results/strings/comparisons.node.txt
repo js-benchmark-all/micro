@@ -1,22 +1,22 @@
-clk: ~1.48 GHz
-cpu: Intel(R) Xeon(R) CPU @ 2.20GHz
-runtime: node 24.6.0 (x64-linux)
+clk: ~5.32 GHz
+cpu: AMD Ryzen 9 9950X 16-Core Processor
+runtime: node 24.12.0 (x64-linux)
 
 benchmark                                avg (min … max) p75 / p99    (min … top 1%)
 -------------------------------------------------------- -------------------------------
-string[const_index] comparison            101.67 ns/iter  94.23 ns ▃█                   
-                                    (72.90 ns … 1.15 µs) 286.81 ns ██                   
-                                 ( 16.39  b … 191.73  b)  40.76  b ██▆▃▂▂▂▂▂▂▂▂▁▁▁▂▁▁▁▁▁
+string[const_index] comparison             21.00 ns/iter  19.38 ns  █                   
+                                  (18.42 ns … 497.68 ns)  39.48 ns  █                   
+                                 (  8.17  b … 104.18  b)  40.21  b ██▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-string.charCodeAt(const_index) comparison  96.11 ns/iter  88.43 ns ▂█                   
-                                  (71.54 ns … 740.93 ns) 266.12 ns ██                   
-                                 ( 12.07  b … 146.14  b)  40.31  b ██▅▃▂▂▂▁▂▂▂▂▁▁▁▁▁▁▁▁▁
+string.charCodeAt(const_index) comparison  20.39 ns/iter  19.31 ns  █                   
+                                  (18.30 ns … 438.76 ns)  35.54 ns  █                   
+                                 ( 17.07  b … 111.29  b)  40.19  b ▆█▃▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-string.charAt(const_index) comparison     102.90 ns/iter  94.94 ns ▂█                   
-                                  (73.56 ns … 892.31 ns) 285.48 ns ██                   
-                                 ( 22.60  b … 263.51  b)  40.73  b ██▅▃▂▂▂▁▂▂▂▂▁▁▁▁▁▁▁▁▁
+string.charAt(const_index) comparison      19.85 ns/iter  19.14 ns  █                   
+                                  (18.34 ns … 336.29 ns)  32.72 ns  █                   
+                                 ( 21.83  b …  96.08  b)  40.16  b ▇█▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
 summary
-  string.charCodeAt(const_index) comparison
+  string.charAt(const_index) comparison
+   1.03x faster than string.charCodeAt(const_index) comparison
    1.06x faster than string[const_index] comparison
-   1.07x faster than string.charAt(const_index) comparison

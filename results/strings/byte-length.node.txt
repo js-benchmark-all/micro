@@ -1,22 +1,22 @@
-clk: ~1.22 GHz
-cpu: Intel(R) Xeon(R) CPU @ 2.20GHz
-runtime: node 24.6.0 (x64-linux)
+clk: ~5.27 GHz
+cpu: AMD Ryzen 9 9950X 16-Core Processor
+runtime: node 24.12.0 (x64-linux)
 
 benchmark                   avg (min … max) p75 / p99    (min … top 1%)
 ------------------------------------------- -------------------------------
-blob size                     12.86 µs/iter  13.66 µs █ █    █ █    ███ █ █
-                      (10.25 µs … 14.74 µs)  14.56 µs █ █    █ █    ███ █ █
-                    (672.41  b …   1.39 kb) 998.71  b █▁█▁▁▁▁█▁█▁▁▁▁███▁█▁█
+blob size                      1.47 µs/iter   1.31 µs █                    
+                      (937.44 ns … 9.96 µs)   9.77 µs █▂                   
+                    (700.68  b …   1.28 kb) 980.73  b ██▅▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-text encoder encode            1.40 µs/iter   1.00 µs  █                   
-                      (521.00 ns … 2.18 ms)   4.12 µs ▇█                   
-                    (560.00  b … 164.10 kb) 577.14  b ███▆▅▃▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁
+text encoder encode          252.48 ns/iter 270.06 ns        █             
+                      (120.51 ns … 2.73 µs) 531.42 ns       ▃█             
+                    (112.15  b … 428.25  b) 203.61  b ▂█▃▁▃▂██▆▃▁▁▁▁▂▁▁▁▁▁▁
 
-node buffer                  270.83 ns/iter 304.61 ns █                    
-                      (164.35 ns … 1.40 µs) 850.11 ns ██                   
-                    ( 52.95  b … 294.73  b) 107.73  b ███▇▆▄▅▃▃▃▂▂▂▂▁▁▂▁▁▁▁
+node buffer                   34.06 ns/iter  34.22 ns  █                   
+                      (31.84 ns … 90.07 ns)  52.77 ns  █                   
+                    (  4.62  b … 212.64  b) 104.70  b ▇█▆▆▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
 summary
   node buffer
-   5.17x faster than text encoder encode
-   47.49x faster than blob size
+   7.41x faster than text encoder encode
+   43.19x faster than blob size
