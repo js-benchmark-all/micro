@@ -1,0 +1,27 @@
+clk: ~0.98 GHz
+cpu: null
+runtime: deno 2.6.3 (x86_64-unknown-linux-gnu)
+
+benchmark                   avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------- -------------------------------
+2 pass                         1.86 µs/iter   1.80 µs      █               
+                        (1.17 µs … 3.40 µs)   3.39 µs    ▇██               
+                    ( 25.75  b … 525.53  b) 249.10  b ▃▆▆███▇▁▃▁▂▃▂▂▁▁▃▃▂▃▄
+
+2 pass new Uint8Array          1.74 µs/iter   1.71 µs   █                  
+                        (1.19 µs … 3.38 µs)   3.37 µs   █▃                 
+                    ( 73.43  b … 640.28  b) 399.71  b ▃███▇█▂▂▁▁▃▂▁▁▁▁▂▂▂▃▄
+
+1 pass Uint8Array.from         2.14 µs/iter   2.09 µs    █                 
+                        (1.61 µs … 4.12 µs)   3.93 µs  ▆▅█▆                
+                    (218.95  b … 703.54  b) 402.91  b █████▄▂▁▂▁▃▁▁▁▁▂▁▁▂▄▃
+
+1 pass new Uint8Array          1.91 µs/iter   1.92 µs  █                   
+                        (1.38 µs … 3.69 µs)   3.50 µs ▂█▄ ▃▃               
+                    ( 46.06  b … 680.24  b) 393.01  b ██████▅▂▁▁▂▂▃▁▁▁▄▁▂▅▃
+
+summary
+  2 pass new Uint8Array
+   1.07x faster than 2 pass
+   1.1x faster than 1 pass new Uint8Array
+   1.23x faster than 1 pass Uint8Array.from

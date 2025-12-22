@@ -1,0 +1,35 @@
+clk: ~0.42 GHz
+cpu: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz
+runtime: node 22.21.1 (x64-linux)
+
+benchmark                         avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------------- -------------------------------
+access monomorphic object           38.61 µs/iter  31.56 µs █                    
+                           (28.23 µs … 245.56 µs) 240.94 µs █▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+                        gc(  8.06 ms …  18.36 ms)   4.54 kb (760.00  b… 81.85 kb)
+
+access polymorphic object           32.05 µs/iter  41.23 µs ▇█                   
+                            (19.85 µs … 98.16 µs)  89.39 µs ██▂▁▂▂▆▅▄▁▁▁▁▁▁▁▁▁▁▁▃
+                        gc(  8.63 ms …  21.68 ms)   9.25 kb (  8.54 kb… 56.56 kb)
+
+access array                        33.63 µs/iter  38.20 µs █                    
+                           (21.42 µs … 120.44 µs) 102.79 µs █▁▁▁▄▃▁▂▁▁▁▂▁▁▁▁▁▁▁▁▂
+                        gc(  9.25 ms …  22.12 ms)   9.23 kb (  8.54 kb… 56.56 kb)
+
+summary
+  access polymorphic object
+   1.05x faster than access array
+   1.2x faster than access monomorphic object
+
+------------------------------------------------- -------------------------------
+create & access monomorphic object 131.06 ns/iter 126.29 ns  █                   
+                          (116.45 ns … 355.74 ns) 250.26 ns  █                   
+                          ( 60.04  b … 177.11  b) 104.84  b ██▄▂▁▁▄▂▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+create & access array              174.51 ns/iter 170.56 ns  █                   
+                          (156.36 ns … 392.59 ns) 363.17 ns ▆█                   
+                          (  2.62  b … 225.96  b) 112.90  b ██▅▅▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+summary
+  create & access monomorphic object
+   1.33x faster than create & access array

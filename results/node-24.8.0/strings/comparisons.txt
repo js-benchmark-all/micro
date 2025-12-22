@@ -1,0 +1,22 @@
+clk: ~1.19 GHz
+cpu: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz
+runtime: node 24.8.0 (x64-linux)
+
+benchmark                                avg (min … max) p75 / p99    (min … top 1%)
+-------------------------------------------------------- -------------------------------
+string[const_index] comparison            173.53 ns/iter 173.32 ns    █                 
+                                 (153.03 ns … 677.90 ns) 281.52 ns  ▆ █                 
+                                 ( 18.28  b … 112.24  b)  40.61  b ██▆█▂▃▄▁▁▃▂▁▁▁▁▁▁▁▁▁▁
+
+string.charCodeAt(const_index) comparison 150.29 ns/iter 153.34 ns    █                 
+                                 (130.01 ns … 628.51 ns) 215.63 ns    █                 
+                                 ( 36.13  b … 117.12  b)  40.83  b ▂▂▆█▂▃▆▂▁▃▂▁▁▁▁▁▁▁▁▁▁
+
+string.charAt(const_index) comparison     147.39 ns/iter 146.54 ns    █                 
+                                 (130.31 ns … 619.67 ns) 227.44 ns  █ █                 
+                                 (  0.26  b … 184.76  b)  40.72  b ▆█▆█▄▄▃▁▂▂▁▁▁▁▁▁▁▁▂▁▁
+
+summary
+  string.charAt(const_index) comparison
+   1.02x faster than string.charCodeAt(const_index) comparison
+   1.18x faster than string[const_index] comparison

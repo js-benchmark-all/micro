@@ -10,11 +10,10 @@ Setup:
 bun i
 
 # Build all benchmark files
-bun prep
+bun build.ts
 
-# Run included benchmarks in node and output to stdout
-bun start node
-bun start node file
+# Run included benchmarks in node
+bun index.ts node
 ```
 
 To add a benchmark create a file with extension `.case.ts` in [src](./src).

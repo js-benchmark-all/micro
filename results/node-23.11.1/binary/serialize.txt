@@ -1,0 +1,27 @@
+clk: ~0.82 GHz
+cpu: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz
+runtime: node 23.11.1 (x64-linux)
+
+benchmark                   avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------- -------------------------------
+2 pass                       344.90 ns/iter 343.77 ns   █                  
+                    (281.60 ns … 702.93 ns) 620.76 ns ▃ █▂█                
+                    ( 31.99  b … 348.68  b) 271.82  b █▃███▂▆▂▂▁▁▁▁▁▂▂▂▂▂▁▁
+
+2 pass new Uint8Array        354.63 ns/iter 344.32 ns  █ ▅                 
+                    (275.52 ns … 947.85 ns) 661.63 ns  █ █                 
+                    ( 94.54  b … 641.93  b) 415.29  b ████▄▆▁▁▁▁▂▂▄▁▁▃▂▁▁▃▂
+
+1 pass Uint8Array.from       655.03 ns/iter 678.93 ns ▄  █                 
+                      (550.30 ns … 1.15 µs)   1.01 µs █ ▇█  ▅              
+                    ( 42.45  b … 590.03  b) 411.94  b ████▄▆█▂▁▃▂▃▃▃▁▃▃▁▃▁▂
+
+1 pass new Uint8Array        602.84 ns/iter 656.11 ns ▃█                   
+                      (490.15 ns … 1.36 µs)   1.19 µs ██                   
+                    (230.59  b … 707.70  b) 544.14  b ██▃▆▂▃▃▃▄▂▄▂▁▁▁▁▁▁▁▁▁
+
+summary
+  2 pass
+   1.03x faster than 2 pass new Uint8Array
+   1.75x faster than 1 pass new Uint8Array
+   1.9x faster than 1 pass Uint8Array.from

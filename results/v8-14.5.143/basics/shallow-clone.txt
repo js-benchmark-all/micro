@@ -1,0 +1,63 @@
+clk: ~0.71 GHz
+cpu: null
+runtime: v8 14.5.143 (null)
+
+benchmark                       avg (min … max) p75 / p99    (min … top 1%)
+----------------------------------------------- -------------------------------
+clone array - spread             203.93 ns/iter 253.91 ns ▅ █                  
+                        (146.24 ns … 279.05 ns) 269.04 ns █▂█             ▅ ▇▇ 
+                      gc(  3.56 ms …  10.17 ms)   4.55 ms ███▂▅▂▄▆▁▅▆▆▄▂▁▅█▄███
+
+clone array - slice              109.63 ns/iter 118.90 ns         █            
+                         (56.88 ns … 291.02 ns) 203.86 ns     ▃▃▂▇██           
+                      gc(  3.46 ms …   7.58 ms)   4.54 ms ▂▃▃▇██████▃▁▂▁▁▁▁▁▁▁▂
+
+clone array - concat             142.39 ns/iter 157.23 ns         ▃█           
+                         (77.88 ns … 269.04 ns) 258.30 ns       ▂ ██           
+                      gc(  3.50 ms …   7.45 ms)   4.64 ms ▆▇▁▄▂▅█▆██▅▁▁▁▂▁▁▁▁▁▃
+
+clone array - from               257.64 ns/iter 273.68 ns             ▆█▆ ▃    
+                        (203.86 ns … 302.00 ns) 293.21 ns      ▅▂    ▅███ █    
+                      gc(  3.23 ms …   6.67 ms)   4.20 ms ▃▅▁▆▆██▃▅▃▁████▆███▆▆
+
+clone array - concat empty array 653.53 ns/iter 674.56 ns          ▂█          
+                        (543.95 ns … 837.65 ns) 793.95 ns         ▇██▅         
+                      gc(  3.14 ms …   8.37 ms)   4.33 ms ▆▄▄▄▂▁▇█████▆▂▄▄▁▁▁▁▂
+
+summary
+  clone array - slice
+   1.3x faster than clone array - concat
+   1.86x faster than clone array - spread
+   2.35x faster than clone array - from
+   5.96x faster than clone array - concat empty array
+
+----------------------------------------------- -------------------------------
+clone 2 array - spread           638.74 ns/iter 612.79 ns     █                
+                          (425.78 ns … 1.28 µs)   1.26 µs ▇   █                
+                      gc(  5.10 ms …   9.65 ms)   5.90 ms █▃▂▃█▇▁▂▁▁▁▁▁▁▄▁▁▂▄▂▂
+
+clone 2 array - concat           759.92 ns/iter 812.74 ns          █           
+                          (575.93 ns … 1.19 µs)   1.01 µs  ▃       █▅▃         
+                      gc(  5.02 ms …  15.21 ms)   6.45 ms ▄██▄▄▁▃▄█████▃▄▃▁▁▁▃▃
+
+summary
+  clone 2 array - spread
+   1.19x faster than clone 2 array - concat
+
+----------------------------------------------- -------------------------------
+clone object - spread            124.36 ns/iter 149.66 ns   ▅ ▃ █              
+                         (95.70 ns … 190.92 ns) 166.50 ns   ███▅█ ▂        ▇▂▂ 
+                      gc(  2.66 ms …   5.56 ms)   3.24 ms ▅██████▅█▅▁▁▁▂▁▅▄███▄
+
+clone object - Object.assign()   179.56 ns/iter 180.66 ns   █▂▇                
+                        (150.63 ns … 268.07 ns) 266.36 ns  ▂███▆     ▇         
+                      gc(  2.73 ms …   5.06 ms)   3.32 ms ██████▃▁▂▁▂█▃▂▃▁▂▁▁▁▂
+
+clone object - Object.create()     2.18 µs/iter   2.20 µs  █                   
+                            (2.10 µs … 2.42 µs)   2.41 µs ▅█ █                 
+                      gc(  7.69 ms …  12.50 ms)   9.56 ms ██▅██▃▃▅▁▁▁▅▅▅▅▃▁▁▁▁▃
+
+summary
+  clone object - spread
+   1.44x faster than clone object - Object.assign()
+   17.52x faster than clone object - Object.create()
