@@ -1,0 +1,63 @@
+clk: ~5.31 GHz
+cpu: AMD Ryzen 9 9950X 16-Core Processor
+runtime: node 24.12.0 (x64-linux)
+
+benchmark                       avg (min … max) p75 / p99    (min … top 1%)
+----------------------------------------------- -------------------------------
+clone array - spread              10.31 ns/iter   9.94 ns   ██                 
+                           (7.62 ns … 23.92 ns)  21.96 ns ▁▁██▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+                      gc(  1.62 ms …   4.26 ms) 128.28  b (128.12  b…144.47  b)
+
+clone array - slice                7.90 ns/iter   8.16 ns  █                   
+                           (5.46 ns … 33.77 ns)  20.13 ns ▅█▆▃▂▂▂▃▂▂▁▁▁▁▁▁▁▁▁▁▁
+                      gc(  1.64 ms …   7.28 ms) 128.28  b (128.12  b…140.13  b)
+
+clone array - concat               8.27 ns/iter   8.39 ns  ▆█                  
+                           (6.91 ns … 25.29 ns)  14.76 ns ▅███▇▃▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁
+                      gc(  1.65 ms …   4.18 ms) 128.40  b (128.12  b…195.26  b)
+
+clone array - from                11.14 ns/iter  10.58 ns  █                   
+                           (8.83 ns … 26.89 ns)  26.17 ns ▁█▇▂▁▁▁▁▁▁▂▁▁▁▁▁▁▁▁▁▁
+                      gc(  1.47 ms …   4.90 ms) 128.15  b (128.12  b…138.15  b)
+
+clone array - concat empty array  44.37 ns/iter  44.56 ns  █                   
+                         (42.04 ns … 113.18 ns)  61.61 ns ██▄▄▃▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁
+                      gc(  1.55 ms …   5.84 ms) 128.31  b (128.12  b…154.29  b)
+
+summary
+  clone array - slice
+   1.05x faster than clone array - concat
+   1.31x faster than clone array - spread
+   1.41x faster than clone array - from
+   5.62x faster than clone array - concat empty array
+
+----------------------------------------------- -------------------------------
+clone 2 array - spread            57.49 ns/iter  57.91 ns      ██▃             
+                         (38.79 ns … 142.02 ns)  89.88 ns ▁▁▁▁████▅▄▂▂▂▂▁▁▁▁▁▁▁
+                      gc(  1.93 ms …   5.48 ms) 882.66  b (400.25  b…932.49  b)
+
+clone 2 array - concat            58.29 ns/iter  57.97 ns ▂█                   
+                          (53.70 ns … 94.61 ns)  90.94 ns ██▄▃▂▂▂▂▂▁▁▁▁▁▁▂▁▁▁▁▁
+                      gc(  1.96 ms …   5.01 ms) 208.22  b (208.13  b…218.16  b)
+
+summary
+  clone 2 array - spread
+   1.01x faster than clone 2 array - concat
+
+----------------------------------------------- -------------------------------
+clone object - spread              9.16 ns/iter   8.71 ns █                    
+                           (7.98 ns … 31.90 ns)  26.12 ns ██▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+                      gc(  1.41 ms …   3.66 ms)  96.17  b ( 76.52  b…114.14  b)
+
+clone object - Object.assign()    12.44 ns/iter  12.08 ns ▇█                   
+                          (11.06 ns … 35.26 ns)  24.97 ns ██▄▃▂▁▁▂▁▁▂▁▁▁▁▁▁▁▁▁▁
+                      gc(  1.43 ms …   5.56 ms)  96.19  b ( 96.11  b…114.14  b)
+
+clone object - Object.create()   224.23 ns/iter 267.69 ns  █                   
+                        (172.86 ns … 373.31 ns) 370.20 ns ▆█▆▂▂▁▂▂▂▂▂▂▂▂▃▂▃▂▁▁▁
+                      gc(  1.73 ms …   5.98 ms) 738.37  b (517.40  b…988.56  b)
+
+summary
+  clone object - spread
+   1.36x faster than clone object - Object.assign()
+   24.48x faster than clone object - Object.create()

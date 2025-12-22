@@ -1,22 +1,22 @@
-clk: ~1.08 GHz
-cpu: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz
+clk: ~5.05 GHz
+cpu: AMD Ryzen 9 9950X 16-Core Processor
 runtime: bun 1.3.5 (x64-linux)
 
 benchmark                                avg (min â¦ max) p75 / p99    (min â¦ top 1%)
 -------------------------------------------------------- -------------------------------
-string[const_index] comparison            118.18 ns/iter 120.11 ns  â â                 
-                                  (91.31 ns â¦ 291.56 ns) 220.38 ns  âââ                 
-                                 (  0.00  b â¦  96.00  b)   4.39  b âââââââââââââââââââââ
+string[const_index] comparison             13.37 ns/iter  12.85 ns  â                   
+                                   (11.97 ns â¦ 58.25 ns)  27.26 ns ââ                   
+                                 (  0.00  b â¦  96.00  b)   1.25  b âââââââââââââââââââââ
 
-string.charCodeAt(const_index) comparison 124.65 ns/iter 133.46 ns   â â  â             
-                                  (99.35 ns â¦ 255.04 ns) 202.68 ns   â â  â             
-                                 (  0.00  b â¦  64.00  b)   0.67  b âââââââââââââââââââââ
+string.charCodeAt(const_index) comparison  13.32 ns/iter  12.93 ns  â                   
+                                   (11.91 ns â¦ 61.46 ns)  25.04 ns  â                   
+                                 (  0.00  b â¦  64.00  b)   0.40  b âââââââââââââââââââââ
 
-string.charAt(const_index) comparison     118.64 ns/iter 123.84 ns    â                 
-                                  (93.70 ns â¦ 253.53 ns) 194.26 ns   âââââ â            
-                                 (  0.00  b â¦ 128.00  b)   0.99  b âââââââââââââââââââââ
+string.charAt(const_index) comparison      13.52 ns/iter  13.15 ns  â                   
+                                   (12.05 ns â¦ 64.65 ns)  26.47 ns  â                   
+                                 (  0.00  b â¦  64.00  b)   0.38  b âââââââââââââââââââââ
 
 summary
-  string[const_index] comparison
-   1x faster than string.charAt(const_index) comparison
-   1.05x faster than string.charCodeAt(const_index) comparison
+  string.charCodeAt(const_index) comparison
+   1x faster than string[const_index] comparison
+   1.01x faster than string.charAt(const_index) comparison

@@ -1,0 +1,22 @@
+clk: ~5.28 GHz
+cpu: AMD Ryzen 9 9950X 16-Core Processor
+runtime: node 24.12.0 (x64-linux)
+
+benchmark                   avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------- -------------------------------
+blob size                      1.57 µs/iter   1.45 µs █                    
+                     (970.39 ns … 11.66 µs)  10.47 µs █▂                   
+                    (700.68  b …   1.22 kb) 979.90  b ███▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+text encoder encode          266.13 ns/iter 278.97 ns    █                 
+                      (122.04 ns … 2.15 µs)   1.07 µs    █                 
+                    (  6.52  b … 416.24  b) 202.44  b ▆▅▄█▅▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+node buffer                   36.90 ns/iter  36.18 ns █                    
+                     (32.31 ns … 166.58 ns)  82.04 ns ██                   
+                    (  4.77  b … 264.65  b) 105.06  b ██▆▃▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+summary
+  node buffer
+   7.21x faster than text encoder encode
+   42.56x faster than blob size

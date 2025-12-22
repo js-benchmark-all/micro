@@ -1,4 +1,4 @@
-clk: ~0.94 GHz
+clk: ~5.08 GHz
 cpu: null
 runtime: null (null)
 

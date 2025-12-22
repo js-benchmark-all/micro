@@ -1,0 +1,103 @@
+clk: ~5.25 GHz
+cpu: AMD Ryzen 9 9950X 16-Core Processor
+runtime: node 24.12.0 (x64-linux)
+
+benchmark                                                avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------------------------------------ -------------------------------
+object pick no unknowns - for in & assign                  57.26 ns/iter  59.03 ns █▅                   
+                                                  (49.89 ns … 136.35 ns) 111.75 ns ██▄▆▄▂▂▁▂▁▁▁▁▁▁▁▁▁▁▁▁
+                                               gc(  1.08 ms …   7.38 ms) 187.26  b (143.33  b…317.66  b)
+
+object pick no unknowns - assign with in                   67.60 ns/iter  67.41 ns  █                   
+                                                  (55.00 ns … 137.49 ns) 123.60 ns ██▅▃▃▂▁▁▂▁▁▁▁▁▁▁▂▂▁▁▁
+                                               gc(  1.09 ms …   5.52 ms) 187.24  b (185.49  b…437.57  b)
+
+object pick no unknowns - assign with Object.hasOwn        61.97 ns/iter  60.61 ns ▄█                   
+                                                  (54.79 ns … 148.42 ns) 119.67 ns ██▅▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+                                               gc(  1.12 ms …   3.75 ms) 187.14  b ( 79.46  b…393.55  b)
+
+object pick no unknowns - Object.keys() & assign           76.90 ns/iter  75.24 ns ▅█                   
+                                                  (64.13 ns … 148.19 ns) 143.12 ns ██▅▄▂▂▁▂▂▁▁▁▁▁▁▂▁▁▂▁▂
+                                               gc(  1.12 ms …   6.78 ms) 283.17  b (254.03  b…421.48  b)
+
+object pick no unknowns - filter() & reduce() with assign  90.08 ns/iter  87.58 ns ▂█                   
+                                                  (77.47 ns … 239.79 ns) 209.79 ns ██▅▂▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+                                               gc(  1.11 ms …   5.36 ms) 622.54  b (191.61  b…  1.00 kb)
+
+object pick no unknowns - Object.fromEntries() & filter() 214.16 ns/iter 210.12 ns ▇█                   
+                                                 (188.23 ns … 438.62 ns) 393.33 ns ██▅▃▂▂▁▂▁▂▂▂▁▁▁▁▁▁▁▁▁
+                                               gc(  1.12 ms …   6.79 ms) 892.18  b (415.10  b…  1.54 kb)
+
+summary
+  object pick no unknowns - for in & assign
+   1.08x faster than object pick no unknowns - assign with Object.hasOwn
+   1.18x faster than object pick no unknowns - assign with in
+   1.34x faster than object pick no unknowns - Object.keys() & assign
+   1.57x faster than object pick no unknowns - filter() & reduce() with assign
+   3.74x faster than object pick no unknowns - Object.fromEntries() & filter()
+
+------------------------------------------------------------------------ -------------------------------
+object pick 2 unknowns - for in & assign                   60.52 ns/iter  59.22 ns ▂█                   
+                                                  (51.94 ns … 127.15 ns) 109.54 ns ██▅▃▂▁▃▂▁▁▁▁▁▁▂▂▁▁▁▁▁
+                                               gc(  1.16 ms …   6.11 ms) 187.16  b (185.32  b…353.52  b)
+
+object pick 2 unknowns - assign with in                    82.94 ns/iter  82.90 ns ▃█                   
+                                                  (71.86 ns … 151.26 ns) 149.34 ns ██▄▄▃▂▂▁▁▁▁▁▁▁▁▂▂▂▁▁▁
+                                               gc(  1.15 ms …   5.68 ms) 186.01  b (  4.02  b…345.74  b)
+
+object pick 2 unknowns - assign with Object.hasOwn         72.94 ns/iter  70.82 ns █▇                   
+                                                  (64.24 ns … 147.10 ns) 140.43 ns ██▅▃▂▂▁▂▁▁▁▁▁▁▁▁▁▂▁▁▁
+                                               gc(  1.13 ms …   6.84 ms) 187.23  b (185.69  b…441.76  b)
+
+object pick 2 unknowns - Object.keys() & assign            75.06 ns/iter  75.01 ns  █                   
+                                                  (66.01 ns … 147.70 ns) 140.48 ns ▆█▅▄▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+                                               gc(  1.15 ms …   4.28 ms) 285.77  b (281.47  b…441.55  b)
+
+object pick 2 unknowns - filter() & reduce() with assign   97.34 ns/iter  95.13 ns  █▃                  
+                                                  (78.84 ns … 205.55 ns) 193.47 ns ███▅▂▂▂▂▂▁▁▂▁▂▁▂▁▁▁▂▁
+                                               gc(  1.14 ms …   5.83 ms) 623.23  b (351.50  b…837.77  b)
+
+object pick 2 unknowns - Object.fromEntries() & filter()  227.05 ns/iter 221.04 ns ▆█                   
+                                                 (193.90 ns … 453.24 ns) 422.42 ns ██▆▃▁▂▂▁▂▂▂▂▁▂▁▁▁▁▁▁▁
+                                               gc(  1.14 ms …   5.82 ms) 898.02  b (165.71  b…  1.42 kb)
+
+summary
+  object pick 2 unknowns - for in & assign
+   1.21x faster than object pick 2 unknowns - assign with Object.hasOwn
+   1.24x faster than object pick 2 unknowns - Object.keys() & assign
+   1.37x faster than object pick 2 unknowns - assign with in
+   1.61x faster than object pick 2 unknowns - filter() & reduce() with assign
+   3.75x faster than object pick 2 unknowns - Object.fromEntries() & filter()
+
+------------------------------------------------------------------------ -------------------------------
+object pick 6 unknowns - for in & assign                  139.20 ns/iter 144.05 ns  ▂ █                 
+                                                 (114.92 ns … 265.15 ns) 237.99 ns ▆█▆██▅▄▃▂▃▂▁▂▁▁▁▁▁▁▁▁
+                                               gc(  1.12 ms …   3.76 ms) 264.77  b ( 67.04  b…550.50  b)
+
+object pick 6 unknowns - assign with in                   162.28 ns/iter 159.35 ns  █                   
+                                                 (141.69 ns … 298.49 ns) 278.78 ns ▇█▇▃▂▃▁▂▁▁▁▂▁▁▁▁▁▁▁▂▁
+                                               gc(  1.13 ms …   5.82 ms) 266.59  b ( 38.46  b…530.19  b)
+
+object pick 6 unknowns - assign with Object.hasOwn        135.06 ns/iter 136.25 ns  █                   
+                                                 (118.96 ns … 246.95 ns) 217.34 ns ▅██▆▄▃▂▂▁▁▁▁▂▁▁▁▁▁▁▁▁
+                                               gc(  1.14 ms …   6.70 ms) 266.32  b ( 38.21  b…514.18  b)
+
+object pick 6 unknowns - Object.keys() & assign           176.79 ns/iter 184.99 ns   █▅                 
+                                                 (140.85 ns … 341.12 ns) 298.73 ns ▃████▆▆▅▃▂▃▁▂▁▁▁▁▂▁▁▁
+                                               gc(  1.14 ms …   4.83 ms) 435.42  b ( 70.54  b…714.17  b)
+
+object pick 6 unknowns - filter() & reduce() with assign  208.37 ns/iter 207.01 ns  █▃                  
+                                                 (159.76 ns … 534.60 ns) 402.11 ns ▃██▆▃▂▁▂▂▁▂▁▂▂▂▂▁▁▂▁▁
+                                               gc(  1.15 ms …   5.82 ms) 745.86  b (442.96  b…  1.25 kb)
+
+object pick 6 unknowns - Object.fromEntries() & filter()  417.37 ns/iter 432.55 ns   █▇                 
+                                                 (343.21 ns … 752.36 ns) 646.97 ns ▃▇███▄▄▂▂▄▃▂▂▁▂▂▂▁▁▁▁
+                                               gc(  1.16 ms …   5.63 ms)   1.77 kb (  1.05 kb…  2.56 kb)
+
+summary
+  object pick 6 unknowns - assign with Object.hasOwn
+   1.03x faster than object pick 6 unknowns - for in & assign
+   1.2x faster than object pick 6 unknowns - assign with in
+   1.31x faster than object pick 6 unknowns - Object.keys() & assign
+   1.54x faster than object pick 6 unknowns - filter() & reduce() with assign
+   3.09x faster than object pick 6 unknowns - Object.fromEntries() & filter()
