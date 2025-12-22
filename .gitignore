@@ -3,6 +3,3 @@ node_modules
 
 # output
 .out
-
-# local scripts
-*.sh
