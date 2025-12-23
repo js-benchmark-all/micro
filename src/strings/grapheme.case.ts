@@ -84,6 +84,14 @@ summary(() => {
     while (!iter.next().done) len++;
     do_not_optimize(len);
   });
+  register('charCodeAt', (str) => {
+    let len = 0;
+    for (let i = 0; i < str.length; i++) {
+      let c = str.charCodeAt(i);
+      (c < 0xd800 || c > 0xdbff) && (len++);
+    }
+    do_not_optimize(len);
+  });
 });
 
 start();
