@@ -1,0 +1,26 @@
+clk: ~5.34 GHz
+cpu: null
+runtime: v8 14.5.145 (null)
+
+benchmark                           avg (min … max) p75 / p99    (min … top 1%)
+--------------------------------------------------- -------------------------------
+object literal                         3.17 ns/iter   3.17 ns   █                  
+                               (2.69 ns … 41.50 ns)   5.62 ns ▂▁██▁▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+class - with constructor               3.16 ns/iter   3.17 ns   █                  
+                               (2.69 ns … 48.34 ns)   5.62 ns ▂▁█▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+class -  without constructor           3.15 ns/iter   2.93 ns  █                   
+                               (2.69 ns … 45.41 ns)   6.84 ns ▃█▄▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+proto - Object.create()                3.23 ns/iter   3.17 ns   █ ▇                
+                               (2.69 ns … 41.50 ns)   5.37 ns ▁▁█▁█▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+proto - function with constructor      4.48 ns/iter   6.59 ns  █                   
+                               (2.93 ns … 47.36 ns)   8.06 ns ▄█▄▁▁▁▁▁▁▁▁▁▁▃█▂▁▁▁▁▁
+proto - function without constructor   3.34 ns/iter   3.17 ns  █▃                  
+                               (2.69 ns … 63.23 ns)   8.54 ns ▁██▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+summary
+  class -  without constructor
+   1x faster than class - with constructor
+   1.01x faster than object literal
+   1.03x faster than proto - Object.create()
+   1.06x faster than proto - function without constructor
+   1.42x faster than proto - function with constructor
