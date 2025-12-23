@@ -70,6 +70,7 @@ summary(() => {
   register('baseline (Array.from)', (str) => {
     do_not_optimize(Array.from(str).length);
   });
+
   register('baseline (spread)', (str) => {
     do_not_optimize([...str].length);
   });
@@ -84,3 +85,5 @@ summary(() => {
     do_not_optimize(len);
   });
 });
+
+start();
