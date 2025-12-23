@@ -1,37 +1,37 @@
-clk: ~5.33 GHz
+clk: ~5.32 GHz
 cpu: AMD Ryzen 9 9950X 16-Core Processor
 runtime: node 24.12.0 (x64-linux)
 
 benchmark                           avg (min … max) p75 / p99    (min … top 1%)
 --------------------------------------------------- -------------------------------
-object literal                         3.51 ns/iter   3.39 ns  █                   
-                               (2.94 ns … 59.94 ns)   8.25 ns  █▂                  
-                            (  4.46  b …  70.18  b)  40.10  b ▃██▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+object literal                         3.34 ns/iter   3.29 ns   ▅█                 
+                               (2.73 ns … 70.33 ns)   5.49 ns  ▄███                
+                            (  0.16  b … 193.28  b)  40.11  b ▁████▇▄▂▂▂▁▁▁▁▁▁▁▁▁▁▁
 
-class - with constructor               3.45 ns/iter   3.39 ns   █▆                 
-                               (2.83 ns … 72.24 ns)   5.99 ns  ▆██▃                
-                            (  0.93  b …  75.12  b)  40.12  b ▂████▄▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁
+class - with constructor               3.30 ns/iter   3.24 ns   █▇                 
+                               (2.66 ns … 59.40 ns)   5.91 ns  ▅██▄                
+                            (  9.73  b …  78.13  b)  40.12  b ▂████▄▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁
 
-class -  without constructor           3.76 ns/iter   3.60 ns  █                   
-                               (3.02 ns … 76.74 ns)   9.18 ns  █▅                  
-                            (  1.03  b … 135.42  b)  40.12  b ▃██▃▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+class -  without constructor           3.43 ns/iter   3.35 ns   █▅                 
+                               (2.82 ns … 69.24 ns)   5.92 ns  ▅██▂                
+                            (  1.02  b … 125.44  b)  40.13  b ▁████▄▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁
 
-proto - Object.create()                4.34 ns/iter   4.11 ns  █                   
-                               (3.15 ns … 81.79 ns)  12.67 ns  █▆                  
-                            (  0.47  b … 112.79  b)  56.14  b ▂██▄▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+proto - Object.create()                3.86 ns/iter   3.76 ns   █▃                 
+                               (3.01 ns … 63.44 ns)   7.64 ns   ██                 
+                            ( 14.09  b … 116.14  b)  56.15  b ▁▆██▆▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-proto - function with constructor      3.26 ns/iter   3.19 ns  █▇                  
-                               (2.75 ns … 62.73 ns)   5.81 ns  ██▅                 
-                            (  0.22  b …  84.13  b)  32.12  b ▆███▆▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁
+proto - function with constructor      3.04 ns/iter   2.98 ns  █▄                  
+                               (2.62 ns … 58.57 ns)   5.01 ns  ██▇                 
+                            ( 18.95  b …  84.13  b)  32.11  b ▄███▇▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-proto - function without constructor   3.49 ns/iter   3.34 ns  █                   
-                               (2.88 ns … 79.47 ns)   8.66 ns ▂█                   
-                            (  1.86  b …  72.57  b)  32.11  b ███▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+proto - function without constructor   3.23 ns/iter   3.09 ns  █                   
+                               (2.70 ns … 68.64 ns)   9.17 ns ▆█                   
+                            (  7.96  b … 123.86  b)  32.11  b ██▄▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
 summary
   proto - function with constructor
-   1.06x faster than class - with constructor
-   1.07x faster than proto - function without constructor
-   1.08x faster than object literal
-   1.15x faster than class -  without constructor
-   1.33x faster than proto - Object.create()
+   1.06x faster than proto - function without constructor
+   1.09x faster than class - with constructor
+   1.1x faster than object literal
+   1.13x faster than class -  without constructor
+   1.27x faster than proto - Object.create()

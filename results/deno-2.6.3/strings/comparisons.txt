@@ -1,22 +1,22 @@
-clk: ~5.24 GHz
+clk: ~5.25 GHz
 cpu: null
 runtime: deno 2.6.3 (x86_64-unknown-linux-gnu)
 
 benchmark                                avg (min … max) p75 / p99    (min … top 1%)
 -------------------------------------------------------- -------------------------------
-string[const_index] comparison             17.38 ns/iter  16.19 ns █▂                   
-                                   (15.13 ns … 85.75 ns)  48.94 ns ██                   
-                                 ( 19.97  b … 152.66  b)  40.25  b ██▄▂▁▂▁▁▂▁▁▁▁▁▁▁▁▁▁▁▁
+string[const_index] comparison             17.52 ns/iter  16.25 ns  █                   
+                                   (15.18 ns … 89.43 ns)  42.22 ns ▃█                   
+                                 ( 24.15  b … 147.25  b)  40.11  b ██▄▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-string.charCodeAt(const_index) comparison  17.69 ns/iter  16.07 ns █                    
-                                   (15.04 ns … 90.85 ns)  47.79 ns █                    
-                                 ( 18.07  b … 136.23  b)  40.14  b ██▃▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+string.charCodeAt(const_index) comparison  17.52 ns/iter  16.16 ns ▃█                   
+                                   (15.17 ns … 95.42 ns)  40.72 ns ██                   
+                                 (  5.26  b … 149.99  b)  40.28  b ██▃▂▂▂▁▁▁▂▂▁▂▁▁▁▁▁▁▁▁
 
-string.charAt(const_index) comparison      18.11 ns/iter  16.51 ns █                    
-                                   (15.16 ns … 91.10 ns)  69.17 ns █                    
-                                 ( 20.13  b … 190.53  b)  40.29  b █▅▂▂▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+string.charAt(const_index) comparison      17.08 ns/iter  16.27 ns  █                   
+                                   (15.25 ns … 94.31 ns)  33.77 ns  █                   
+                                 (  5.04  b … 104.13  b)  40.20  b ▂█▂▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
 summary
-  string[const_index] comparison
-   1.02x faster than string.charCodeAt(const_index) comparison
-   1.04x faster than string.charAt(const_index) comparison
+  string.charAt(const_index) comparison
+   1.03x faster than string[const_index] comparison
+   1.03x faster than string.charCodeAt(const_index) comparison

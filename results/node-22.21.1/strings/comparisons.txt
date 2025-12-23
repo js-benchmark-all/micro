@@ -1,22 +1,22 @@
-clk: ~4.91 GHz
+clk: ~5.03 GHz
 cpu: AMD Ryzen 9 9950X 16-Core Processor
 runtime: node 22.21.1 (x64-linux)
 
 benchmark                                avg (min … max) p75 / p99    (min … top 1%)
 -------------------------------------------------------- -------------------------------
-string[const_index] comparison             18.26 ns/iter  15.60 ns █                    
-                                  (14.76 ns … 466.24 ns) 109.24 ns █                    
-                                 ( 37.70  b … 180.57  b)  40.16  b █▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+string[const_index] comparison             17.81 ns/iter  15.64 ns █                    
+                                  (14.81 ns … 300.59 ns) 111.52 ns █                    
+                                 ( 36.16  b …  94.54  b)  40.14  b █▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-string.charCodeAt(const_index) comparison  18.16 ns/iter  15.49 ns █                    
-                                  (14.56 ns … 464.42 ns) 117.74 ns █                    
-                                 ( 40.08  b …  64.13  b)  40.11  b █▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+string.charCodeAt(const_index) comparison  17.84 ns/iter  15.55 ns █                    
+                                  (14.74 ns … 467.81 ns) 108.59 ns █                    
+                                 ( 18.25  b …  74.01  b)  40.11  b █▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-string.charAt(const_index) comparison      18.12 ns/iter  15.63 ns █                    
-                                  (14.75 ns … 411.77 ns) 108.94 ns █                    
-                                 (  2.16  b … 101.82  b)  40.12  b █▄▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+string.charAt(const_index) comparison      17.94 ns/iter  15.69 ns █                    
+                                  (14.78 ns … 444.11 ns)  53.71 ns █                    
+                                 ( 27.61  b …  82.86  b)  40.12  b █▄▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
 summary
-  string.charAt(const_index) comparison
+  string[const_index] comparison
    1x faster than string.charCodeAt(const_index) comparison
-   1.01x faster than string[const_index] comparison
+   1.01x faster than string.charAt(const_index) comparison

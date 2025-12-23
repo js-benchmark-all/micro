@@ -1,0 +1,32 @@
+clk: ~5.28 GHz
+cpu: null
+runtime: deno 2.6.3 (x86_64-unknown-linux-gnu)
+
+benchmark                   avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------- -------------------------------
+baseline (Array.from)        495.55 ns/iter 497.69 ns   █                  
+                    (476.13 ns … 637.58 ns) 611.34 ns  ▇██                 
+                    (  4.10 kb …   4.99 kb)   4.83 kb ▄███▆▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▂
+
+baseline (spread)            467.40 ns/iter 466.11 ns   █▅                 
+                    (442.28 ns … 657.86 ns) 586.15 ns  ███                 
+                    (  4.61 kb …   5.12 kb)   4.84 kb ▅███▇▄▃▂▂▁▁▁▁▁▁▁▂▁▂▁▁
+
+iterator (for-of)            294.21 ns/iter 294.77 ns  █▃                  
+                    (279.30 ns … 530.35 ns) 389.87 ns  ██▄                 
+                    (708.94  b …   4.30 kb)   1.27 kb ▅███▆▂▂▁▁▁▁▁▁▁▁▁▂▁▁▁▁
+
+iterator (manual)            340.70 ns/iter 335.53 ns  █                   
+                    (312.51 ns … 649.79 ns) 544.83 ns  █                   
+                    (802.19  b …   4.83 kb)   1.27 kb ▆██▃▁▂▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+charCodeAt                   210.92 ns/iter 212.06 ns   █▆                 
+                    (201.55 ns … 312.35 ns) 266.12 ns  ███▂                
+                    (  0.09  b … 399.40  b)   2.92  b ▃████▄▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+summary
+  charCodeAt
+   1.39x faster than iterator (for-of)
+   1.62x faster than iterator (manual)
+   2.22x faster than baseline (spread)
+   2.35x faster than baseline (Array.from)
