@@ -1,0 +1,42 @@
+clk: ~5.09 GHz
+cpu: AMD Ryzen 9 9950X 16-Core Processor
+runtime: bun 1.3.5 (x64-linux)
+
+benchmark                        avg (min â¦ max) p75 / p99    (min â¦ top 1%)
+------------------------------------------------ -------------------------------
+constructor                         3.43 ns/iter   3.28 ns   ââ                 
+                            (1.85 ns â¦ 66.89 ns)   9.65 ns   âââ                
+                         (  0.00  b â¦  96.00  b)   0.01  b âââââââââââââââââââââ
+
+class - with constructor            2.96 ns/iter   3.03 ns       âââ            
+                            (1.26 ns â¦ 59.16 ns)   5.54 ns      âââââ           
+                         (  0.00  b â¦  64.00  b)   0.03  b âââââââââââââââââââââ
+
+class -  without constructor        5.36 ns/iter   5.41 ns      ââ              
+                            (1.94 ns â¦ 76.80 ns)  11.74 ns      âââ             
+                         (  0.00  b â¦  96.00  b)   0.04  b âââââââââââââââââââââ
+
+constructor without freezed proto   5.63 ns/iter   5.71 ns    ââ                
+                            (3.13 ns â¦ 63.26 ns)  13.10 ns   ââââ               
+                         (  0.00  b â¦  64.00  b)   0.04  b âââââââââââââââââââââ
+
+no constructor                      7.38 ns/iter   7.66 ns   âââ                
+                            (3.38 ns â¦ 83.74 ns)  24.19 ns   âââ                
+                         (  0.00  b â¦  96.00  b)   0.13  b âââââââââââââââââââââ
+
+__proto__ set to null              14.34 ns/iter  13.85 ns  â                   
+                           (12.57 ns â¦ 79.59 ns)  26.33 ns  â                   
+                         (  0.00  b â¦  32.00  b)   0.00  b âââââââââââââââââââââ
+
+normal object                       3.69 ns/iter   3.74 ns    â                 
+                            (1.53 ns â¦ 86.13 ns)  11.22 ns   âââ                
+                         (  0.00  b â¦  64.00  b)   0.03  b âââââââââââââââââââââ
+
+summary
+  class - with constructor
+   1.16x faster than constructor
+   1.25x faster than normal object
+   1.81x faster than class -  without constructor
+   1.9x faster than constructor without freezed proto
+   2.49x faster than no constructor
+   4.84x faster than __proto__ set to null

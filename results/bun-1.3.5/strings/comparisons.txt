@@ -1,0 +1,22 @@
+clk: ~5.17 GHz
+cpu: AMD Ryzen 9 9950X 16-Core Processor
+runtime: bun 1.3.5 (x64-linux)
+
+benchmark                                avg (min â¦ max) p75 / p99    (min â¦ top 1%)
+-------------------------------------------------------- -------------------------------
+string[const_index] comparison             13.56 ns/iter  12.95 ns â                    
+                                   (12.38 ns â¦ 61.52 ns)  27.07 ns ââ                   
+                                 (  0.00  b â¦ 128.00  b)   1.24  b âââââââââââââââââââââ
+
+string.charCodeAt(const_index) comparison  13.66 ns/iter  13.37 ns  â                   
+                                   (12.57 ns â¦ 51.24 ns)  22.72 ns  â                   
+                                 (  0.00  b â¦  64.00  b)   0.36  b âââââââââââââââââââââ
+
+string.charAt(const_index) comparison      13.28 ns/iter  12.89 ns ââ                   
+                                   (12.28 ns â¦ 47.40 ns)  23.96 ns ââ                   
+                                 (  0.00  b â¦  64.00  b)   0.36  b âââââââââââââââââââââ
+
+summary
+  string.charAt(const_index) comparison
+   1.02x faster than string[const_index] comparison
+   1.03x faster than string.charCodeAt(const_index) comparison

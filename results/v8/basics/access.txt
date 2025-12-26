@@ -1,0 +1,32 @@
+clk: ~5.28 GHz
+cpu: null
+runtime: v8 14.5.149 (null)
+
+benchmark                         avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------------- -------------------------------
+access monomorphic object            1.23 µs/iter   1.25 µs   █▆▇                
+                              (1.19 µs … 1.42 µs)   1.37 µs   ███▅▆▅▂            
+                        gc(341.00 µs …   1.02 ms) 463.60 µs ▃▇███████▆▄▃▃▂▁▁▂▁▂▁▃
+
+access polymorphic object            1.51 µs/iter   1.51 µs  █                   
+                              (1.43 µs … 2.35 µs)   2.09 µs  █▃                  
+                        gc(325.00 µs … 927.00 µs) 461.26 µs ███▇▃▃▂▁▁▁▂▁▁▁▂▁▁▁▁▁▁
+
+access array                         1.48 µs/iter   1.49 µs  ▅█ ▂                
+                              (1.42 µs … 1.83 µs)   1.69 µs  ████                
+                        gc(319.00 µs …   1.19 ms) 462.97 µs ▄█████▆▃▅▃▃▂▃▂▁▁▁▂▁▁▂
+
+summary
+  access monomorphic object
+   1.2x faster than access array
+   1.22x faster than access polymorphic object
+
+------------------------------------------------- -------------------------------
+create & access monomorphic object  11.20 ns/iter  10.50 ns  █                   
+                             (8.79 ns … 56.40 ns)  29.54 ns ▅█▃▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+create & access array               13.59 ns/iter  12.94 ns  █                   
+                            (11.72 ns … 45.17 ns)  28.81 ns ▁█▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+summary
+  create & access monomorphic object
+   1.21x faster than create & access array

@@ -1,0 +1,27 @@
+clk: ~5.13 GHz
+cpu: AMD Ryzen 9 9950X 16-Core Processor
+runtime: node 22.21.1 (x64-linux)
+
+benchmark                   avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------- -------------------------------
+2 pass                        35.23 ns/iter  31.68 ns █                    
+                     (27.39 ns … 181.95 ns) 116.06 ns ██                   
+                    (134.57  b … 351.52  b) 256.26  b ██▃▂▂▁▁▁▁▂▂▁▁▁▁▁▁▁▁▁▁
+
+2 pass new Uint8Array         38.79 ns/iter  35.40 ns █▇                   
+                     (30.66 ns … 148.72 ns) 119.97 ns ██                   
+                    ( 77.40  b … 492.37  b) 400.23  b ██▃▂▁▁▁▁▃▂▂▁▁▁▁▁▁▁▁▁▁
+
+1 pass Uint8Array.from        66.02 ns/iter  63.05 ns ██                   
+                     (56.60 ns … 193.34 ns) 141.41 ns ██                   
+                    ( 87.72  b … 476.82  b) 400.34  b ██▇▃▂▁▁▁▂▃▃▂▁▁▁▁▁▁▁▁▁
+
+1 pass new Uint8Array         71.14 ns/iter  66.58 ns  █                   
+                     (54.15 ns … 350.02 ns) 173.15 ns  █                   
+                    (253.68  b … 626.07  b) 528.34  b ██▆▃▁▁▂▂▂▁▁▁▁▂▂▂▁▁▁▁▁
+
+summary
+  2 pass
+   1.1x faster than 2 pass new Uint8Array
+   1.87x faster than 1 pass Uint8Array.from
+   2.02x faster than 1 pass new Uint8Array

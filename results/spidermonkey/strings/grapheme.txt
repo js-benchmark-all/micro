@@ -1,0 +1,23 @@
+clk: ~4.97 GHz
+cpu: null
+runtime: spidermonkey (x64)
+
+benchmark                   avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------- -------------------------------
+baseline (Array.from)          1.12 µs/iter   1.14 µs       ▂█             
+                        (1.02 µs … 1.45 µs)   1.31 µs ▄▅▅▂▂▁███▃▃▂▂▃▂▃▁▁▁▁▁
+baseline (spread)            610.17 ns/iter 632.38 ns █▅  ▄                
+                      (535.69 ns … 1.19 µs)   1.03 µs ██▇▆█▃▄▁▂▁▁▁▁▁▂▁▁▁▁▁▁
+iterator (for-of)            469.99 ns/iter 473.13 ns  █▂                  
+                    (445.06 ns … 745.56 ns) 594.44 ns ▅██▇▅▃▂▂▂▂▁▁▁▂▁▁▁▁▁▁▁
+iterator (manual)            461.25 ns/iter 463.13 ns  █                   
+                    (443.31 ns … 596.00 ns) 580.06 ns ▅█▇▆▃▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁
+charCodeAt                   442.44 ns/iter 445.56 ns       ▃█▄            
+                    (416.50 ns … 525.31 ns) 479.94 ns ▁▁▁▁▃▇████▇▄▄▁▂▂▁▁▁▁▁
+
+summary
+  charCodeAt
+   1.04x faster than iterator (manual)
+   1.06x faster than iterator (for-of)
+   1.38x faster than baseline (spread)
+   2.54x faster than baseline (Array.from)

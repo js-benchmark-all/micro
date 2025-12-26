@@ -1,0 +1,42 @@
+clk: ~5.29 GHz
+cpu: AMD Ryzen 9 9950X 16-Core Processor
+runtime: node 23.11.1 (x64-linux)
+
+benchmark                        avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------------ -------------------------------
+constructor                         3.59 ns/iter   3.23 ns █                    
+                            (2.68 ns … 51.56 ns)  12.63 ns ██                   
+                         (  2.74  b …  93.68  b)  32.14  b ██▄▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+class - with constructor            3.41 ns/iter   3.18 ns  █                   
+                            (2.70 ns … 46.85 ns)  12.35 ns ▇█                   
+                         (  3.19  b …  91.85  b)  40.14  b ██▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+class -  without constructor        3.52 ns/iter   3.26 ns  █                   
+                            (2.70 ns … 63.10 ns)  13.03 ns ▂█                   
+                         (  5.71  b …  98.31  b)  40.14  b ██▄▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+constructor without freezed proto   3.25 ns/iter   3.10 ns █▇                   
+                            (2.71 ns … 48.48 ns)  11.67 ns ██                   
+                         (  2.74  b … 106.22  b)  32.13  b ██▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+no constructor                     12.15 ns/iter  11.64 ns  █                   
+                           (10.23 ns … 43.88 ns)  24.64 ns  █                   
+                         ( 19.42  b … 286.23  b) 184.25  b ▃█▇▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+__proto__ set to null              16.01 ns/iter  15.11 ns ▃█                   
+                           (14.24 ns … 80.05 ns)  32.62 ns ██                   
+                         ( 15.04  b … 264.21  b) 200.33  b ██▃▂▁▁▁▁▁▁▂▂▂▁▁▁▁▁▁▁▁
+
+normal object                       3.69 ns/iter   3.52 ns  █                   
+                            (2.93 ns … 43.32 ns)  13.18 ns  █                   
+                         (  0.57  b …  96.11  b)  56.14  b ▅█▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+summary
+  constructor without freezed proto
+   1.05x faster than class - with constructor
+   1.08x faster than class -  without constructor
+   1.11x faster than constructor
+   1.14x faster than normal object
+   3.75x faster than no constructor
+   4.93x faster than __proto__ set to null

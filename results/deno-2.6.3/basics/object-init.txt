@@ -1,0 +1,37 @@
+clk: ~5.29 GHz
+cpu: null
+runtime: deno 2.6.3 (x86_64-unknown-linux-gnu)
+
+benchmark                           avg (min … max) p75 / p99    (min … top 1%)
+--------------------------------------------------- -------------------------------
+object literal                         3.48 ns/iter   3.27 ns  █                   
+                               (2.75 ns … 79.29 ns)   9.83 ns  █                   
+                            (  1.48  b … 100.58  b)  40.14  b ▅█▅▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+class - with constructor               3.45 ns/iter   3.23 ns  █                   
+                               (2.70 ns … 74.50 ns)  10.32 ns  █                   
+                            (  5.12  b … 107.32  b)  40.03  b ▅█▄▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+class -  without constructor           3.38 ns/iter   3.15 ns  █                   
+                               (2.64 ns … 55.18 ns)  12.30 ns  █                   
+                            ( 20.06  b … 108.04  b)  40.12  b ██▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+proto - Object.create()                4.00 ns/iter   3.84 ns   █                  
+                               (3.01 ns … 62.08 ns)   9.41 ns  ▇█                  
+                            (  0.09  b … 115.92  b)  56.04  b ▁███▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+proto - function with constructor      3.16 ns/iter   3.07 ns  █                   
+                               (2.68 ns … 58.11 ns)   5.80 ns  █▇                  
+                            ( 16.09  b …  87.91  b)  32.13  b ▅███▃▂▁▁▂▂▁▁▁▁▁▁▁▁▁▁▁
+
+proto - function without constructor   3.07 ns/iter   2.97 ns  █                   
+                               (2.60 ns … 47.78 ns)   6.36 ns  █▅                  
+                            (  8.58  b … 104.13  b)  32.12  b ▇██▄▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+summary
+  proto - function without constructor
+   1.03x faster than proto - function with constructor
+   1.1x faster than class -  without constructor
+   1.12x faster than class - with constructor
+   1.13x faster than object literal
+   1.3x faster than proto - Object.create()

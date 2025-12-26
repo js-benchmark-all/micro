@@ -1,0 +1,29 @@
+clk: ~4.07 GHz
+cpu: null
+runtime: spidermonkey (x64)
+
+benchmark                        avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------------ -------------------------------
+constructor                         4.60 ns/iter   4.44 ns   █                  
+                            (4.06 ns … 34.38 ns)   7.63 ns ▃▄█▂▁▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+class - with constructor            6.99 ns/iter   6.88 ns █                    
+                            (6.13 ns … 33.25 ns)  24.63 ns ██▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+class -  without constructor        7.45 ns/iter   7.13 ns █                    
+                            (6.50 ns … 38.13 ns)  26.44 ns █▇▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+constructor without freezed proto   4.87 ns/iter   4.69 ns █▅                   
+                            (4.31 ns … 38.75 ns)   9.75 ns ██▃▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+no constructor                      3.54 ns/iter   3.44 ns   █                  
+                            (3.13 ns … 30.25 ns)   5.81 ns ▆▂█▃▂▁▄▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+__proto__ set to null              18.74 ns/iter  18.56 ns ▇█                   
+                           (17.81 ns … 38.06 ns)  27.88 ns ██▆▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+normal object                       3.61 ns/iter   3.50 ns   █                  
+                            (3.13 ns … 28.06 ns)   5.88 ns ▁▁█▃▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+summary
+  no constructor
+   1.02x faster than normal object
+   1.3x faster than constructor
+   1.37x faster than constructor without freezed proto
+   1.97x faster than class - with constructor
+   2.1x faster than class -  without constructor
+   5.29x faster than __proto__ set to null

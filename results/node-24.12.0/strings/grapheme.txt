@@ -1,0 +1,32 @@
+clk: ~5.32 GHz
+cpu: AMD Ryzen 9 9950X 16-Core Processor
+runtime: node 24.12.0 (x64-linux)
+
+benchmark                   avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------- -------------------------------
+baseline (Array.from)        520.62 ns/iter 524.87 ns  █▃                  
+                    (474.81 ns … 843.97 ns) 760.74 ns  ██▆                 
+                    (  4.65 kb …   5.18 kb)   4.84 kb ████▇▄▃▂▃▂▂▁▂▂▁▁▁▁▁▁▁
+
+baseline (spread)            524.78 ns/iter 519.64 ns  █                   
+                      (450.38 ns … 1.29 µs) 926.18 ns ▂█▄                  
+                    (  4.29 kb …   5.18 kb)   4.84 kb ███▆▄▃▂▃▂▂▁▂▁▁▁▁▁▂▁▁▁
+
+iterator (for-of)            303.07 ns/iter 302.92 ns  █                   
+                    (278.50 ns … 547.93 ns) 442.56 ns ▆█▄                  
+                    (787.17  b …   5.05 kb)   1.27 kb ███▆▃▃▃▂▂▂▂▂▂▁▁▁▁▁▁▂▁
+
+iterator (manual)            367.88 ns/iter 367.50 ns  █                   
+                    (329.65 ns … 802.23 ns) 666.29 ns  █▄                  
+                    (873.64  b …   5.12 kb)   3.19 kb ▆██▅▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+charCodeAt                   207.70 ns/iter 206.93 ns  ██                  
+                    (191.80 ns … 371.41 ns) 315.75 ns  ██                  
+                    (  0.10  b … 410.35  b)   3.06  b ▄███▄▂▂▁▁▁▁▁▁▂▂▁▁▁▁▁▁
+
+summary
+  charCodeAt
+   1.46x faster than iterator (for-of)
+   1.77x faster than iterator (manual)
+   2.51x faster than baseline (Array.from)
+   2.53x faster than baseline (spread)

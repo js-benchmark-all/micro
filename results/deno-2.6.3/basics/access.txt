@@ -1,0 +1,35 @@
+clk: ~5.25 GHz
+cpu: null
+runtime: deno 2.6.3 (x86_64-unknown-linux-gnu)
+
+benchmark                         avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------------- -------------------------------
+access monomorphic object            1.17 µs/iter   1.17 µs   █                  
+                              (1.13 µs … 1.36 µs)   1.29 µs ▃▆██▆█▅▃▄▁▂▁▃▁▂▁▁▁▁▁▁
+                        gc(  1.68 ms …   4.55 ms)  50.06  b (  3.30  b…216.50  b)
+
+access polymorphic object            1.46 µs/iter   1.47 µs  ▆▆█▃                
+                              (1.39 µs … 1.97 µs)   1.79 µs ▅████▅▃▂▁▂▃▂▁▁▁▁▁▁▁▁▂
+                        gc(  1.74 ms …   5.43 ms)   7.79 kb (  7.46 kb…  7.80 kb)
+
+access array                         1.39 µs/iter   1.37 µs  █                   
+                              (1.30 µs … 2.05 µs)   1.93 µs ▆██▃▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁
+                        gc(  1.69 ms …   3.68 ms)   7.79 kb (  6.98 kb…  8.22 kb)
+
+summary
+  access monomorphic object
+   1.19x faster than access array
+   1.25x faster than access polymorphic object
+
+------------------------------------------------- -------------------------------
+create & access monomorphic object  10.51 ns/iter   9.88 ns  █                   
+                             (9.09 ns … 58.03 ns)  26.44 ns ▆█                   
+                          ( 15.13  b … 161.34  b) 104.08  b ██▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+create & access array               12.85 ns/iter  12.23 ns  █                   
+                            (11.48 ns … 54.09 ns)  26.66 ns  █                   
+                          ( 23.17  b … 176.13  b) 112.11  b ██▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+summary
+  create & access monomorphic object
+   1.22x faster than create & access array

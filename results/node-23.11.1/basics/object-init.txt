@@ -1,0 +1,37 @@
+clk: ~5.27 GHz
+cpu: AMD Ryzen 9 9950X 16-Core Processor
+runtime: node 23.11.1 (x64-linux)
+
+benchmark                           avg (min … max) p75 / p99    (min … top 1%)
+--------------------------------------------------- -------------------------------
+object literal                         3.75 ns/iter   3.14 ns █                    
+                              (2.62 ns … 105.80 ns)  20.96 ns █                    
+                            (  2.15  b …  77.47  b)  40.11  b ██▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+class - with constructor               3.65 ns/iter   3.15 ns █                    
+                               (2.63 ns … 95.73 ns)  17.91 ns ██                   
+                            (  2.60  b … 259.21  b)  40.15  b ██▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+class -  without constructor           3.71 ns/iter   3.23 ns █                    
+                              (2.72 ns … 103.46 ns)  21.12 ns █                    
+                            (  0.99  b …  86.31  b)  40.14  b ██▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+proto - Object.create()                4.47 ns/iter   4.01 ns ██                   
+                              (2.96 ns … 101.22 ns)  28.87 ns ██                   
+                            ( 25.17  b … 124.02  b)  56.15  b ██▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+proto - function with constructor      3.30 ns/iter   3.06 ns  █                   
+                               (2.58 ns … 77.80 ns)  10.31 ns ▄█                   
+                            (  5.22  b …  82.83  b)  32.12  b ██▄▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+proto - function without constructor   3.31 ns/iter   3.06 ns ▇█                   
+                               (2.68 ns … 75.04 ns)  11.12 ns ██                   
+                            (  0.58  b …  78.95  b)  32.13  b ██▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+summary
+  proto - function with constructor
+   1x faster than proto - function without constructor
+   1.11x faster than class - with constructor
+   1.13x faster than class -  without constructor
+   1.14x faster than object literal
+   1.35x faster than proto - Object.create()
