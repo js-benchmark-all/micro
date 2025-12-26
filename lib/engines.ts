@@ -37,18 +37,23 @@ export const CONFIG: Record<string, {
       ['v8', '--allow-natives-syntax', '--expose-gc', file],
       { env, stderr: 'inherit' }
     ),
-    id: async () => {
-      const txt = (await $`echo "quit()" | v8`.text()).trim();
-      return 'v8-' + txt.slice('V8 version '.length, -'d8>'.length).trim();
-    },
+    id: async () => 'v8',
     env: {}
   },
-  jsc: {
+  spidermonkey: {
     run: (file, env) => spawnSync(
-      ['jsc', '-m', file],
+      ['spidermonkey', '-m', file],
       { env, stderr: 'inherit' }
     ),
-    id: async () => 'jsc',
+    id: async () => 'spidermonkey',
+    env: {}
+  },
+  hermes: {
+    run: (file, env) => spawnSync(
+      ['hermes', '-strict', file],
+      { env, stderr: 'inherit' }
+    ),
+    id: async () => 'hermes',
     env: {}
   }
 };

@@ -16,6 +16,7 @@ bun index.ts bun
 deno upgrade
 bun index.ts deno
 
-bun jsvu --engines=v8,javascriptcore
+bun jsvu --engines=v8,hermes,spidermonkey
 bun index.ts v8
-bun index.ts jsc
+bun index.ts hermes
+bun index.ts spidermonkey
