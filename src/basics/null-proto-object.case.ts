@@ -8,7 +8,7 @@ summary(() => {
         [0]: () => 123,
         bench: fn,
       };
-    });
+    }).gc('inner');
   };
 
   {
@@ -22,36 +22,6 @@ summary(() => {
       const o = new Proto();
       o.foo = val;
       do_not_optimize(o);
-    });
-  }
-
-  {
-    class Context {
-      status: number;
-      headers: any;
-
-      constructor(headers: any) {
-        this.status = 200;
-        this.headers = headers;
-      }
-    }
-
-    register('class - with constructor', (l) => {
-      do_not_optimize(new Context(l));
-    });
-  }
-
-  {
-    class Context {
-      status!: number;
-      headers!: any;
-    }
-
-    register('class -  without constructor', (l) => {
-      const c = new Context();
-      c.status = 200;
-      c.headers = l;
-      do_not_optimize(c);
     });
   }
 
