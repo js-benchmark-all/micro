@@ -1,27 +1,27 @@
-clk: ~5.32 GHz
+clk: ~5.34 GHz
 cpu: AMD Ryzen 9 9950X 16-Core Processor
 runtime: node 24.12.0 (x64-linux)
 
 benchmark                   avg (min … max) p75 / p99    (min … top 1%)
 ------------------------------------------- -------------------------------
-2 pass                        30.27 ns/iter  29.68 ns ▄█                   
-                     (26.40 ns … 132.43 ns)  86.44 ns ██                   
-                    (132.92  b … 558.11  b) 272.31  b ██▆▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+2 pass                        31.26 ns/iter  29.48 ns █                    
+                     (26.35 ns … 163.46 ns) 109.59 ns █▃                   
+                    (193.72  b … 326.43  b) 272.24  b ██▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-2 pass new Uint8Array         37.52 ns/iter  36.11 ns  █                   
-                     (31.31 ns … 162.20 ns) 106.56 ns ▄█                   
-                    ( 50.02  b … 504.96  b) 416.14  b ██▅▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+2 pass new Uint8Array         36.15 ns/iter  33.95 ns  █                   
+                     (28.99 ns … 164.47 ns) 112.32 ns ██                   
+                    (202.44  b … 506.21  b) 416.28  b ██▅▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-1 pass Uint8Array.from        63.37 ns/iter  61.04 ns █▂                   
-                     (55.06 ns … 196.79 ns) 144.46 ns ██                   
-                    ( 54.11  b … 584.23  b) 415.80  b ██▅▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+1 pass Uint8Array.from        58.46 ns/iter  57.44 ns █                    
+                     (53.79 ns … 154.67 ns) 119.62 ns ██                   
+                    ( 12.52  b … 545.91  b) 416.27  b ██▅▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-1 pass new Uint8Array         62.00 ns/iter  59.57 ns  █                   
-                     (50.53 ns … 255.37 ns) 148.47 ns  █                   
-                    (172.62  b … 680.24  b) 544.42  b ▇█▇▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+1 pass new Uint8Array         58.75 ns/iter  57.03 ns  █                   
+                     (50.44 ns … 182.15 ns) 133.46 ns  █                   
+                    (195.98  b … 672.26  b) 544.05  b ▆█▇▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
 summary
   2 pass
-   1.24x faster than 2 pass new Uint8Array
-   2.05x faster than 1 pass new Uint8Array
-   2.09x faster than 1 pass Uint8Array.from
+   1.16x faster than 2 pass new Uint8Array
+   1.87x faster than 1 pass Uint8Array.from
+   1.88x faster than 1 pass new Uint8Array

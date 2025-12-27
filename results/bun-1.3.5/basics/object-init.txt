@@ -1,37 +1,37 @@
-clk: ~5.13 GHz
+clk: ~5.11 GHz
 cpu: AMD Ryzen 9 9950X 16-Core Processor
 runtime: bun 1.3.5 (x64-linux)
 
 benchmark                           avg (min â¦ max) p75 / p99    (min â¦ top 1%)
 --------------------------------------------------- -------------------------------
-object literal                         3.36 ns/iter   3.45 ns     âââ              
-                               (1.69 ns â¦ 86.44 ns)   6.82 ns    âââââ             
-                            (  0.00  b â¦  32.00  b)   0.01  b âââââââââââââââââââââ
+object literal                         3.33 ns/iter   3.31 ns      â               
+                               (1.34 ns â¦ 91.87 ns)   7.31 ns     ââââ             
+                            (  0.00  b â¦  32.00  b)   0.01  b âââââââââââââââââââââ
 
-class - with constructor               3.71 ns/iter   3.74 ns    âââ               
-                               (1.89 ns â¦ 94.43 ns)   7.85 ns    ââââ              
-                            (  0.00  b â¦  32.00  b)   0.01  b âââââââââââââââââââââ
+class - with constructor               3.28 ns/iter   3.28 ns     ââ               
+                               (1.81 ns â¦ 87.59 ns)   6.30 ns    âââââ             
+                            (  0.00  b â¦  64.00  b)   0.01  b âââââââââââââââââââââ
 
-class -  without constructor           4.40 ns/iter   4.02 ns   â                  
-                              (2.22 ns â¦ 149.62 ns)  12.04 ns  âââ                 
-                            (  0.00  b â¦  64.00  b)   0.01  b âââââââââââââââââââââ
+class -  without constructor           4.47 ns/iter   4.06 ns   â                  
+                              (2.19 ns â¦ 150.68 ns)  13.25 ns  âââ                 
+                            (  0.00  b â¦  32.00  b)   0.01  b âââââââââââââââââââââ
 
-proto - Object.create()                6.79 ns/iter   6.69 ns   â                  
-                              (3.84 ns â¦ 104.54 ns)  19.94 ns   ââ                 
-                            (  0.00  b â¦  64.00  b)   0.02  b âââââââââââââââââââââ
+proto - Object.create()                6.26 ns/iter   6.26 ns    ââ                
+                              (3.71 ns â¦ 105.63 ns)  13.08 ns    âââ               
+                            (  0.00  b â¦  32.00  b)   0.00  b âââââââââââââââââââââ
 
-proto - function with constructor      3.62 ns/iter   3.38 ns   ââ                 
-                              (1.83 ns â¦ 133.87 ns)   8.93 ns   âââ                
-                            (  0.00  b â¦  96.00  b)   0.01  b âââââââââââââââââââââ
+proto - function with constructor      3.43 ns/iter   3.15 ns   ââ                 
+                              (1.65 ns â¦ 125.09 ns)   9.36 ns   ââ                 
+                            (  0.00  b â¦  64.00  b)   0.06  b âââââââââââââââââââââ
 
-proto - function without constructor   3.51 ns/iter   3.54 ns     ââ               
-                               (1.90 ns â¦ 92.35 ns)   7.13 ns    ââââ              
-                            (  0.00  b â¦  32.00  b)   0.01  b âââââââââââââââââââââ
+proto - function without constructor   3.33 ns/iter   3.28 ns    ââ                
+                               (2.04 ns â¦ 88.53 ns)   6.84 ns   ââââ               
+                            (  0.00  b â¦  64.00  b)   0.09  b âââââââââââââââââââââ
 
 summary
-  object literal
-   1.04x faster than proto - function without constructor
-   1.08x faster than proto - function with constructor
-   1.1x faster than class - with constructor
-   1.31x faster than class -  without constructor
-   2.02x faster than proto - Object.create()
+  class - with constructor
+   1.01x faster than object literal
+   1.02x faster than proto - function without constructor
+   1.05x faster than proto - function with constructor
+   1.36x faster than class -  without constructor
+   1.91x faster than proto - Object.create()

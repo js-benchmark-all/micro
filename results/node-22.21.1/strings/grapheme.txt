@@ -1,32 +1,32 @@
-clk: ~5.05 GHz
+clk: ~4.76 GHz
 cpu: AMD Ryzen 9 9950X 16-Core Processor
 runtime: node 22.21.1 (x64-linux)
 
 benchmark                   avg (min … max) p75 / p99    (min … top 1%)
 ------------------------------------------- -------------------------------
-baseline (Array.from)        522.99 ns/iter 504.73 ns █▅                   
-                      (471.16 ns … 1.59 µs)   1.30 µs ██                   
-                    (918.63  b …   1.13 kb) 927.99  b ██▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+baseline (Array.from)        541.06 ns/iter 524.38 ns  █                   
+                      (480.64 ns … 1.47 µs)   1.28 µs ██                   
+                    (570.13  b …   1.20 kb) 926.63  b ██▄▂▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-baseline (spread)            447.81 ns/iter 453.20 ns  ▅█▆▆▂               
-                    (423.70 ns … 563.40 ns) 547.09 ns  █████               
-                    (728.65  b …   1.19 kb) 926.79  b ███████▃▂▂▁▁▁▁▁▁▁▁▂▃▂
+baseline (spread)            480.50 ns/iter 478.87 ns  ▄█                  
+                      (440.25 ns … 1.11 µs) 698.92 ns  ██▆                 
+                    (803.83  b …   1.12 kb) 926.99  b ▅███▅▂▁▂▁▁▂▂▂▁▁▁▁▁▁▁▁
 
-iterator (for-of)            295.40 ns/iter 293.98 ns  █                   
-                    (271.19 ns … 633.46 ns) 463.01 ns ▄██                  
-                    (  1.04 kb …   2.11 kb)   1.27 kb ███▇▃▃▂▁▁▁▂▂▁▂▁▁▁▁▁▁▁
+iterator (for-of)            293.76 ns/iter 295.41 ns  █                   
+                    (277.89 ns … 595.24 ns) 403.47 ns  █▂                  
+                    (808.89  b …   2.27 kb)   1.27 kb ▇███▅▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-iterator (manual)            460.71 ns/iter 455.72 ns   █                  
-                      (349.98 ns … 1.38 µs)   1.17 µs   █                  
-                    (849.94  b …   1.89 kb)   1.35 kb ▂▅█▇▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+iterator (manual)            459.11 ns/iter 462.21 ns     █                
+                    (359.98 ns … 996.15 ns) 794.81 ns     █▃               
+                    (977.46  b …   2.12 kb)   1.35 kb ▂▂▁▇██▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁
 
-charCodeAt                   256.98 ns/iter 254.06 ns  █                   
-                    (232.81 ns … 504.00 ns) 461.89 ns  █▄                  
-                    (  0.02  b … 234.67  b)   1.29  b ▅██▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁
+charCodeAt                   251.52 ns/iter 252.95 ns   ▆█                 
+                    (235.67 ns … 331.85 ns) 327.12 ns  ▃██▆                
+                    (  0.02  b … 217.48  b)   1.23  b ▃████▆▃▂▂▁▁▁▁▁▁▁▁▁▁▂▁
 
 summary
   charCodeAt
-   1.15x faster than iterator (for-of)
-   1.74x faster than baseline (spread)
-   1.79x faster than iterator (manual)
-   2.04x faster than baseline (Array.from)
+   1.17x faster than iterator (for-of)
+   1.83x faster than iterator (manual)
+   1.91x faster than baseline (spread)
+   2.15x faster than baseline (Array.from)

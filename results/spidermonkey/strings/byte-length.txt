@@ -1,4 +1,4 @@
-clk: ~5.01 GHz
+clk: ~4.87 GHz
 cpu: null
 runtime: spidermonkey (x64)
 
