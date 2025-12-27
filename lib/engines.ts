@@ -47,14 +47,6 @@ export const CONFIG: Record<string, {
     ),
     id: async () => 'spidermonkey',
     env: {}
-  },
-  hermes: {
-    run: (file, env) => spawnSync(
-      ['hermes', '-strict', file],
-      { env, stderr: 'inherit' }
-    ),
-    id: async () => 'hermes',
-    env: {}
   }
 };
 
