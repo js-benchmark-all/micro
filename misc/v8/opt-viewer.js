@@ -32,6 +32,31 @@ const STATUS_MAP = {
     "marked for concurrent maglev optimization",
   ],
   "13.7.152.14": "13.6.233.10",
+  "14.2.231.17": [
+    "is function",
+    "never optimized (--no-turbofan)",
+    "maybe deopted",
+    "optimized",
+    "maglevved",
+    "turbofanned",
+    "interpreted",
+    "marked for optimization",
+    "marked for concurrent optimization",
+    "optimizing concurrently",
+    "is executing",
+    "topmost frame is turbofanned",
+    "cannot optimize (--lite-mode)",
+    "marked for deoptimization",
+    "in baseline",
+    "topmost frame is interpreted",
+    "topmost frame is baseline",
+    "is lazily compiled",
+    "topmost frame is maglevved",
+    "optimize on next call optimizes to maglev",
+    "optimize maglev optimizes to turbofan",
+    "marked for maglev optimization",
+    "marked for concurrent maglev optimization",
+  ]
 };
 
 let STATUS = STATUS_MAP[VERSION];
