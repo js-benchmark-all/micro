@@ -1,35 +1,35 @@
-clk: ~5.26 GHz
-cpu: AMD Ryzen 9 9950X 16-Core Processor
+clk: ~2.18 GHz
+cpu: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz
 runtime: node 23.11.1 (x64-linux)
 
 benchmark                         avg (min … max) p75 / p99    (min … top 1%)
 ------------------------------------------------- -------------------------------
-access monomorphic object            1.19 µs/iter   1.20 µs   █▅                 
-                              (1.14 µs … 1.57 µs)   1.40 µs ▄▇██▅▄▄▃▂▂▁▁▂▁▁▁▁▁▁▁▁
-                        gc(  1.15 ms …   3.42 ms)   1.16 kb (  1.98  b…  4.19 kb)
+access monomorphic object            3.28 µs/iter   3.28 µs      █               
+                              (3.24 µs … 3.74 µs)   3.36 µs ▂▁▃█▇██▆▂▂▂▁▁▂▁▁▁▁▁▁▂
+                        gc(  2.78 ms …   6.95 ms)  14.62  b (  2.45  b… 20.97  b)
 
-access polymorphic object            1.46 µs/iter   1.42 µs  █                   
-                              (1.34 µs … 2.68 µs)   2.37 µs ▄█▄▁▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
-                        gc(  1.36 ms …   5.33 ms)   3.78 kb (  3.65 kb…  3.81 kb)
+access polymorphic object            4.49 µs/iter   4.50 µs    ▄▂   █▂           
+                              (4.44 µs … 4.63 µs)   4.56 µs ▅▇███▃▇▇██▁▅▃▅▃▃▃▁▅▃▃
+                        gc(  2.94 ms …   7.58 ms)   3.78 kb (  3.73 kb…  3.81 kb)
 
-access array                         1.38 µs/iter   1.35 µs  █                   
-                              (1.28 µs … 2.78 µs)   2.12 µs ██▃▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁
-                        gc(  1.29 ms …   4.12 ms)   3.78 kb (  3.65 kb…  3.81 kb)
+access array                         4.13 µs/iter   4.14 µs   ▃██                
+                              (4.08 µs … 4.37 µs)   4.23 µs ▄█████▃▆█▆▃▄▄▆▁▁▁▁▁▁▃
+                        gc(  2.83 ms …   7.10 ms)   3.78 kb (  3.74 kb…  3.81 kb)
 
 summary
   access monomorphic object
-   1.16x faster than access array
-   1.23x faster than access polymorphic object
+   1.26x faster than access array
+   1.37x faster than access polymorphic object
 
 ------------------------------------------------- -------------------------------
-create & access monomorphic object  11.16 ns/iter  10.00 ns █                    
-                             (9.05 ns … 83.17 ns)  35.18 ns █▄                   
-                          ( 25.01  b … 167.12  b) 104.21  b ██▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+create & access monomorphic object  31.59 ns/iter  30.95 ns  █                   
+                           (29.34 ns … 104.44 ns)  51.91 ns  █                   
+                          ( 25.01  b … 191.20  b) 104.31  b ██▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-create & access array               13.05 ns/iter  12.32 ns █                    
-                            (11.61 ns … 68.60 ns)  34.48 ns █▄                   
-                          ( 38.32  b … 190.14  b) 112.19  b ██▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+create & access array               40.04 ns/iter  39.42 ns  █                   
+                           (37.51 ns … 103.21 ns)  61.32 ns  █▂                  
+                          ( 30.31  b … 176.15  b) 112.38  b ███▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
 summary
   create & access monomorphic object
-   1.17x faster than create & access array
+   1.27x faster than create & access array

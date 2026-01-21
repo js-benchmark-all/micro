@@ -1,27 +1,0 @@
-clk: ~5.18 GHz
-cpu: AMD Ryzen 9 9950X 16-Core Processor
-runtime: bun 1.3.5 (x64-linux)
-
-benchmark                   avg (min â¦ max) p75 / p99    (min â¦ top 1%)
-------------------------------------------- -------------------------------
-2 pass                        25.25 ns/iter  24.39 ns  â                   
-                     (19.86 ns â¦ 258.56 ns)  85.98 ns  â                   
-                    (  0.00  b â¦ 128.00  b)   0.29  b âââââââââââââââââââââ
-
-2 pass new Uint8Array         37.24 ns/iter  36.01 ns  â                   
-                     (27.69 ns â¦ 172.20 ns) 118.74 ns  â                   
-                    (  0.00  b â¦ 256.00  b)   0.58  b âââââââââââââââââââââ
-
-1 pass Uint8Array.from        45.62 ns/iter  42.71 ns  â                   
-                     (36.64 ns â¦ 367.12 ns) 130.16 ns  â                   
-                    (  0.00  b â¦ 192.00  b)   0.80  b âââââââââââââââââââââ
-
-1 pass new Uint8Array         44.36 ns/iter  42.39 ns  â                   
-                     (35.55 ns â¦ 180.34 ns) 128.39 ns  â                   
-                    (  0.00  b â¦ 224.00  b)   1.22  b âââââââââââââââââââââ
-
-summary
-  2 pass
-   1.48x faster than 2 pass new Uint8Array
-   1.76x faster than 1 pass new Uint8Array
-   1.81x faster than 1 pass Uint8Array.from

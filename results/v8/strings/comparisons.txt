@@ -1,17 +1,17 @@
-clk: ~5.30 GHz
+clk: ~0.79 GHz
 cpu: null
-runtime: v8 14.5.149 (null)
+runtime: v8 14.5.143 (null)
 
 benchmark                                avg (min … max) p75 / p99    (min … top 1%)
 -------------------------------------------------------- -------------------------------
-string[const_index] comparison             16.46 ns/iter  15.62 ns  █                   
-                                   (14.40 ns … 73.24 ns)  32.71 ns ▂█▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
-string.charCodeAt(const_index) comparison  16.24 ns/iter  15.38 ns  █                   
-                                   (14.40 ns … 76.17 ns)  33.45 ns ▂█▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
-string.charAt(const_index) comparison      16.52 ns/iter  15.87 ns  █                   
-                                   (14.65 ns … 79.10 ns)  32.71 ns ▃█▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+string[const_index] comparison            207.55 ns/iter 205.32 ns  █▃                  
+                                 (194.82 ns … 452.39 ns) 307.37 ns ▂██▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+string.charCodeAt(const_index) comparison 203.59 ns/iter 201.66 ns  █                   
+                                 (190.92 ns … 428.71 ns) 348.88 ns ▃█▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+string.charAt(const_index) comparison     210.76 ns/iter 206.54 ns  █                   
+                                 (197.27 ns … 465.82 ns) 376.22 ns ▃█▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
 summary
   string.charCodeAt(const_index) comparison
-   1.01x faster than string[const_index] comparison
-   1.02x faster than string.charAt(const_index) comparison
+   1.02x faster than string[const_index] comparison
+   1.04x faster than string.charAt(const_index) comparison

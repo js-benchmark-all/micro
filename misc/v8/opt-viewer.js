@@ -31,11 +31,11 @@ const STATUS_MAP = {
     "marked for maglev optimization",
     "marked for concurrent maglev optimization",
   ],
-  "13.7.152.14": () => STATUS_MAP["13.6.233.10"],
+  "13.7.152.14": "13.6.233.10",
 };
 
 let STATUS = STATUS_MAP[VERSION];
-typeof STATUS === "function" && (STATUS = STATUS());
+typeof STATUS === "string" && (STATUS = STATUS_MAP[STATUS]);
 
 if (STATUS == null) {
   console.error("unsupported V8 version:", VERSION);

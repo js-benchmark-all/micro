@@ -3,11 +3,7 @@ import { rmSync, mkdirSync, writeFileSync } from 'node:fs';
 import { fmt } from './format';
 import { dirname } from 'node:path';
 
-export const CONFIG: Record<string, {
-  run: (file: string, env: Record<string, string>) =>  Bun.SyncSubprocess<'pipe', 'inherit'>,
-  id: () => Promise<string>,
-  env: Record<string, string>
-}> = {
+export const CONFIG = {
   bun: {
     run: (file, env) => spawnSync(
       ['bun', 'run', file],
@@ -48,7 +44,12 @@ export const CONFIG: Record<string, {
     id: async () => 'spidermonkey',
     env: {}
   }
-};
+} satisfies Record<string, {
+  run: (file: string, env: Record<string, string>) =>  Bun.SyncSubprocess<'pipe', 'inherit'>,
+  id: () => Promise<string>,
+  env: Record<string, string>
+}>;
+export type EngineId = `${keyof typeof CONFIG}${string}`;
 
 export const env: Record<string, Record<string, string>> = {};
 
@@ -59,6 +60,7 @@ if (RUNTIME == null) {
   process.exit(1);
 }
 
+// @ts-ignore
 const selectedRuntime = CONFIG[RUNTIME];
 if (selectedRuntime == null) {
   console.error('Unknown runtime: ' + RUNTIME);
@@ -66,11 +68,11 @@ if (selectedRuntime == null) {
   process.exit(1);
 }
 
-const ID = await selectedRuntime.id();
-console.log('Runtime:', fmt.h1(ID));
+export const id = await selectedRuntime.id();
+console.log('Runtime:', fmt.h1(id));
 
 // Recreate result directory
-const RESULTS_DIR = `${import.meta.dir}/../results/${ID}/`;
+const RESULTS_DIR = `${import.meta.dir}/../results/${id}/`;
 
 try {
   rmSync(RESULTS_DIR, { recursive: true });

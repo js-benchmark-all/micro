@@ -1,35 +1,0 @@
-clk: ~5.22 GHz
-cpu: AMD Ryzen 9 9950X 16-Core Processor
-runtime: bun 1.3.5 (x64-linux)
-
-benchmark                         avg (min â¦ max) p75 / p99    (min â¦ top 1%)
-------------------------------------------------- -------------------------------
-access monomorphic object          111.04 ns/iter 110.76 ns ââ                   
-                          (104.80 ns â¦ 387.15 ns) 181.57 ns âââââââââââââââââââââ
-                        gc(148.28 Âµs â¦   1.08 ms)   0.24  b (  0.00  bâ¦128.00  b)
-
-access polymorphic object          113.31 ns/iter 113.00 ns  â                   
-                          (107.68 ns â¦ 610.72 ns) 156.94 ns âââââââââââââââââââââ
-                        gc(152.35 Âµs â¦   3.05 ms)   0.12  b (  0.00  bâ¦ 64.00  b)
-
-access array                       116.41 ns/iter 114.81 ns ââ                   
-                          (108.71 ns â¦ 393.92 ns) 200.61 ns âââââââââââââââââââââ
-                        gc(167.59 Âµs â¦ 809.09 Âµs)   0.17  b (  0.00  bâ¦ 64.00  b)
-
-summary
-  access monomorphic object
-   1.02x faster than access polymorphic object
-   1.05x faster than access array
-
-------------------------------------------------- -------------------------------
-create & access monomorphic object   3.59 ns/iter   3.49 ns   ââ                 
-                             (1.76 ns â¦ 83.74 ns)  12.87 ns   ââ                 
-                          (  0.00  b â¦  64.00  b)   0.29  b âââââââââââââââââââââ
-
-create & access array                4.06 ns/iter   4.09 ns   ââ                 
-                             (2.61 ns â¦ 61.33 ns)  10.00 ns   âââ                
-                          (  0.00  b â¦  64.00  b)   0.04  b âââââââââââââââââââââ
-
-summary
-  create & access monomorphic object
-   1.13x faster than create & access array

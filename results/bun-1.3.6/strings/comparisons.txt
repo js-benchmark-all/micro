@@ -1,0 +1,22 @@
+clk: ~3.24 GHz
+cpu: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz
+runtime: bun 1.3.6 (x64-linux)
+
+benchmark                                avg (min â¦ max) p75 / p99    (min â¦ top 1%)
+-------------------------------------------------------- -------------------------------
+string[const_index] comparison             36.36 ns/iter  35.31 ns â                    
+                                   (34.33 ns â¦ 87.42 ns)  59.30 ns ââ                   
+                                 (  0.00  b â¦  96.00  b)   2.18  b âââââââââââââââââââââ
+
+string.charCodeAt(const_index) comparison  36.22 ns/iter  35.63 ns  â                   
+                                   (34.49 ns â¦ 96.14 ns)  58.11 ns ââ                   
+                                 (  0.00  b â¦  64.00  b)   0.53  b âââââââââââââââââââââ
+
+string.charAt(const_index) comparison      36.08 ns/iter  35.50 ns ââ                   
+                                   (34.00 ns â¦ 90.37 ns)  57.95 ns ââ                   
+                                 (  0.00  b â¦  64.00  b)   0.57  b âââââââââââââââââââââ
+
+summary
+  string.charAt(const_index) comparison
+   1x faster than string.charCodeAt(const_index) comparison
+   1.01x faster than string[const_index] comparison

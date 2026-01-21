@@ -1,0 +1,35 @@
+clk: ~2.97 GHz
+cpu: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz
+runtime: bun 1.3.6 (x64-linux)
+
+benchmark                         avg (min â¦ max) p75 / p99    (min â¦ top 1%)
+------------------------------------------------- -------------------------------
+access monomorphic object          380.90 ns/iter 399.20 ns     âââââââ          
+                          (266.70 ns â¦ 785.81 ns) 533.10 ns âââââââââââââââââââââ
+                        gc(  1.04 ms â¦   2.67 ms)   2.27  b (  0.00  bâ¦512.00  b)
+
+access polymorphic object          288.82 ns/iter 304.54 ns   â    â             
+                           (232.47 ns â¦ 1.20 Âµs) 434.08 ns âââââââââââââââââââââ
+                        gc(  1.05 ms â¦   4.24 ms)   2.11  b (  0.00  bâ¦435.00  b)
+
+access array                       408.18 ns/iter 431.83 ns             âââ â    
+                           (189.79 ns â¦ 1.79 Âµs) 501.58 ns âââââââââââââââââââââ
+                        gc(  1.07 ms â¦   6.08 ms)   1.06  b (  0.00  bâ¦ 96.00  b)
+
+summary
+  access polymorphic object
+   1.32x faster than access monomorphic object
+   1.41x faster than access array
+
+------------------------------------------------- -------------------------------
+create & access monomorphic object   6.93 ns/iter   6.39 ns â                    
+                            (5.55 ns â¦ 193.93 ns)  22.02 ns ââ                   
+                          (  0.00  b â¦  64.00  b)   0.35  b âââââââââââââââââââââ
+
+create & access array                9.11 ns/iter   8.18 ns â                    
+                            (6.91 ns â¦ 184.07 ns)  25.76 ns â                    
+                          (  0.00  b â¦  64.00  b)   0.08  b âââââââââââââââââââââ
+
+summary
+  create & access monomorphic object
+   1.31x faster than create & access array

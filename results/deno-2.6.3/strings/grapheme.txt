@@ -1,32 +1,32 @@
-clk: ~5.20 GHz
+clk: ~3.01 GHz
 cpu: null
 runtime: deno 2.6.3 (x86_64-unknown-linux-gnu)
 
 benchmark                   avg (min … max) p75 / p99    (min … top 1%)
 ------------------------------------------- -------------------------------
-baseline (Array.from)        520.76 ns/iter 519.46 ns  █                   
-                      (471.93 ns … 1.05 µs) 836.86 ns  ██                  
-                    (  4.16 kb …   5.26 kb)   4.83 kb ▅███▃▂▂▂▁▂▂▁▁▁▁▁▁▁▁▁▁
+baseline (Array.from)          1.58 µs/iter   1.56 µs  █                   
+                        (1.54 µs … 2.04 µs)   1.90 µs ▇█                   
+                    (  4.78 kb …   5.24 kb)   4.85 kb ██▃▃▁▁▁▂▁▁▁▁▁▁▁▂▁▁▁▁▂
 
-baseline (spread)            483.80 ns/iter 483.66 ns   █▅                 
-                    (443.30 ns … 907.92 ns) 630.26 ns  ▃███                
-                    (  4.45 kb …   5.13 kb)   4.84 kb ▂█████▄▂▃▂▂▂▂▁▁▂▂▂▁▁▂
+baseline (spread)              1.47 µs/iter   1.46 µs  █                   
+                        (1.42 µs … 1.77 µs)   1.76 µs ▆█▇                  
+                    (  4.58 kb …   5.09 kb)   4.84 kb ███▄▃▂▁▁▂▂▁▂▂▂▁▁▃▂▁▂▂
 
-iterator (for-of)            301.40 ns/iter 302.70 ns  █                   
-                    (274.90 ns … 651.29 ns) 459.96 ns  █▇▂                 
-                    (874.85  b …   4.19 kb)   1.27 kb ▇███▆▃▂▂▂▁▁▂▂▁▁▁▁▁▁▁▁
+iterator (for-of)            938.58 ns/iter 929.25 ns █                    
+                      (907.06 ns … 1.23 µs)   1.16 µs █                    
+                    (739.46  b …   2.77 kb)   1.28 kb █▃▅▂▁▁▁▁▁▁▁▁▁▁▁▁▁▂▁▁▁
 
-iterator (manual)            336.36 ns/iter 330.19 ns  █                   
-                    (311.67 ns … 683.83 ns) 510.44 ns  █                   
-                    (850.83  b …   3.86 kb)   1.27 kb ██▇▃▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+iterator (manual)            993.26 ns/iter 987.64 ns █                    
+                      (964.71 ns … 1.33 µs)   1.28 µs █                    
+                    (606.13  b …   2.61 kb)   1.27 kb █▆▅▂▁▁▁▁▁▁▂▁▁▁▁▁▁▁▁▁▁
 
-charCodeAt                   216.60 ns/iter 218.39 ns   █▃▂                
-                    (199.88 ns … 336.77 ns) 282.24 ns  ▆███▂               
-                    (  0.09  b … 392.38  b)   2.85  b ▂█████▅▃▂▂▂▂▁▂▂▂▂▁▁▁▁
+charCodeAt                   621.46 ns/iter 596.90 ns █                    
+                    (589.43 ns … 984.15 ns) 958.98 ns █                    
+                    (  0.09  b … 555.46  b)   9.64  b █▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▂▁
 
 summary
   charCodeAt
-   1.39x faster than iterator (for-of)
-   1.55x faster than iterator (manual)
-   2.23x faster than baseline (spread)
-   2.4x faster than baseline (Array.from)
+   1.51x faster than iterator (for-of)
+   1.6x faster than iterator (manual)
+   2.37x faster than baseline (spread)
+   2.54x faster than baseline (Array.from)

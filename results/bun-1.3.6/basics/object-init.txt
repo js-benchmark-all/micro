@@ -1,0 +1,37 @@
+clk: ~3.24 GHz
+cpu: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz
+runtime: bun 1.3.6 (x64-linux)
+
+benchmark                           avg (min â¦ max) p75 / p99    (min â¦ top 1%)
+--------------------------------------------------- -------------------------------
+object literal                         6.04 ns/iter   5.29 ns ââ                   
+                              (4.66 ns â¦ 228.34 ns)  12.53 ns ââ                   
+                            (  0.00  b â¦  64.00  b)   0.11  b âââââââââââââââââââââ
+
+class - with constructor               6.14 ns/iter   5.27 ns  â                   
+                              (4.64 ns â¦ 281.63 ns)  11.70 ns ââ                   
+                            (  0.00  b â¦  64.00  b)   0.02  b âââââââââââââââââââââ
+
+class -  without constructor           9.81 ns/iter   8.03 ns â                    
+                              (7.00 ns â¦ 246.36 ns)  22.60 ns ââ                   
+                            (  0.00  b â¦  64.00  b)   0.02  b âââââââââââââââââââââ
+
+proto - Object.create()               11.57 ns/iter  10.49 ns â                    
+                              (8.02 ns â¦ 259.90 ns)  26.99 ns ââ                   
+                            (  0.00  b â¦  64.00  b)   0.03  b âââââââââââââââââââââ
+
+proto - function with constructor      8.09 ns/iter   6.73 ns  â                   
+                              (6.04 ns â¦ 240.07 ns)  16.87 ns ââ                   
+                            (  0.00  b â¦  64.00  b)   0.03  b âââââââââââââââââââââ
+
+proto - function without constructor  17.46 ns/iter  16.43 ns  â                   
+                             (15.18 ns â¦ 244.40 ns)  29.62 ns  ââ                  
+                            (  0.00  b â¦  32.00  b)   0.00  b âââââââââââââââââââââ
+
+summary
+  object literal
+   1.02x faster than class - with constructor
+   1.34x faster than proto - function with constructor
+   1.63x faster than class -  without constructor
+   1.92x faster than proto - Object.create()
+   2.89x faster than proto - function without constructor

@@ -1,23 +1,23 @@
-clk: ~5.30 GHz
+clk: ~0.78 GHz
 cpu: null
-runtime: v8 14.5.149 (null)
+runtime: v8 14.5.143 (null)
 
 benchmark                   avg (min … max) p75 / p99    (min … top 1%)
 ------------------------------------------- -------------------------------
-baseline (Array.from)        488.96 ns/iter 488.28 ns  █▄                  
-                    (460.94 ns … 843.99 ns) 660.16 ns ▅███▂▂▂▁▁▂▁▁▁▁▁▁▁▁▁▁▁
-baseline (spread)            445.23 ns/iter 446.04 ns  █▃                  
-                    (425.05 ns … 689.70 ns) 571.29 ns ▅██▆▄▂▁▁▂▁▁▁▁▁▁▁▁▁▁▁▁
-iterator (for-of)            295.68 ns/iter 298.10 ns    ▄█▃               
-                    (274.66 ns … 399.90 ns) 366.21 ns ▂▅▄███▄▄▃▂▁▁▁▁▁▁▁▁▁▁▁
-iterator (manual)            316.67 ns/iter 317.14 ns   █                  
-                    (289.31 ns … 568.12 ns) 483.15 ns ▄███▄▂▂▁▁▂▁▁▁▁▁▁▁▁▁▁▁
-charCodeAt                   207.76 ns/iter 207.28 ns  ██                  
-                    (192.14 ns … 384.77 ns) 308.84 ns ▃██▇▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+baseline (Array.from)          6.72 µs/iter   7.24 µs █ █                  
+                        (6.13 µs … 7.68 µs)   7.62 µs █▅█▁▁▁██▁▁▁▁▁▅▁█▁▁▅▁█
+baseline (spread)              5.70 µs/iter   6.45 µs █▃                   
+                        (5.04 µs … 7.01 µs)   6.98 µs ██▄▁▁█▄▆▁▁▁▁▁▁▁▆▄▁▆▁▄
+iterator (for-of)              3.22 µs/iter   3.00 µs     █                
+                      (2.00 µs … 376.00 µs)   7.00 µs ▁▁▁▁█▁▁▁▂▁▁▁▁▁▁▁▁▁▁▁▁
+iterator (manual)              3.77 µs/iter   4.07 µs █                    
+                        (3.44 µs … 4.68 µs)   4.57 µs █▅▅▂▃▁▁▁▁▂▁▃▁▁▁▃▂▂▃▂▂
+charCodeAt                     2.76 µs/iter   2.71 µs █                    
+                        (2.34 µs … 4.36 µs)   4.16 µs █▂▇▁▄▂▁▁▁▁▁▁▁▂▁▂▄▂▁▁▂
 
 summary
   charCodeAt
-   1.42x faster than iterator (for-of)
-   1.52x faster than iterator (manual)
-   2.14x faster than baseline (spread)
-   2.35x faster than baseline (Array.from)
+   1.17x faster than iterator (for-of)
+   1.37x faster than iterator (manual)
+   2.06x faster than baseline (spread)
+   2.43x faster than baseline (Array.from)
