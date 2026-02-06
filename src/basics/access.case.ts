@@ -9,8 +9,7 @@ summary(() => {
         b: Math.random(),
       }),
       bench: (o: any) => {
-        for (let i = 0; i < 500; i++)
-          do_not_optimize(o.a);
+        do_not_optimize(o.a);
       }
     }
   }).gc('inner');
@@ -29,8 +28,7 @@ summary(() => {
           c: Math.random()
         },
       bench: (o: any) => {
-        for (let i = 0; i < 500; i++)
-          do_not_optimize(o.a);
+        do_not_optimize(o.a);
       }
     }
   }).gc('inner');
@@ -42,8 +40,7 @@ summary(() => {
         Math.random()
       ],
       bench: (o: any) => {
-        for (let i = 0; i < 500; i++)
-          do_not_optimize(o[0]);
+        do_not_optimize(o[0]);
       }
     }
   }).gc('inner');

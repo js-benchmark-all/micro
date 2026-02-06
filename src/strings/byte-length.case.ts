@@ -30,4 +30,5 @@ summary(() => {
     });
 });
 
-start();
+if (globalThis.Blob || globalThis.TextDecoder || globalThis.Buffer)
+  start();
